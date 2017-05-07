@@ -1,16 +1,16 @@
 {
 	"meta": {
-		"exported_on": 1494153914442,
+		"exported_on": 1494166143356,
 		"version": "008"
 	},
 	"data": {
 		"posts": [
 			{
-				"id": "cj2eknv3m000y6d0rl9us10p6",
+				"id": "cj2erxyzm000tg30rfkd3jkko",
 				"title": "webpack",
 				"slug": "webpack",
-				"markdown": "想要订制性只能学喽...\n\n`webpack`核心:\n - Entry\n - Output\n - Loaders\n - Plugins\n \n \n## react 开发环境配置\n1. 安装npm包\n```\n\"babel-core\": \"^6.24.1\",\n\"babel-loader\": \"^7.0.0\",\n\"babel-preset-env\": \"^1.4.0\",\n\"babel-preset-es2015\": \"^6.24.1\",\n\"babel-preset-react\": \"^6.24.1\",\n\"babel-preset-stage-0\": \"^6.24.1\",\n\"css-loader\": \"^0.28.1\",\n\"extract-text-webpack-plugin\": \"^2.1.0\",\n\"html-webpack-plugin\": \"^2.28.0\",\n\"node-sass\": \"^4.5.2\",\n\"react\": \"^15.5.4\",\n\"react-dom\": \"^15.5.4\",\n\"sass-loader\": \"^6.0.3\",\n\"webpack\": \"^2.5.1\",\n\"webpack-dev-server\": \"^2.4.5\"\n```\n2. 配置 webpack\n\n```\nwebpack.config.js\nconst path = require('path');\nconst webpack = require('webpack');\nconst ExtractTextPlugin = require(\"extract-text-webpack-plugin\");\nconst HtmlWebpackPlugin = require('html-webpack-plugin');\nconsole.log(path.resolve(__dirname, './build/assets'));\nmodule.exports = {\n  entry: [\n    './src/entry.js',\n    'webpack-dev-server/client?http://127.0.0.1:8089/',\n    'webpack/hot/dev-server'\n  ],\n  output: {\n    path: path.resolve(__dirname, './build'),\n    filename: \"assets/bundle.js\",\n    publicPath: '/'\n  },\n  module: {\n    rules: [\n      { \n          test: /\\.js$/, \n          exclude: /node_modules/, \n          use: \"babel-loader\" \n      },\n      {\n          test: /\\.scss$/,\n          use: ExtractTextPlugin.extract({\n            use: [{\n                loader: \"css-loader\"\n            }, {\n                loader: \"sass-loader\"\n            }]\n        })\n      }\n    ]\n  },\n  plugins: [\n    new webpack.HotModuleReplacementPlugin(),\n    new ExtractTextPlugin('style.css'),\n    new HtmlWebpackPlugin({\n          filename: './index.html',\n          template: './index.html',\n          hash: false,\n      })\n  ]\n}\n\n```\n\n```\ndev-serve.js\nvar WebpackDevServer = require('webpack-dev-server');\nvar webpack = require('webpack');\nvar config = require('./webpack.config.js');\nvar path = require('path');\n\nvar compiler = webpack(config);\nvar server = new WebpackDevServer(compiler,{\n    hot:true,\n    filename: config.output.filename,\n    publicPath: config.output.publicPath,\n    stats: {\n        colors: true\n    }\n})\n\nserver.listen(8089,'localhost',()=>{});\n```\n\n \n 参考链接:  \n [https://www.qianduandao.com/webpack-four-core-concepts/]",
-				"html": "<p>想要订制性只能学喽…</p><p><code>webpack</code>核心:</p><ul><li>Entry</li><li>Output</li><li>Loaders</li><li>Plugins</li></ul><h2 id=\"react-开发环境配置\"><a href=\"#react-开发环境配置\" class=\"headerlink\" title=\"react 开发环境配置\"></a>react 开发环境配置</h2><ol><li><p>安装npm包</p><figure class=\"highlight plain\"><table><tr><td class=\"gutter\"><pre><div class=\"line\">1</div><div class=\"line\">2</div><div class=\"line\">3</div><div class=\"line\">4</div><div class=\"line\">5</div><div class=\"line\">6</div><div class=\"line\">7</div><div class=\"line\">8</div><div class=\"line\">9</div><div class=\"line\">10</div><div class=\"line\">11</div><div class=\"line\">12</div><div class=\"line\">13</div><div class=\"line\">14</div><div class=\"line\">15</div></pre></td><td class=\"code\"><pre><div class=\"line\">&quot;babel-core&quot;: &quot;^6.24.1&quot;,</div><div class=\"line\">&quot;babel-loader&quot;: &quot;^7.0.0&quot;,</div><div class=\"line\">&quot;babel-preset-env&quot;: &quot;^1.4.0&quot;,</div><div class=\"line\">&quot;babel-preset-es2015&quot;: &quot;^6.24.1&quot;,</div><div class=\"line\">&quot;babel-preset-react&quot;: &quot;^6.24.1&quot;,</div><div class=\"line\">&quot;babel-preset-stage-0&quot;: &quot;^6.24.1&quot;,</div><div class=\"line\">&quot;css-loader&quot;: &quot;^0.28.1&quot;,</div><div class=\"line\">&quot;extract-text-webpack-plugin&quot;: &quot;^2.1.0&quot;,</div><div class=\"line\">&quot;html-webpack-plugin&quot;: &quot;^2.28.0&quot;,</div><div class=\"line\">&quot;node-sass&quot;: &quot;^4.5.2&quot;,</div><div class=\"line\">&quot;react&quot;: &quot;^15.5.4&quot;,</div><div class=\"line\">&quot;react-dom&quot;: &quot;^15.5.4&quot;,</div><div class=\"line\">&quot;sass-loader&quot;: &quot;^6.0.3&quot;,</div><div class=\"line\">&quot;webpack&quot;: &quot;^2.5.1&quot;,</div><div class=\"line\">&quot;webpack-dev-server&quot;: &quot;^2.4.5&quot;</div></pre></td></tr></table></figure></li><li><p>配置 webpack</p></li></ol><figure class=\"highlight plain\"><table><tr><td class=\"gutter\"><pre><div class=\"line\">1</div><div class=\"line\">2</div><div class=\"line\">3</div><div class=\"line\">4</div><div class=\"line\">5</div><div class=\"line\">6</div><div class=\"line\">7</div><div class=\"line\">8</div><div class=\"line\">9</div><div class=\"line\">10</div><div class=\"line\">11</div><div class=\"line\">12</div><div class=\"line\">13</div><div class=\"line\">14</div><div class=\"line\">15</div><div class=\"line\">16</div><div class=\"line\">17</div><div class=\"line\">18</div><div class=\"line\">19</div><div class=\"line\">20</div><div class=\"line\">21</div><div class=\"line\">22</div><div class=\"line\">23</div><div class=\"line\">24</div><div class=\"line\">25</div><div class=\"line\">26</div><div class=\"line\">27</div><div class=\"line\">28</div><div class=\"line\">29</div><div class=\"line\">30</div><div class=\"line\">31</div><div class=\"line\">32</div><div class=\"line\">33</div><div class=\"line\">34</div><div class=\"line\">35</div><div class=\"line\">36</div><div class=\"line\">37</div><div class=\"line\">38</div><div class=\"line\">39</div><div class=\"line\">40</div><div class=\"line\">41</div><div class=\"line\">42</div><div class=\"line\">43</div><div class=\"line\">44</div><div class=\"line\">45</div><div class=\"line\">46</div></pre></td><td class=\"code\"><pre><div class=\"line\">webpack.config.js</div><div class=\"line\">const path = require(&apos;path&apos;);</div><div class=\"line\">const webpack = require(&apos;webpack&apos;);</div><div class=\"line\">const ExtractTextPlugin = require(&quot;extract-text-webpack-plugin&quot;);</div><div class=\"line\">const HtmlWebpackPlugin = require(&apos;html-webpack-plugin&apos;);</div><div class=\"line\">console.log(path.resolve(__dirname, &apos;./build/assets&apos;));</div><div class=\"line\">module.exports = &#123;</div><div class=\"line\">  entry: [</div><div class=\"line\">    &apos;./src/entry.js&apos;,</div><div class=\"line\">    &apos;webpack-dev-server/client?http://127.0.0.1:8089/&apos;,</div><div class=\"line\">    &apos;webpack/hot/dev-server&apos;</div><div class=\"line\">  ],</div><div class=\"line\">  output: &#123;</div><div class=\"line\">    path: path.resolve(__dirname, &apos;./build&apos;),</div><div class=\"line\">    filename: &quot;assets/bundle.js&quot;,</div><div class=\"line\">    publicPath: &apos;/&apos;</div><div class=\"line\">  &#125;,</div><div class=\"line\">  module: &#123;</div><div class=\"line\">    rules: [</div><div class=\"line\">      &#123; </div><div class=\"line\">          test: /\\.js$/, </div><div class=\"line\">          exclude: /node_modules/, </div><div class=\"line\">          use: &quot;babel-loader&quot; </div><div class=\"line\">      &#125;,</div><div class=\"line\">      &#123;</div><div class=\"line\">          test: /\\.scss$/,</div><div class=\"line\">          use: ExtractTextPlugin.extract(&#123;</div><div class=\"line\">            use: [&#123;</div><div class=\"line\">                loader: &quot;css-loader&quot;</div><div class=\"line\">            &#125;, &#123;</div><div class=\"line\">                loader: &quot;sass-loader&quot;</div><div class=\"line\">            &#125;]</div><div class=\"line\">        &#125;)</div><div class=\"line\">      &#125;</div><div class=\"line\">    ]</div><div class=\"line\">  &#125;,</div><div class=\"line\">  plugins: [</div><div class=\"line\">    new webpack.HotModuleReplacementPlugin(),</div><div class=\"line\">    new ExtractTextPlugin(&apos;style.css&apos;),</div><div class=\"line\">    new HtmlWebpackPlugin(&#123;</div><div class=\"line\">          filename: &apos;./index.html&apos;,</div><div class=\"line\">          template: &apos;./index.html&apos;,</div><div class=\"line\">          hash: false,</div><div class=\"line\">      &#125;)</div><div class=\"line\">  ]</div><div class=\"line\">&#125;</div></pre></td></tr></table></figure><figure class=\"highlight plain\"><table><tr><td class=\"gutter\"><pre><div class=\"line\">1</div><div class=\"line\">2</div><div class=\"line\">3</div><div class=\"line\">4</div><div class=\"line\">5</div><div class=\"line\">6</div><div class=\"line\">7</div><div class=\"line\">8</div><div class=\"line\">9</div><div class=\"line\">10</div><div class=\"line\">11</div><div class=\"line\">12</div><div class=\"line\">13</div><div class=\"line\">14</div><div class=\"line\">15</div><div class=\"line\">16</div><div class=\"line\">17</div></pre></td><td class=\"code\"><pre><div class=\"line\">dev-serve.js</div><div class=\"line\">var WebpackDevServer = require(&apos;webpack-dev-server&apos;);</div><div class=\"line\">var webpack = require(&apos;webpack&apos;);</div><div class=\"line\">var config = require(&apos;./webpack.config.js&apos;);</div><div class=\"line\">var path = require(&apos;path&apos;);</div><div class=\"line\"></div><div class=\"line\">var compiler = webpack(config);</div><div class=\"line\">var server = new WebpackDevServer(compiler,&#123;</div><div class=\"line\">    hot:true,</div><div class=\"line\">    filename: config.output.filename,</div><div class=\"line\">    publicPath: config.output.publicPath,</div><div class=\"line\">    stats: &#123;</div><div class=\"line\">        colors: true</div><div class=\"line\">    &#125;</div><div class=\"line\">&#125;)</div><div class=\"line\"></div><div class=\"line\">server.listen(8089,&apos;localhost&apos;,()=&gt;&#123;&#125;);</div></pre></td></tr></table></figure><p>参考链接:<br>[<a href=\"https://www.qianduandao.com/webpack-four-core-concepts/\" target=\"_blank\" rel=\"external\">https://www.qianduandao.com/webpack-four-core-concepts/</a>]</p>",
+				"markdown": "想要订制性只能学喽...\n\n## webpack 核心:\n - Entry  \n 入口\n - Output  \n 输出\n - Loaders  \n 文件加载\n - Plugins  \n 插件\n \ntip: 使用`webpack-dev-server`时，`webpack`编译的东西是存储在内存中的\n \n \n## react 开发环境配置\n### 1. 安装npm包\n```\n\"babel-core\": \"^6.24.1\",\n\"babel-loader\": \"^7.0.0\",\n\"babel-preset-env\": \"^1.4.0\",\n\"babel-preset-es2015\": \"^6.24.1\",\n\"babel-preset-react\": \"^6.24.1\",\n\"babel-preset-stage-0\": \"^6.24.1\",\n\"css-loader\": \"^0.28.1\",\n\"extract-text-webpack-plugin\": \"^2.1.0\",\n\"html-webpack-plugin\": \"^2.28.0\",\n\"node-sass\": \"^4.5.2\",\n\"react\": \"^15.5.4\",\n\"react-dom\": \"^15.5.4\",\n\"sass-loader\": \"^6.0.3\",\n\"webpack\": \"^2.5.1\",\n\"webpack-dev-server\": \"^2.4.5\"\n```\n### 2. 配置开发状态  \n```\n// webpack.config.js\nconst path = require('path');\nconst webpack = require('webpack');\nconst ExtractTextPlugin = require(\"extract-text-webpack-plugin\");\nconst HtmlWebpackPlugin = require('html-webpack-plugin');\nconsole.log(path.resolve(__dirname, './build/assets'));\nmodule.exports = {\n  entry: [\n    './src/entry.js',\n    'webpack-dev-server/client?http://127.0.0.1:8089/',\n    'webpack/hot/dev-server'\n  ],\n  output: {\n    path: path.resolve(__dirname, './build'),\n    filename: \"assets/bundle.js\",\n    publicPath: '/'\n  },\n  module: {\n    rules: [\n      { \n          test: /\\.js$/, \n          exclude: /node_modules/, \n          use: \"babel-loader\" \n      },\n      {\n          test: /\\.scss$/,\n          use: ExtractTextPlugin.extract({\n            use: [{\n                loader: \"css-loader\"\n            }, {\n                loader: \"sass-loader\"\n            }]\n        })\n      }\n    ]\n  },\n  plugins: [\n    new webpack.HotModuleReplacementPlugin(),\n    new ExtractTextPlugin('style.css'),\n    new HtmlWebpackPlugin({\n          filename: './index.html',\n          template: './index.html',\n          hash: false,\n      })\n  ]\n}\n// dev-serve.js\nvar WebpackDevServer = require('webpack-dev-server');\nvar webpack = require('webpack');\nvar config = require('./webpack.config.js');\nvar path = require('path');\n\nvar compiler = webpack(config);\nvar server = new WebpackDevServer(compiler,{\n    hot:true,\n    filename: config.output.filename,\n    publicPath: config.output.publicPath,\n    stats: {\n        colors: true\n    }\n})\n\nserver.listen(8089,'localhost',()=>{});\n```\n### 3. 生产模式配置\n```\n// webpack.build.js\nconst path = require('path');\nconst webpack = require('webpack');\nconst ExtractTextPlugin = require(\"extract-text-webpack-plugin\");\nconst HtmlWebpackPlugin = require('html-webpack-plugin');\nconst CleanPlugin = require(\"clean-webpack-plugin\");\n\nvar assetsPath = 'assets/';\n\nconst extractSass = new ExtractTextPlugin({\n    filename: assetsPath + \"style.[hash].css\"\n});\n\nmodule.exports = {\n  entry: [\n    './src/entry.js'],\n  output: {\n    path: path.resolve(__dirname, './build'),\n    filename: assetsPath + \"bundle.[hash].js\",\n    publicPath: '/'\n  },\n  module: {\n    rules: [\n      { \n          test: /\\.js$/, \n          exclude: /node_modules/, \n          use: \"babel-loader\" \n      },\n      {\n          test: /\\.scss$/,\n          use: extractSass.extract({\n            use: [{\n                loader: \"css-loader\"\n            }, {\n                loader: \"sass-loader\"\n            }]\n        })\n      }\n    ]\n  },\n  plugins: [\n  \tnew CleanPlugin(['build']),\n    new webpack.HotModuleReplacementPlugin(),\n    extractSass,\n    new HtmlWebpackPlugin({\n          filename: './index.html',\n          template: './index.html',\n          hash: false,\n      }),\n    new webpack.DefinePlugin({\n          'process.env': {\n              NODE_ENV: JSON.stringify('production')\n          }\n      })\n  ]\n}\n```\n \n 参考链接:  \n [https://www.qianduandao.com/webpack-four-core-concepts/]",
+				"html": "<p>想要订制性只能学喽…</p><h2 id=\"webpack-核心\"><a href=\"#webpack-核心\" class=\"headerlink\" title=\"webpack 核心:\"></a>webpack 核心:</h2><ul><li>Entry<br>入口</li><li>Output<br>输出</li><li>Loaders<br>文件加载</li><li>Plugins<br>插件</li></ul><p>tip: 使用<code>webpack-dev-server</code>时，<code>webpack</code>编译的东西是存储在内存中的</p><h2 id=\"react-开发环境配置\"><a href=\"#react-开发环境配置\" class=\"headerlink\" title=\"react 开发环境配置\"></a>react 开发环境配置</h2><h3 id=\"1-安装npm包\"><a href=\"#1-安装npm包\" class=\"headerlink\" title=\"1. 安装npm包\"></a>1. 安装npm包</h3><figure class=\"highlight plain\"><table><tr><td class=\"gutter\"><pre><div class=\"line\">1</div><div class=\"line\">2</div><div class=\"line\">3</div><div class=\"line\">4</div><div class=\"line\">5</div><div class=\"line\">6</div><div class=\"line\">7</div><div class=\"line\">8</div><div class=\"line\">9</div><div class=\"line\">10</div><div class=\"line\">11</div><div class=\"line\">12</div><div class=\"line\">13</div><div class=\"line\">14</div><div class=\"line\">15</div></pre></td><td class=\"code\"><pre><div class=\"line\">&quot;babel-core&quot;: &quot;^6.24.1&quot;,</div><div class=\"line\">&quot;babel-loader&quot;: &quot;^7.0.0&quot;,</div><div class=\"line\">&quot;babel-preset-env&quot;: &quot;^1.4.0&quot;,</div><div class=\"line\">&quot;babel-preset-es2015&quot;: &quot;^6.24.1&quot;,</div><div class=\"line\">&quot;babel-preset-react&quot;: &quot;^6.24.1&quot;,</div><div class=\"line\">&quot;babel-preset-stage-0&quot;: &quot;^6.24.1&quot;,</div><div class=\"line\">&quot;css-loader&quot;: &quot;^0.28.1&quot;,</div><div class=\"line\">&quot;extract-text-webpack-plugin&quot;: &quot;^2.1.0&quot;,</div><div class=\"line\">&quot;html-webpack-plugin&quot;: &quot;^2.28.0&quot;,</div><div class=\"line\">&quot;node-sass&quot;: &quot;^4.5.2&quot;,</div><div class=\"line\">&quot;react&quot;: &quot;^15.5.4&quot;,</div><div class=\"line\">&quot;react-dom&quot;: &quot;^15.5.4&quot;,</div><div class=\"line\">&quot;sass-loader&quot;: &quot;^6.0.3&quot;,</div><div class=\"line\">&quot;webpack&quot;: &quot;^2.5.1&quot;,</div><div class=\"line\">&quot;webpack-dev-server&quot;: &quot;^2.4.5&quot;</div></pre></td></tr></table></figure><h3 id=\"2-配置开发状态\"><a href=\"#2-配置开发状态\" class=\"headerlink\" title=\"2. 配置开发状态\"></a>2. 配置开发状态</h3><figure class=\"highlight plain\"><table><tr><td class=\"gutter\"><pre><div class=\"line\">1</div><div class=\"line\">2</div><div class=\"line\">3</div><div class=\"line\">4</div><div class=\"line\">5</div><div class=\"line\">6</div><div class=\"line\">7</div><div class=\"line\">8</div><div class=\"line\">9</div><div class=\"line\">10</div><div class=\"line\">11</div><div class=\"line\">12</div><div class=\"line\">13</div><div class=\"line\">14</div><div class=\"line\">15</div><div class=\"line\">16</div><div class=\"line\">17</div><div class=\"line\">18</div><div class=\"line\">19</div><div class=\"line\">20</div><div class=\"line\">21</div><div class=\"line\">22</div><div class=\"line\">23</div><div class=\"line\">24</div><div class=\"line\">25</div><div class=\"line\">26</div><div class=\"line\">27</div><div class=\"line\">28</div><div class=\"line\">29</div><div class=\"line\">30</div><div class=\"line\">31</div><div class=\"line\">32</div><div class=\"line\">33</div><div class=\"line\">34</div><div class=\"line\">35</div><div class=\"line\">36</div><div class=\"line\">37</div><div class=\"line\">38</div><div class=\"line\">39</div><div class=\"line\">40</div><div class=\"line\">41</div><div class=\"line\">42</div><div class=\"line\">43</div><div class=\"line\">44</div><div class=\"line\">45</div><div class=\"line\">46</div><div class=\"line\">47</div><div class=\"line\">48</div><div class=\"line\">49</div><div class=\"line\">50</div><div class=\"line\">51</div><div class=\"line\">52</div><div class=\"line\">53</div><div class=\"line\">54</div><div class=\"line\">55</div><div class=\"line\">56</div><div class=\"line\">57</div><div class=\"line\">58</div><div class=\"line\">59</div><div class=\"line\">60</div><div class=\"line\">61</div><div class=\"line\">62</div><div class=\"line\">63</div></pre></td><td class=\"code\"><pre><div class=\"line\">// webpack.config.js</div><div class=\"line\">const path = require(&apos;path&apos;);</div><div class=\"line\">const webpack = require(&apos;webpack&apos;);</div><div class=\"line\">const ExtractTextPlugin = require(&quot;extract-text-webpack-plugin&quot;);</div><div class=\"line\">const HtmlWebpackPlugin = require(&apos;html-webpack-plugin&apos;);</div><div class=\"line\">console.log(path.resolve(__dirname, &apos;./build/assets&apos;));</div><div class=\"line\">module.exports = &#123;</div><div class=\"line\">  entry: [</div><div class=\"line\">    &apos;./src/entry.js&apos;,</div><div class=\"line\">    &apos;webpack-dev-server/client?http://127.0.0.1:8089/&apos;,</div><div class=\"line\">    &apos;webpack/hot/dev-server&apos;</div><div class=\"line\">  ],</div><div class=\"line\">  output: &#123;</div><div class=\"line\">    path: path.resolve(__dirname, &apos;./build&apos;),</div><div class=\"line\">    filename: &quot;assets/bundle.js&quot;,</div><div class=\"line\">    publicPath: &apos;/&apos;</div><div class=\"line\">  &#125;,</div><div class=\"line\">  module: &#123;</div><div class=\"line\">    rules: [</div><div class=\"line\">      &#123; </div><div class=\"line\">          test: /\\.js$/, </div><div class=\"line\">          exclude: /node_modules/, </div><div class=\"line\">          use: &quot;babel-loader&quot; </div><div class=\"line\">      &#125;,</div><div class=\"line\">      &#123;</div><div class=\"line\">          test: /\\.scss$/,</div><div class=\"line\">          use: ExtractTextPlugin.extract(&#123;</div><div class=\"line\">            use: [&#123;</div><div class=\"line\">                loader: &quot;css-loader&quot;</div><div class=\"line\">            &#125;, &#123;</div><div class=\"line\">                loader: &quot;sass-loader&quot;</div><div class=\"line\">            &#125;]</div><div class=\"line\">        &#125;)</div><div class=\"line\">      &#125;</div><div class=\"line\">    ]</div><div class=\"line\">  &#125;,</div><div class=\"line\">  plugins: [</div><div class=\"line\">    new webpack.HotModuleReplacementPlugin(),</div><div class=\"line\">    new ExtractTextPlugin(&apos;style.css&apos;),</div><div class=\"line\">    new HtmlWebpackPlugin(&#123;</div><div class=\"line\">          filename: &apos;./index.html&apos;,</div><div class=\"line\">          template: &apos;./index.html&apos;,</div><div class=\"line\">          hash: false,</div><div class=\"line\">      &#125;)</div><div class=\"line\">  ]</div><div class=\"line\">&#125;</div><div class=\"line\">// dev-serve.js</div><div class=\"line\">var WebpackDevServer = require(&apos;webpack-dev-server&apos;);</div><div class=\"line\">var webpack = require(&apos;webpack&apos;);</div><div class=\"line\">var config = require(&apos;./webpack.config.js&apos;);</div><div class=\"line\">var path = require(&apos;path&apos;);</div><div class=\"line\"></div><div class=\"line\">var compiler = webpack(config);</div><div class=\"line\">var server = new WebpackDevServer(compiler,&#123;</div><div class=\"line\">    hot:true,</div><div class=\"line\">    filename: config.output.filename,</div><div class=\"line\">    publicPath: config.output.publicPath,</div><div class=\"line\">    stats: &#123;</div><div class=\"line\">        colors: true</div><div class=\"line\">    &#125;</div><div class=\"line\">&#125;)</div><div class=\"line\"></div><div class=\"line\">server.listen(8089,&apos;localhost&apos;,()=&gt;&#123;&#125;);</div></pre></td></tr></table></figure><h3 id=\"3-生产模式配置\"><a href=\"#3-生产模式配置\" class=\"headerlink\" title=\"3. 生产模式配置\"></a>3. 生产模式配置</h3><figure class=\"highlight plain\"><table><tr><td class=\"gutter\"><pre><div class=\"line\">1</div><div class=\"line\">2</div><div class=\"line\">3</div><div class=\"line\">4</div><div class=\"line\">5</div><div class=\"line\">6</div><div class=\"line\">7</div><div class=\"line\">8</div><div class=\"line\">9</div><div class=\"line\">10</div><div class=\"line\">11</div><div class=\"line\">12</div><div class=\"line\">13</div><div class=\"line\">14</div><div class=\"line\">15</div><div class=\"line\">16</div><div class=\"line\">17</div><div class=\"line\">18</div><div class=\"line\">19</div><div class=\"line\">20</div><div class=\"line\">21</div><div class=\"line\">22</div><div class=\"line\">23</div><div class=\"line\">24</div><div class=\"line\">25</div><div class=\"line\">26</div><div class=\"line\">27</div><div class=\"line\">28</div><div class=\"line\">29</div><div class=\"line\">30</div><div class=\"line\">31</div><div class=\"line\">32</div><div class=\"line\">33</div><div class=\"line\">34</div><div class=\"line\">35</div><div class=\"line\">36</div><div class=\"line\">37</div><div class=\"line\">38</div><div class=\"line\">39</div><div class=\"line\">40</div><div class=\"line\">41</div><div class=\"line\">42</div><div class=\"line\">43</div><div class=\"line\">44</div><div class=\"line\">45</div><div class=\"line\">46</div><div class=\"line\">47</div><div class=\"line\">48</div><div class=\"line\">49</div><div class=\"line\">50</div><div class=\"line\">51</div><div class=\"line\">52</div><div class=\"line\">53</div><div class=\"line\">54</div><div class=\"line\">55</div><div class=\"line\">56</div></pre></td><td class=\"code\"><pre><div class=\"line\">// webpack.build.js</div><div class=\"line\">const path = require(&apos;path&apos;);</div><div class=\"line\">const webpack = require(&apos;webpack&apos;);</div><div class=\"line\">const ExtractTextPlugin = require(&quot;extract-text-webpack-plugin&quot;);</div><div class=\"line\">const HtmlWebpackPlugin = require(&apos;html-webpack-plugin&apos;);</div><div class=\"line\">const CleanPlugin = require(&quot;clean-webpack-plugin&quot;);</div><div class=\"line\"></div><div class=\"line\">var assetsPath = &apos;assets/&apos;;</div><div class=\"line\"></div><div class=\"line\">const extractSass = new ExtractTextPlugin(&#123;</div><div class=\"line\">    filename: assetsPath + &quot;style.[hash].css&quot;</div><div class=\"line\">&#125;);</div><div class=\"line\"></div><div class=\"line\">module.exports = &#123;</div><div class=\"line\">  entry: [</div><div class=\"line\">    &apos;./src/entry.js&apos;],</div><div class=\"line\">  output: &#123;</div><div class=\"line\">    path: path.resolve(__dirname, &apos;./build&apos;),</div><div class=\"line\">    filename: assetsPath + &quot;bundle.[hash].js&quot;,</div><div class=\"line\">    publicPath: &apos;/&apos;</div><div class=\"line\">  &#125;,</div><div class=\"line\">  module: &#123;</div><div class=\"line\">    rules: [</div><div class=\"line\">      &#123; </div><div class=\"line\">          test: /\\.js$/, </div><div class=\"line\">          exclude: /node_modules/, </div><div class=\"line\">          use: &quot;babel-loader&quot; </div><div class=\"line\">      &#125;,</div><div class=\"line\">      &#123;</div><div class=\"line\">          test: /\\.scss$/,</div><div class=\"line\">          use: extractSass.extract(&#123;</div><div class=\"line\">            use: [&#123;</div><div class=\"line\">                loader: &quot;css-loader&quot;</div><div class=\"line\">            &#125;, &#123;</div><div class=\"line\">                loader: &quot;sass-loader&quot;</div><div class=\"line\">            &#125;]</div><div class=\"line\">        &#125;)</div><div class=\"line\">      &#125;</div><div class=\"line\">    ]</div><div class=\"line\">  &#125;,</div><div class=\"line\">  plugins: [</div><div class=\"line\">  \tnew CleanPlugin([&apos;build&apos;]),</div><div class=\"line\">    new webpack.HotModuleReplacementPlugin(),</div><div class=\"line\">    extractSass,</div><div class=\"line\">    new HtmlWebpackPlugin(&#123;</div><div class=\"line\">          filename: &apos;./index.html&apos;,</div><div class=\"line\">          template: &apos;./index.html&apos;,</div><div class=\"line\">          hash: false,</div><div class=\"line\">      &#125;),</div><div class=\"line\">    new webpack.DefinePlugin(&#123;</div><div class=\"line\">          &apos;process.env&apos;: &#123;</div><div class=\"line\">              NODE_ENV: JSON.stringify(&apos;production&apos;)</div><div class=\"line\">          &#125;</div><div class=\"line\">      &#125;)</div><div class=\"line\">  ]</div><div class=\"line\">&#125;</div></pre></td></tr></table></figure><p>参考链接:<br>[<a href=\"https://www.qianduandao.com/webpack-four-core-concepts/\" target=\"_blank\" rel=\"external\">https://www.qianduandao.com/webpack-four-core-concepts/</a>]</p>",
 				"image": null,
 				"featured": 0,
 				"page": 0,
@@ -21,13 +21,13 @@
 				"author_id": 2,
 				"created_at": 1493042940000,
 				"created_by": 2,
-				"updated_at": 1494148927000,
+				"updated_at": 1494165194000,
 				"updated_by": 2,
 				"published_at": 1493042940000,
 				"published_by": 2
 			},
 			{
-				"id": "cj2eknv36000b6d0rlrbnl23g",
+				"id": "cj2erxyz00006g30rk911qeok",
 				"title": "angular2",
 				"slug": "angular2",
 				"markdown": "\n占个坑",
@@ -48,7 +48,7 @@
 				"published_by": 2
 			},
 			{
-				"id": "cj2eknv3g000n6d0ri89xci5f",
+				"id": "cj2erxyzi000lg30ri1ba6adj",
 				"title": "Web 工程化之 CSS",
 				"slug": "web-build-of-css",
 				"markdown": "\n## 模块化\n同样的, CSS 也有公共部分。\n比如：\n\n```\n- base\n  _reset.scss\n  _base.scss\n- components\n  _card.scss\n......\nindex.scss\n```\n这里，我会在 `index.scss` 里面 import 所有 scss 文件。\n这样，最后我会得到一个 css 文件  \nPS: sass 默认不支持文件夹导入，可以使用 `gulp-sass-glob` 辅助\n",
@@ -69,7 +69,7 @@
 				"published_by": 2
 			},
 			{
-				"id": "cj2eknv3j000r6d0rcnxbgq6c",
+				"id": "cj2erxyzk000pg30rnd16jrfb",
 				"title": "web 工程化",
 				"slug": "web-build",
 				"markdown": "\n## 2017-3-2\n把现在项目用的基础架构打包了一下\n### feture\n使用了`stylus`(换个口味吧...)  \n`ES6`写的模块, `babel`编译成`amd`模块, 然后用`requirejs`加载\n\ngithub: [https://github.com/lilonghe/web-engineering-scaffolding](https://github.com/lilonghe/web-engineering-scaffolding)\n\n----\n\n## Gulp\n` gulp-changed `\n> 默认会更新所有匹配文件，用了这个瞬间轻松 >_-\n\n```\ngulp.src(['app/pages/**/*.html'],{base: './app/pages'})\n    .pipe(changed('dist/'))\n    xxxx ...\n        .pipe(gulp.dest('dist/'));\nchanged() 传递的路径要和 dest() 的路径一致\n技术思路是：对比源文件和输出文件的最后修改时间，后者小则通过\n```\n` gulp-wrap `\n```\ngulp.src(['app/pages/**/*.html'],{base: './app/pages'})\n    .pipe(wrap({src:\"app/Master.html\"}))\n        .pipe(gulp.dest('dist/'));\n缺点是无法设置 title\n```\n` gulp-file-include `\n```\n.pipe(include({\n    prefix: '@@',\n    basepath: './app/include/'\n}))\n@@include('header.html',{\n    \"title\":\"选课\"\n})\n这个可以自定义 title ，but 每个页面都要加~~~\n```\n` gulp-plumber `\n```\nvar plumber_handler = {\n    errorHandler: function(err) {\n        console.log(err);\n        this.emit('end') \n    }\n};\ngulp.src(\"app/static/css/*.scss\")\n    .pipe(plumber(plumber_handler))\n示例是不传参的，但测试出现错误后无法继续运行\n```\n\n` gulp-sass ` + ` gulp-sourcemaps `\n` gulp-babel `\n\n` gulp-uglify `\n` gulp-concat `\n` gulp-clean `\n\n---------------------------------------------------\n\n东西一复杂，必然要找个解决方案。  \n资源可分为: JavaScript , CSS , Html , lib\n\n## JavaScript\n` babel `\n每个复杂页面独占一个 JS， 然后入口页面写简单的 JS\n然后利用 Gulp 打包\n\n## CSS\n` gulp-sass `\n目前采用 sass ，简单编译，并没有标准模块化\n\n## Html\n` gulp-file-include ` \n纯前端，所以页面不会压缩\n\n## library\n直接拷过去\n\n-------------------------------------------------------\n\n### 本文皆是琢磨而来，小作坊式开发，未经过大型实战，敬请知悉哟！   \n因为自己也没进过大公司，不熟悉业界的标准，所以也是做着学着 ^_^\n最近手上的这个项目 JS 也逐渐复杂了起来，所以就想着弄个模块开发试试吧~\n然后大概弄了个基本骨架~~~\nGithub: aHR0cHM6Ly9naXRodWIuY29tL2xpbG9uZ2hlL2xpdHRsZS1jb2RlL3RyZWUvbWFzdGVyL3dlYi1lbmdpbmVlcmluZw==\n先把这个放上来，等有空了把项目重构成模块化了再放上来一版 O_O\n\n\n## JS 模块化工具\n选择 ES6 是因为它已经成为了标准，未来是它的\n因为现在浏览器支持有限，所以涌现了大批工具\n使用 ES6 规范写模块\n使用 babel 编译 （preset-es2015）成 ES5 语法，但是，它使用了 require\n因为 babel 没有直接转为浏览器可识别的语法\n所以我们要使用 browserify 来打包转换它(打包原因估计是 ES5 没有文件引入)\n\n## 构建工具\nok， Gulp 即可\nPS: webpack 似乎有点复杂和庞大了\n\n还有兼容性问题：\nIE 8 对 Object.defineProperty 的支持有点问题  \n所以我们需要引入兼容文件\n```\n<!--[if lte IE 8]>\n    https://github.com/inexorabletash/polyfill/blob/master/es5.js\n<![endif]-->\n```",
@@ -90,7 +90,7 @@
 				"published_by": 2
 			},
 			{
-				"id": "cj2eknv39000e6d0r5tnpllon",
+				"id": "cj2erxyyu0003g30r3el8wktn",
 				"title": "Html5 Video",
 				"slug": "html5-video",
 				"markdown": "\n最近项目在做在线教育\n在使用 Video 的时候遇到了点问题\n\nontimeupdate 必须使用 dom.addEventListener 才可以使用 -_- \n可能是低级 webkit 内核的 bug ? X5 内核果断阵亡，chrome 正常\n真是一个奇怪的问题 ~",
@@ -111,7 +111,7 @@
 				"published_by": 2
 			},
 			{
-				"id": "cj2eknv3e000k6d0rl72v2pgm",
+				"id": "cj2erxyzd000gg30r43nbnlw4",
 				"title": "谈谈抑郁",
 				"slug": "talk-about-depression",
 				"markdown": "\n <blockquote><p><strong>抑郁</strong>是情绪低落、怀有厌恶感并对一个人的思想、行为、感觉和身体健康都有一定影响的一种状态。<br>抑郁的人可能会有沮丧、焦虑、空虚、绝望、无助、无用、罪恶、易怒或不安的感觉。</p><p>他们可能会失去曾经为其带来快乐事物的兴趣，失去食欲或暴饮暴食，或者太集中于他们自己的问题，纠结于细节或者做迅速决定，并且可能会策划或尝试自杀。</p><p>抑郁情绪还会伴有失眠, 过多睡眠, 疲劳, 毫无精力, 疼痛或有消化问题, 可能会出现抵制治疗的情况。<br>抑郁的情绪是一种正常对特定生活事务的反应。也是某些医学方面的症状，还可能是一些药物治疗的副作用。情绪抑郁也是一种主要或常见的某些精神综合征的症状。</p><p>– 摘自 wikipedia</p></blockquote><a id=\"more\"></a><p>抑郁症可以说是一个很普遍的”心理感冒状况”， 几乎每个人都会遇到，只是程度不同罢了。</p><p>而居高不下的自杀率（据说有25%）同样也使社会对于心理医生的需求大大增加（同样，高额的心理咨询费用也是一个问题）。<br>比较有名的例子比如有 <code>罗温·艾金森</code>，<code>张国荣</code>, <code>崔永元</code> ……</p><p>分享下个人总结，仅作参考，希望能帮到“心理感冒”的你：</p><ol><li>尽量尝试引导去运动</li><li>坚持服药（如果需要）</li><li>It's also happy.</li></ol>",
@@ -132,7 +132,7 @@
 				"published_by": 2
 			},
 			{
-				"id": "cj2eknv2p00036d0rvkcwnf4h",
+				"id": "cj2erxyz60009g30rpn590zrb",
 				"title": "我的服务器优化之路",
 				"slug": "my-server-optimized-recording",
 				"markdown": "<p>记录我的服务器各种优化策略 :)<br><a id=\"more\"></a></p><h2 id=\"apache\"><a href=\"#apache\" class=\"headerlink\" title=\"apache\"></a>apache</h2><h3 id=\"开启-Gzip\"><a href=\"#开启-Gzip\" class=\"headerlink\" title=\"开启 Gzip\"></a>开启 Gzip</h3><blockquote><p>据说会增加 CPU 负荷<br>本来我的首页 <a href=\"https://www.lilonghe.net/\">https://www.lilonghe.net/</a> 会有<code>378KB</code> 开启了之后只有<code>208KB</code></p></blockquote><figure class=\"highlight plain\"><table><tbody><tr><td class=\"gutter\"><pre><div class=\"line\">1</div><div class=\"line\">2</div><div class=\"line\">3</div><div class=\"line\">4</div><div class=\"line\">5</div><div class=\"line\">6</div><div class=\"line\">7</div><div class=\"line\">8</div><div class=\"line\">9</div><div class=\"line\">10</div><div class=\"line\">11</div></pre></td><td class=\"code\"><pre><div class=\"line\">// 加载模块</div><div class=\"line\">LoadModule deflate_module modules/mod_deflate.so</div><div class=\"line\">LoadModule headers_module modules/mod_headers.so</div><div class=\"line\"></div><div class=\"line\">// 增加配置</div><div class=\"line\">SetOutputFilter DEFLATE </div><div class=\"line\">SetEnvIfNoCase Request_URI .(?:gif|jpe?g|png)$ no-gzip dont-vary </div><div class=\"line\">SetEnvIfNoCase Request_URI .(?:exe|t?gz|zip|bz2|sit|rar)$ no-gzip dont-vary </div><div class=\"line\">SetEnvIfNoCase Request_URI .(?:pdf|doc|avi|mov|mp3|rm)$ no-gzip dont-vary </div><div class=\"line\">AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css </div><div class=\"line\">AddOutputFilterByType DEFLATE application/x-java script</div><div class=\"line\"></div><div class=\"line\">PS: 这段源码是从某个采集站Copy的, 以找不到原作链接, 鄙视之</div></pre></td></tr></tbody></table></figure>",
@@ -153,7 +153,7 @@
 				"published_by": 2
 			},
 			{
-				"id": "cj2eknv2u00066d0re11t4yjw",
+				"id": "cj2erxyzb000dg30rx3spghyr",
 				"title": "企业和招聘",
 				"slug": "recruitment",
 				"markdown": "\n<p>最近忽然想到此事<br>“人事发来个面试通知, 然后面试, 喝喝茶聊聊天就过去了”<br>这个对人事那边来说是挺不错, 喝喝茶聊聊天时间就过去了<br>但是对于面试者来说：<br>来回路费, 简历, 以及最少浪费半天的时间<br>甚至人事那边根本不懂所要求的职责随便找个人就过去了 (￣▽￣)” WQNMLGB</p><p>有看过文章说一直找人面试是为了人才储备(运气好碰到个优秀的要求还低的就赚了)…<br>不知道是真是假 ┭┮﹏┭┮<br>这对于那些求贤若渴的公司和优秀的人才来说都是一种浪费</p><p>是否可以提供一个平台来展示个人魅力和公司魅力呢？<br>比如提供图片视频等形式展示公司文化和个人风采…</p><p>但是不知道这样是否会有隐私性问题呢？</p><p>唔, 看起来不错… 如果有资金去做就好了 (⊙﹏⊙)</p><p>发牢骚完毕, 欢迎指正和批评！</p>",
@@ -174,7 +174,7 @@
 				"published_by": 2
 			},
 			{
-				"id": "cj2eknv3200096d0rjaeu8i2q",
+				"id": "cj2erxyza000bg30rhxnl37vk",
 				"title": "React",
 				"slug": "react",
 				"markdown": "都在赶潮流, `Node.js`出来后前端圈越来越精彩\n学习下`React`吧~~  \n代码可参考GitHub: https://github.com/lilonghe/ReactLearningRecord\n\n## Introduction  \n同样是组件化的产物, 搞出了一套虚拟`dom` ~~~\n好像也没啥, 就虚拟`dom`独特了点…\n没研究过源码, 也不知道具体情况, 也不过多发言。\n\n## Setup\n> 参考链接：https://facebook.github.io/react/docs/package-management.html\n\n这里我使用脚手架工具\n> 博客: https://facebook.github.io/react/blog/2016/07/22/create-apps-with-no-configuration.html  \n> Github：https://github.com/facebookincubator/create-react-app\n\n```\n$ npm install -g create-react-app\n$ create-react-app hello-world\n$ cd hello-world\n$ npm start\n```",
@@ -195,7 +195,7 @@
 				"published_by": 2
 			},
 			{
-				"id": "cj2eknv3k000u6d0r8xq6jtp7",
+				"id": "cj2erxyzp000xg30res6hpora",
 				"title": "网站更新日志",
 				"slug": "website-changelog",
 				"markdown": "## 真是一个悲伤的故事\n> 2016-9-7\n\n(。･´д`･。)\n两块盘全格了装 Serria，忘掉了 hexo 源文件~ So ... \n顺便换了主题，换换口味~~ 而且 next 主题太重了！\n \n## 主页改为按修改时期排序文章\n> 2016-7-31\n\n首页排序：\n```\n// _config.yml\nindex_generator:\n  order_by: ‘-updated’\n```\n归档排序：  \n官方并没有提供归档排序配置，需要改源码\n```\nnode_modules\\hexo-generator-archive\\lib\\generator.js\nvar allPosts = locals.posts.sort(‘-date’); -> var allPosts = locals.posts.sort(‘-updated’);\n//对比下面的文件可以自己提供配置\nnode_modules\\hexo-generator-index\\lib\\generator.js\n```\n## 转为纯 https\n> 2016-6-13\n\nCDN库也全部去掉了, 多说也暂时去掉了, 为了更纯净的 https \n\n## 使用 Webhooks 通知更新代码\n> 2016-6-12 \n\n使用 Webhooks 通知更新代码, 手动更新太麻烦了… 2333\n\n## 显示更新时间\n> 2016-6-9\n\n显示更新时间, 本来想把文章排序也按更新日起来的, 但是暂时没搞定\n```\n// updated 属性和 date 属性一样，如果没设置会自动读取文件修改日期\n{% if post.updated and date(post.date, config.date_format) != date(post.updated, config.date_format) %}\n  &nbsp; -&gt; &nbsp;\n  <time itemprop=\"dateUpdated\" datetime=\"{{ moment(post.updated).format() }}\" content=\"{{ date(post.updated, config.date_format) }}\">\n    {{ date(post.updated, config.date_format) }}\n  </time>\n{% endif %}\n```\n\n## think\n> 2016-5-7\n\n最近一直在思考写文章的事情，原本放弃各种博客平台选用 Hexo 就是准备写一些有用的文章。\n可是忽然想到也许现在写的这个点对我来说是新的，但几个星期，几个月之后呢？\n同样的，完全失去了应有的价值。\n\n所以现在暂时决定：\n- 所有文章随时会更新\n- 以一个技术，某种事件来记录东西，类似Gitbook那种\n\n昨天更新了主题，今天把网站也优化了下:\n- 采用Git来管理网站了\n- js,css,html压缩\n速度果然提升不少，首页所有东西加起来才512KB :)\n下一步计划所有的类库都换到cdn\n\n## 起步\n> 2016-4-4\n\n本来博客站位于新浪云上，后来政策一改再改，最后还是离开了\n有鉴于一些情况，网站全部静态化",
@@ -216,7 +216,7 @@
 				"published_by": 2
 			},
 			{
-				"id": "cj2eknv2i00016d0rzgp1spjz",
+				"id": "cj2erxyyp0001g30rsmiaip58",
 				"title": "关于自由教育的猜想",
 				"slug": "about-liberal-education",
 				"markdown": "<p>回家买个店面房，办个自由学习屋怎样？</p><a id=\"more\"></a><p>主要教授的点呢：</p><ul><li>简单使用电脑</li><li>系统和软件等基础理论</li><li>涉及一些技术面东西的基础教育</li><li>开发···</li></ul><p>然后下午教授 16 之上的<br>晚上 5-7 点教授 6-16 的</p><p>每次两小时<br>半个月一次循环</p><p>然后周六周日早上学习开发之类的东西</p><p>是不是很嗨？\\O/</p>",
@@ -237,7 +237,7 @@
 				"published_by": 2
 			},
 			{
-				"id": "cj2eknv3b000i6d0rzp97v3vq",
+				"id": "cj2erxyzf000ig30rc632jt1f",
 				"title": "Let's go https !",
 				"slug": "sslforfree",
 				"markdown": "\n<div class=\"post-body\" itemprop=\"articleBody\"><blockquote><p>tip: 本文是为站长准备的~~~</p></blockquote><p>https 还是更好一点, 尤其是国内某些运营商疯狂劫持域名插入广告 -_-<br>或者你想别人访问你的网站, 看到广告?<br><a id=\"more\"></a></p><p>免费ssl服务站：<a href=\"https://www.sslforfree.com\" target=\"_blank\" rel=\"external\">https://www.sslforfree.com</a><br>申请方式很简单，按照提示一步一步来就行了<br>安装参考链接：<a href=\"https://free.com.tw/ssl-for-free/\" target=\"_blank\" rel=\"external\">https://free.com.tw/ssl-for-free/</a><br>部署参考链接：<a href=\"https://www.namecheap.com/support/knowledgebase/article.aspx/795/69/how-to-install-ssl-certificates\" target=\"_blank\" rel=\"external\">https://www.namecheap.com/support/knowledgebase/article.aspx/795/69/how-to-install-ssl-certificates</a><br>顺便宣传下我的站点: <a href=\"https://www.lilonghe.net/?utm_source=sslforfree\">https://www.lilonghe.net</a><br>这里赘述下https的好处:</p><p>https是ssl加密传输协议(只写一条，其它的请自行Google)</p><p>呶，这篇文章就是一篇聚合文啦~<br>参考链接页面都有截图哦，如果参考链接无法访问的话，再放出来图片~</p></div>",
@@ -258,7 +258,7 @@
 				"published_by": 2
 			},
 			{
-				"id": "cj2eknv1c00006d0rrb49hehd",
+				"id": "cj2erxyxx0000g30rz24hyps4",
 				"title": "404",
 				"markdown": "<!doctype html>\n<html lang=\"zh\"><head>\n\t<meta charset=\"UTF-8\">\n\t<title>Donate-Page</title>\n\t<meta name=\"viewport\" content=\"width=device-width, initial-scale=1, minimum-scale=1.0, maximum-scale=1.0\"><!--禁止缩放-->\n\t<script src=\"https://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.0.3.min.js\"></script>\n\t<style type=\"text/css\">\n\t\thtml, html>body {\n\t\t\tmargin: 0px !important;\n\t\t\tpadding: 0px !important;\n\t\t\theight: 100%;\n\t\t\twidth: 100%;\n\t\t}\n\t\tbody {\n\t\t\tfont-family: \"Helvetica Neue\", Ubuntu, \"WenQuanYi Micro Hei\", Helvetica, \"Hiragino Sans GB\", \"Microsoft YaHei\", \"Wenquanyi Micro Hei\", \"WenQuanYi Micro Hei Mono\", \"WenQuanYi Zen Hei\", \"WenQuanYi Zen Hei\", \"Apple LiGothic Medium\", \"SimHei\", \"ST Heiti\", \"WenQuanYi Zen Hei Sharp\", Arial, sans-serif;\n\t\t\t-webkit-font-smoothing:antialiased;\n\t\t\tline-height: 1.8em;\n\t\t\ttext-shadow: 0 0 1px rgba(255,255,255,0.1);\n\t\t\tbackground: #fff;\n\t\t}\n\t\timg {border-width: 0px;}\n\t\ta{\n\t\t\tcolor: #000;\n\t\t\ttext-decoration: none;\n\t\t\toutline:none;\n\t\t\tborder:none;\n\t\t}\n\t\t.list, .list li, .list-left li {\n\t\t\tlist-style: none;\n\t\t\tlist-style-type: none;\n\t\t\tmargin: 0px;\n\t\t\tpadding: 0px;\n\t\t}\n\t\t.pos-f {\n\t\t\tposition: fixed;\n\t\t}\n\t\t.left-100 {\n\t\t\twidth: 100%;\n\t\t\theight: 100%;\n\t\t}\n\t\t.blur {\n\t\t\t-webkit-filter: blur(3px);\n\t\t\tfilter: blur(3px);\n\t\t}\n\t\t.tr3 {\n\t\t\ttransition: all .3s;\n\t\t}\n\t\t#DonateText {\n\t\t\tposition: fixed;\n\t\t\tfont-size: 12px;\n\t\t\twidth: 70px;\n\t\t\theight: 70px;\n\t\t\tline-height: 70px;\n\t\t\tcolor: #fff;\n\t\t\tbackground: #ffd886 url(images/like.svg) no-repeat center 10px;\n\t\t\tbackground-size: 20px;\n\t\t\tborder-radius: 35px;\n\t\t\ttext-align: center;\n\t\t\tleft: calc(50% - 120px);\n\t\t\ttop: calc(50% - 60px);\n\t\t\tz-index: -1;\n\t\t\ttransform: rotatez(-15deg );\n\t\t}\n\t\t/*#DonateText::before {\n\t\t\tposition: absolute;\n\t\t\ttop: 0;\n\t\t\tleft: 0;\n\t\t\tcontent: \" \";\n\t\t\twidth: 70px;\n\t\t\theight: 70px;\n\t\t\tbackground: url(/images/BOXKS-Round.svg) no-repeat center center;\n\t\t\tbackground-size: contain;\n\t\t\topacity: 0.05;\n\t\t\tz-index: -1;\n\t\t}*/\n\t\t#donateBox {\n\t\t\tleft: calc(50% - 150px);\n\t\t\ttop: calc(50% - 15px);\n\t\t\tbackground-color: #fff;\n\t\t\tborder: 1px solid #ddd;\n\t\t\tborder-radius: 6px;\n\t\t\theight: 28px;\n\t\t\tfloat: left;\n\t\t\t/*overflow: hidden;*/\n\t\t\tz-index: 1;\n\t\t}\n\t\t#donateBox li {\n\t\t\twidth: 74px;\n\t\t\tfloat: left;\n\t\t\ttext-align: center;\n\t\t\tborder-left: 1px solid #ddd;\n\t\t\tbackground: no-repeat center center;\n\t\t\tbackground-color: rgba(204, 217, 220,0.1);\n\t\t\tbackground-size: 45px;\n\t\t\ttransition: all .3s;\n\t\t\tcursor: pointer;\n\t\t\toverflow: hidden;\n\t\t\tline-height: 600px;\n\t\t\theight: 28px;\n\t\t\t-webkit-filter: grayscale(1);\n\t\t\tfilter: grayscale(1);\n\t\t\topacity: 0.5;\n\t\t}\n\t\t#donateBox li:hover {\n\t\t\tbackground-color: rgba(204, 217, 220,0.3);\n\t\t\t-webkit-filter: grayscale(0);\n\t\t\tfilter: grayscale(0);\n\t\t\topacity: 1;\n\t\t}\n\t\t#donateBox>li:first-child {\n\t\t\tborder-width: 0;\n\t\t\t/*border-radius: 6px 0 0 6px;*/\n\t\t}\n\t\t/*#donateBox>li:last-child {\n\t\t\tborder-radius: 0 6px 6px 0;\n\t\t}*/\n\t\t#donateBox #PayPal {\n\t\t\tbackground-image: url(images/paypal.svg);\n\t\t}\n\t\t#donateBox>#BTC {\n\t\t\tbackground-image: url(images/bitcoin.svg);\n\t\t\tline-height: 28px;\n\t\t}\n\t\t#donateBox>#BTC:hover {\n\t\t\toverflow: visible;\n\t\t}\n\t\t#BTC>button {\n\t\t\topacity: 0;\n\t\t\tcursor: pointer;\n\t\t}\n\t\t#donateBox #AliPay {\n\t\t\tbackground-image: url(images/alipay.svg);\n\t\t}\n\t\t#donateBox #WeChat {\n\t\t\tbackground-image: url(images/wechat.svg);\n\t\t}\n\t\t#QRBox {\n\t\t\ttop: 0;\n\t\t\tleft: 0;\n\t\t\tz-index: 1;\n\t\t\tbackground-color: rgba(255,255,255,0.3);\n\t\t\tdisplay: none;\n\t\t    perspective: 400px;\n\t\t}\n\t\t#MainBox {\n\t\t\tcursor: pointer;\n\t\t\tposition: absolute;\n\t\t\ttext-align: center;\n\t\t\twidth: 200px;\n\t\t\theight: 200px;\n\t\t\tleft: calc(50% - 100px);\n\t\t\ttop: calc(50% - 100px);\n\t\t\tbackground: #fff no-repeat center center;\n\t\t\tbackground-size: 190px;\n\t\t\tborder-radius: 6px;\n\t\t\tbox-shadow: 0px 2px 7px rgba(0,0,0,0.3);\n\t\t    opacity: 0;\n\t\t\ttransition: all 1s ease-in-out;\n\t\t\ttransform-style: preserve-3d;\n\t\t    transform-origin: center center;\n\t\t    overflow: hidden;\n\t\t}\n\t\t#btc-key {\n\t\t\topacity: 0;\n\t\t\twidth: 2px;\n\t\t\theight: 8px;\n\t\t\toverflow: hidden;\n\t\t\tleft: -2px;\n\t\t\ttop: -8px;\n\t\t}\n\t\t#github {\n\t\t\twidth: 24px;\n\t\t\theight: 24px;\n\t\t\tleft: calc(50% - 14px);\n\t\t\ttop: calc(50% - 30px);\n\t\t\tbackground: no-repeat center center url(images/github.svg);\n\t\t\tbackground-size: contain;\n\t\t\topacity: 0.3;\n\t\t\ttransform: rotatez(15deg );\n\t\t}\n\t\t[data-footnote] {\n\t\t\tposition: relative;\n\t\t\toverflow: hidden;\n\t\t}\n\t\t[data-footnote]:hover {\n\t\t\toverflow: visible;\n\t\t}\n\t\t[data-footnote]::before, [data-footnote]::after {\n\t\t\tposition: absolute;\n\t\t\ttransition: all .3s;\n\t\t\ttransform: translate3d(-50%,0,0);\n\t\t\topacity: 0;\n\t\t\tleft: 37px;\n\t\t\tz-index: 10;\n\t\t}\n\t\t[data-footnote]::before {\n\t\t\tcontent: attr(data-footnote);\n\t\t\tborder-radius: 6px;\n\t\t\tbackground-color: rgba(100,100,100,0.8);\n\t\t\tcolor: #fff;\n\t\t\theight: 24px;\n\t\t\tline-height: 24px;\n\t\t\tpadding: 0 6px;\n\t\t\tfont-size: 12px;\n\t\t\twhite-space: nowrap;\n\t\t\ttop: -24px;\n\t\t\tleft: 37px;\n\t\t}\n\t\t[data-footnote]::after {\n\t\t\tcontent: '';\n\t\t\tborder: 5px solid #333;\n\t\t\tborder-color: rgba(100,100,100,0.8) transparent transparent transparent;\n\t\t\ttop: 0;\n\t\t\tleft: 37px;\n\t\t}\n\t\t[data-footnote]:hover::before,[data-footnote]:hover::after {\n\t\t\topacity: 1;\n\t\t}\n\t\t[data-footnote]:hover::before,[data-footnote]:hover::after {\n\t\t\ttransform: translate3d(-50%,-7px,0);\n\t\t}\n\n\t\t#MainBox.showQR {\n\t\t\topacity: 1;\n\t\t    animation-name:showQR;\n\t\t    animation-duration:3s;\n\t\t    animation-timing-function:ease-in-out;\n\t\t    animation-iteration-count:1;\n\t\t    animation-fill-mode:forwards;\n\t\t    -webkit-animation:showQR 3s ease-in-out 0s 1 normal forwards;\n\t\t}\n\t\t@keyframes showQR {\n\t\t\tfrom {\n\t\t\t\ttransform: rotateX(90deg);\n\t\t\t}\n\t\t\t8% {\n\t\t\t\topacity: 1;\n\t\t\t\ttransform: rotateX(-60deg);\n\t\t\t}\n\t\t\t18% {\n\t\t\t\topacity: 1;\n\t\t\t\ttransform: rotateX(40deg);\n\t\t\t}\n\t\t\t34% {\n\t\t\t\topacity: 1;\n\t\t\t\ttransform: rotateX(-28deg);\n\t\t\t}\n\t\t\t44% {\n\t\t\t\topacity: 1;\n\t\t\t\ttransform: rotateX(18deg);\n\t\t\t}\n\t\t\t58% {\n\t\t\t\topacity: 1;\n\t\t\t\ttransform: rotateX(-12deg);\n\t\t\t}\n\t\t\t72% {\n\t\t\t\topacity: 1;\n\t\t\t\ttransform: rotateX(9deg);\n\t\t\t}\n\t\t\t88% {\n\t\t\t\topacity: 1;\n\t\t\t\ttransform: rotateX(-5deg);\n\t\t\t}\n\t\t\t96% {\n\t\t\t\topacity: 1;\n\t\t\t\ttransform: rotateX(2deg);\n\t\t\t}\n\t\t\tto {\n\t\t\t\topacity: 1;\n\t\t\t}\n\t\t}\n\t\t#MainBox.hideQR {\n\t\t\topacity: 1;\n\t\t    animation-name:hideQR;\n\t\t    animation-duration:0.5s;\n\t\t    animation-timing-function:ease-in-out;\n\t\t    animation-iteration-count:1;\n\t\t    animation-fill-mode:forwards;\n\t\t    -webkit-animation:hideQR 0.5s ease-in-out 0s 1 normal forwards;\n\t\t}\n\t\t@keyframes hideQR {\n\t\t\tfrom {\n\t\t\t}\n\t\t\t20%,50% {\n\t\t\t\ttransform: scale(1.08,1.08);\n\t\t\t\topacity: 1;\n\t\t\t}\n\t\t\tto {\n\t\t\t\topacity: 0;\n\t\t\t\ttransform: rotateZ(40deg) scale(0.6,0.6);\n\t\t\t}\n\t\t}\n\t</style>\n</head>\n<body>\n\t<a id=\"github\" href=\"https://github.com/Kaiyuan/donate-page\" target=\"_blank\" class=\"pos-f tr3\" title=\"Github\"></a>\n\t<div id=\"DonateText\" class=\"tr3\">Donate</div>\n\t<ul id=\"donateBox\" class=\"list pos-f tr3\">\n\t\t<li id=\"AliPay\">AliPay</li>\n\t\t<li id=\"WeChat\">WeChat</li>\n\t</ul>\n\t<div id=\"QRBox\" class=\"pos-f left-100\">\n\t\t<div id=\"MainBox\"></div>\n\t</div>\n\n\t<script type=\"text/javascript\">\n\t\tjQuery(document).ready(function() {\n\t\tvar QRBox\t=\t$('#QRBox');\n\t\tvar MainBox\t=\t$('#MainBox');\n\t\tvar BTCQR\t=\t'images/BTCQR.png';\t// 二维码路径\n\t\tvar AliPayQR\t=\t'images/AliPayQR.png';\n\t\tvar WeChanQR\t=\t'images/WeChanQR.png';\n\t\t\n\t\tfunction showQR(QR) {\n\t\t\tif (QR) {\n\t\t\t\tMainBox.css('background-image','url('+QR+')');\n\t\t\t}\n\t\t\t$('#DonateText,#donateBox,#github').addClass('blur');\n\t\t\tQRBox.fadeIn(300,function(argument) {\n\t\t\t\tMainBox.addClass('showQR');\n\t\t\t});\n\t\t}\n\n\t\t$('#donateBox>li').click(function(event) {\n\t\t\tvar thisID\t=\t$(this).attr('id');\n\t\t\tif (thisID === 'PayPal') {\n\t\t\t\tppBuy();\n\t\t\t} else if (thisID === 'BTC') {\n\t\t\t\tshowQR(BTCQR);\n\t\t\t\tnew Clipboard('#BTCBn');\n\t\t\t} else if (thisID === 'AliPay') {\n\t\t\t\tshowQR(AliPayQR);\n\t\t\t} else if (thisID === 'WeChat') {\n\t\t\t\tshowQR(WeChanQR);\n\t\t\t}\n\t\t});\n\n\t\tMainBox.click(function(event) {\n\t\t\tMainBox.removeClass('showQR').addClass('hideQR');\n\t\t\tsetTimeout (function(a) {\n\t\t\t\tQRBox.fadeOut(300,function(argument) {\n\t\t\t\t\tMainBox.removeClass('hideQR');\n\t\t\t\t});\n\t\t\t\t$('#DonateText,#donateBox,#github').removeClass('blur');\n\t\t\t},600);\n\n\t\t});\n\t});\n\n\t</script>\n\n</body></html>",
 				"html": "<!doctype html><html lang=\"zh\"><head><meta charset=\"UTF-8\"><title>Donate-Page</title><meta name=\"viewport\" content=\"width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1\"><script src=\"https://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.0.3.min.js\"></script><style type=\"text/css\">html,html>body{margin:0!important;padding:0!important;height:100%;width:100%}body{font-family:\"Helvetica Neue\",Ubuntu,\"WenQuanYi Micro Hei\",Helvetica,\"Hiragino Sans GB\",\"Microsoft YaHei\",\"Wenquanyi Micro Hei\",\"WenQuanYi Micro Hei Mono\",\"WenQuanYi Zen Hei\",\"WenQuanYi Zen Hei\",\"Apple LiGothic Medium\",SimHei,\"ST Heiti\",\"WenQuanYi Zen Hei Sharp\",Arial,sans-serif;-webkit-font-smoothing:antialiased;line-height:1.8em;text-shadow:0 0 1px rgba(255,255,255,.1);background:#fff}img{border-width:0}a{color:#000;text-decoration:none;outline:0;border:none}.list,.list li,.list-left li{list-style:none;list-style-type:none;margin:0;padding:0}.pos-f{position:fixed}.left-100{width:100%;height:100%}.blur{-webkit-filter:blur(3px);filter:blur(3px)}.tr3{transition:all .3s}#DonateText{position:fixed;font-size:12px;width:70px;height:70px;line-height:70px;color:#fff;background:#ffd886 url(images/like.svg) no-repeat center 10px;background-size:20px;border-radius:35px;text-align:center;left:calc(50% - 120px);top:calc(50% - 60px);z-index:-1;transform:rotatez(-15deg)}#donateBox{left:calc(50% - 150px);top:calc(50% - 15px);background-color:#fff;border:1px solid #ddd;border-radius:6px;height:28px;float:left;z-index:1}#donateBox li{width:74px;float:left;text-align:center;border-left:1px solid #ddd;background:no-repeat center center;background-color:rgba(204,217,220,.1);background-size:45px;transition:all .3s;cursor:pointer;overflow:hidden;line-height:600px;height:28px;-webkit-filter:grayscale(1);filter:grayscale(1);opacity:.5}#donateBox li:hover{background-color:rgba(204,217,220,.3);-webkit-filter:grayscale(0);filter:grayscale(0);opacity:1}#donateBox>li:first-child{border-width:0}#donateBox #PayPal{background-image:url(images/paypal.svg)}#donateBox>#BTC{background-image:url(images/bitcoin.svg);line-height:28px}#donateBox>#BTC:hover{overflow:visible}#BTC>button{opacity:0;cursor:pointer}#donateBox #AliPay{background-image:url(images/alipay.svg)}#donateBox #WeChat{background-image:url(images/wechat.svg)}#QRBox{top:0;left:0;z-index:1;background-color:rgba(255,255,255,.3);display:none;perspective:400px}#MainBox{cursor:pointer;position:absolute;text-align:center;width:200px;height:200px;left:calc(50% - 100px);top:calc(50% - 100px);background:#fff no-repeat center center;background-size:190px;border-radius:6px;box-shadow:0 2px 7px rgba(0,0,0,.3);opacity:0;transition:all 1s ease-in-out;transform-style:preserve-3d;transform-origin:center center;overflow:hidden}#btc-key{opacity:0;width:2px;height:8px;overflow:hidden;left:-2px;top:-8px}#github{width:24px;height:24px;left:calc(50% - 14px);top:calc(50% - 30px);background:no-repeat center center url(images/github.svg);background-size:contain;opacity:.3;transform:rotatez(15deg)}[data-footnote]{position:relative;overflow:hidden}[data-footnote]:hover{overflow:visible}[data-footnote]::after,[data-footnote]::before{position:absolute;transition:all .3s;transform:translate3d(-50%,0,0);opacity:0;left:37px;z-index:10}[data-footnote]::before{content:attr(data-footnote);border-radius:6px;background-color:rgba(100,100,100,.8);color:#fff;height:24px;line-height:24px;padding:0 6px;font-size:12px;white-space:nowrap;top:-24px;left:37px}[data-footnote]::after{content:'';border:5px solid #333;border-color:rgba(100,100,100,.8) transparent transparent transparent;top:0;left:37px}[data-footnote]:hover::after,[data-footnote]:hover::before{opacity:1}[data-footnote]:hover::after,[data-footnote]:hover::before{transform:translate3d(-50%,-7px,0)}#MainBox.showQR{opacity:1;animation-name:showQR;animation-duration:3s;animation-timing-function:ease-in-out;animation-iteration-count:1;animation-fill-mode:forwards;-webkit-animation:showQR 3s ease-in-out 0s 1 normal forwards}@keyframes showQR{from{transform:rotateX(90deg)}8%{opacity:1;transform:rotateX(-60deg)}18%{opacity:1;transform:rotateX(40deg)}34%{opacity:1;transform:rotateX(-28deg)}44%{opacity:1;transform:rotateX(18deg)}58%{opacity:1;transform:rotateX(-12deg)}72%{opacity:1;transform:rotateX(9deg)}88%{opacity:1;transform:rotateX(-5deg)}96%{opacity:1;transform:rotateX(2deg)}to{opacity:1}}#MainBox.hideQR{opacity:1;animation-name:hideQR;animation-duration:.5s;animation-timing-function:ease-in-out;animation-iteration-count:1;animation-fill-mode:forwards;-webkit-animation:hideQR .5s ease-in-out 0s 1 normal forwards}@keyframes hideQR{20%,50%{transform:scale(1.08,1.08);opacity:1}to{opacity:0;transform:rotateZ(40deg) scale(.6,.6)}}</style></head><body><a id=\"github\" href=\"https://github.com/Kaiyuan/donate-page\" target=\"_blank\" class=\"pos-f tr3\" title=\"Github\"></a><div id=\"DonateText\" class=\"tr3\">Donate</div><ul id=\"donateBox\" class=\"list pos-f tr3\"><li id=\"AliPay\">AliPay</li><li id=\"WeChat\">WeChat</li></ul><div id=\"QRBox\" class=\"pos-f left-100\"><div id=\"MainBox\"></div></div><script type=\"text/javascript\">jQuery(document).ready(function(){function a(a){a&&n.css(\"background-image\",\"url(\"+a+\")\"),$(\"#DonateText,#donateBox,#github\").addClass(\"blur\"),e.fadeIn(300,function(a){n.addClass(\"showQR\")})}var e=$(\"#QRBox\"),n=$(\"#MainBox\"),o=\"images/BTCQR.png\",i=\"images/AliPayQR.png\",t=\"images/WeChanQR.png\";$(\"#donateBox>li\").click(function(e){var n=$(this).attr(\"id\");\"PayPal\"===n?ppBuy():\"BTC\"===n?(a(o),new Clipboard(\"#BTCBn\")):\"AliPay\"===n?a(i):\"WeChat\"===n&&a(t)}),n.click(function(a){n.removeClass(\"showQR\").addClass(\"hideQR\"),setTimeout(function(a){e.fadeOut(300,function(a){n.removeClass(\"hideQR\")}),$(\"#DonateText,#donateBox,#github\").removeClass(\"blur\")},600)})})</script></body></html>",
@@ -278,7 +278,7 @@
 				"published_by": 2
 			},
 			{
-				"id": "cj2eknv37000d6d0rv4x4allu",
+				"id": "cj2erxyz10007g30r0rp2hewm",
 				"title": "友链",
 				"markdown": "",
 				"html": "",
@@ -298,7 +298,7 @@
 				"published_by": 2
 			},
 			{
-				"id": "cj2eknv2o00026d0rj647w563",
+				"id": "cj2erxyyw0004g30rsfry9xyu",
 				"title": "关于",
 				"markdown": "",
 				"html": "",
@@ -318,7 +318,7 @@
 				"published_by": 2
 			},
 			{
-				"id": "cj2eknv2z00076d0rlhg7zspe",
+				"id": "cj2erxyz7000ag30rqinssip1",
 				"title": "搜索",
 				"markdown": "",
 				"html": "",
@@ -338,7 +338,7 @@
 				"published_by": 2
 			},
 			{
-				"id": "cj2eknv33000a6d0r5vk7sfmt",
+				"id": "cj2erxz0e001qg30rmj80hrql",
 				"title": "标签",
 				"markdown": "",
 				"html": "",
@@ -358,7 +358,7 @@
 				"published_by": 2
 			},
 			{
-				"id": "cj2eknv2q00046d0rplwkua5p",
+				"id": "cj2erxyys0002g30rvzhu7gvu",
 				"title": "分类",
 				"markdown": "",
 				"html": "",
@@ -380,91 +380,91 @@
 		],
 		"tags": [
 			{
-				"id": "cj2eknv3z001n6d0rxaug0se4",
+				"id": "cj2erxyzu001hg30r1zlz906i",
 				"name": "webpack",
 				"slug": "webpack",
 				"description": ""
 			},
 			{
-				"id": "cj2eknv3f000l6d0r4gddwgeg",
+				"id": "cj2erxyzg000jg30re2t180dd",
 				"name": "angular2",
 				"slug": "angular2",
 				"description": ""
 			},
 			{
-				"id": "cj2eknv3q00186d0rpxi1hfq9",
+				"id": "cj2erxyzr0017g30rpp1jf78z",
 				"name": "web",
 				"slug": "web",
 				"description": ""
 			},
 			{
-				"id": "cj2eknv3s001a6d0rur6rqx3p",
+				"id": "cj2erxyzs0019g30roafnqiz6",
 				"name": "gulp",
 				"slug": "gulp",
 				"description": ""
 			},
 			{
-				"id": "cj2eknv3u001b6d0r5xv2w0dx",
+				"id": "cj2erxyzs001ag30rmtgjc0rc",
 				"name": "css",
 				"slug": "css",
 				"description": ""
 			},
 			{
-				"id": "cj2eknv3q00186d0rpxi1hfq9",
+				"id": "cj2erxyzr0017g30rpp1jf78z",
 				"name": "web",
 				"slug": "web",
 				"description": ""
 			},
 			{
-				"id": "cj2eknv3s001a6d0rur6rqx3p",
+				"id": "cj2erxyzs0019g30roafnqiz6",
 				"name": "gulp",
 				"slug": "gulp",
 				"description": ""
 			},
 			{
-				"id": "cj2eknv3x001f6d0rmszuha8p",
+				"id": "cj2erxyzt001eg30rdw30e533",
 				"name": "js",
 				"slug": "js",
 				"description": ""
 			},
 			{
-				"id": "cj2eknv3k000s6d0rusy8zd8r",
+				"id": "cj2erxyz40008g30rf93xesgp",
 				"name": "html5",
 				"slug": "html5",
 				"description": ""
 			},
 			{
-				"id": "cj2eknv3n00106d0r3j3uzqcg",
+				"id": "cj2erxyzc000eg30rs1iet7mc",
 				"name": "video",
 				"slug": "video",
 				"description": ""
 			},
 			{
-				"id": "cj2eknv3000086d0r3idgofgz",
+				"id": "cj2erxyzm000rg30rr4bixa2j",
 				"name": "server",
 				"slug": "server",
 				"description": ""
 			},
 			{
-				"id": "cj2eknv3a000f6d0rxvm6smta",
+				"id": "cj2erxyzq000zg30ry41uuxfw",
 				"name": "react",
 				"slug": "react",
 				"description": ""
 			},
 			{
-				"id": "cj2eknv3y001i6d0rdtaxeh5z",
+				"id": "cj2erxyzu001kg30razz2x3rc",
 				"name": "hexo",
 				"slug": "hexo",
 				"description": ""
 			},
 			{
-				"id": "cj2eknv3z001l6d0rsnd0puij",
+				"id": "cj2erxyzv001ng30rmui3gvs6",
 				"name": "site",
 				"slug": "site",
 				"description": ""
 			},
 			{
-				"id": "cj2eknv3p00136d0rpd74ssi2",
+				"id": "cj2erxyzq0013g30rqmqnc0up",
 				"name": "ssl",
 				"slug": "ssl",
 				"description": ""
@@ -472,123 +472,123 @@
 		],
 		"posts_tags": [
 			{
-				"tag_id": "cj2eknv3z001n6d0rxaug0se4",
-				"post_id": "cj2eknv3m000y6d0rl9us10p6"
+				"tag_id": "cj2erxyzu001hg30r1zlz906i",
+				"post_id": "cj2erxyzm000tg30rfkd3jkko"
 			},
 			{
-				"tag_id": "cj2eknv3f000l6d0r4gddwgeg",
-				"post_id": "cj2eknv36000b6d0rlrbnl23g"
+				"tag_id": "cj2erxyzg000jg30re2t180dd",
+				"post_id": "cj2erxyz00006g30rk911qeok"
 			},
 			{
-				"tag_id": "cj2eknv3q00186d0rpxi1hfq9",
-				"post_id": "cj2eknv3g000n6d0ri89xci5f"
+				"tag_id": "cj2erxyzr0017g30rpp1jf78z",
+				"post_id": "cj2erxyzi000lg30ri1ba6adj"
 			},
 			{
-				"tag_id": "cj2eknv3s001a6d0rur6rqx3p",
-				"post_id": "cj2eknv3g000n6d0ri89xci5f"
+				"tag_id": "cj2erxyzs0019g30roafnqiz6",
+				"post_id": "cj2erxyzi000lg30ri1ba6adj"
 			},
 			{
-				"tag_id": "cj2eknv3u001b6d0r5xv2w0dx",
-				"post_id": "cj2eknv3g000n6d0ri89xci5f"
+				"tag_id": "cj2erxyzs001ag30rmtgjc0rc",
+				"post_id": "cj2erxyzi000lg30ri1ba6adj"
 			},
 			{
-				"tag_id": "cj2eknv3q00186d0rpxi1hfq9",
-				"post_id": "cj2eknv3j000r6d0rcnxbgq6c"
+				"tag_id": "cj2erxyzr0017g30rpp1jf78z",
+				"post_id": "cj2erxyzk000pg30rnd16jrfb"
 			},
 			{
-				"tag_id": "cj2eknv3s001a6d0rur6rqx3p",
-				"post_id": "cj2eknv3j000r6d0rcnxbgq6c"
+				"tag_id": "cj2erxyzs0019g30roafnqiz6",
+				"post_id": "cj2erxyzk000pg30rnd16jrfb"
 			},
 			{
-				"tag_id": "cj2eknv3x001f6d0rmszuha8p",
-				"post_id": "cj2eknv3j000r6d0rcnxbgq6c"
+				"tag_id": "cj2erxyzt001eg30rdw30e533",
+				"post_id": "cj2erxyzk000pg30rnd16jrfb"
 			},
 			{
-				"tag_id": "cj2eknv3k000s6d0rusy8zd8r",
-				"post_id": "cj2eknv39000e6d0r5tnpllon"
+				"tag_id": "cj2erxyz40008g30rf93xesgp",
+				"post_id": "cj2erxyyu0003g30r3el8wktn"
 			},
 			{
-				"tag_id": "cj2eknv3n00106d0r3j3uzqcg",
-				"post_id": "cj2eknv39000e6d0r5tnpllon"
+				"tag_id": "cj2erxyzc000eg30rs1iet7mc",
+				"post_id": "cj2erxyyu0003g30r3el8wktn"
 			},
 			{
-				"tag_id": "cj2eknv3000086d0r3idgofgz",
-				"post_id": "cj2eknv2p00036d0rvkcwnf4h"
+				"tag_id": "cj2erxyzm000rg30rr4bixa2j",
+				"post_id": "cj2erxyz60009g30rpn590zrb"
 			},
 			{
-				"tag_id": "cj2eknv3a000f6d0rxvm6smta",
-				"post_id": "cj2eknv3200096d0rjaeu8i2q"
+				"tag_id": "cj2erxyzq000zg30ry41uuxfw",
+				"post_id": "cj2erxyza000bg30rhxnl37vk"
 			},
 			{
-				"tag_id": "cj2eknv3y001i6d0rdtaxeh5z",
-				"post_id": "cj2eknv3k000u6d0r8xq6jtp7"
+				"tag_id": "cj2erxyzu001kg30razz2x3rc",
+				"post_id": "cj2erxyzp000xg30res6hpora"
 			},
 			{
-				"tag_id": "cj2eknv3z001l6d0rsnd0puij",
-				"post_id": "cj2eknv3k000u6d0r8xq6jtp7"
+				"tag_id": "cj2erxyzv001ng30rmui3gvs6",
+				"post_id": "cj2erxyzp000xg30res6hpora"
 			},
 			{
-				"tag_id": "cj2eknv3p00136d0rpd74ssi2",
-				"post_id": "cj2eknv3b000i6d0rzp97v3vq"
+				"tag_id": "cj2erxyzq0013g30rqmqnc0up",
+				"post_id": "cj2erxyzf000ig30rc632jt1f"
 			}
 		],
 		"categories": [
 			{
-				"id": "cj2eknv37000c6d0rc409pvse",
+				"id": "cj2erxyzb000cg30rs5udbt79",
 				"name": "uncompleted",
 				"slug": "uncompleted",
 				"description": ""
 			},
 			{
-				"id": "cj2eknv37000c6d0rc409pvse",
+				"id": "cj2erxyzb000cg30rs5udbt79",
 				"name": "uncompleted",
 				"slug": "uncompleted",
 				"description": ""
 			},
 			{
-				"id": "cj2eknv37000c6d0rc409pvse",
+				"id": "cj2erxyzb000cg30rs5udbt79",
 				"name": "uncompleted",
 				"slug": "uncompleted",
 				"description": ""
 			},
 			{
-				"id": "cj2eknv37000c6d0rc409pvse",
+				"id": "cj2erxyzb000cg30rs5udbt79",
 				"name": "uncompleted",
 				"slug": "uncompleted",
 				"description": ""
 			},
 			{
-				"id": "cj2eknv37000c6d0rc409pvse",
+				"id": "cj2erxyzb000cg30rs5udbt79",
 				"name": "uncompleted",
 				"slug": "uncompleted",
 				"description": ""
 			},
 			{
-				"id": "cj2eknv2s00056d0rmvb8oj82",
+				"id": "cj2erxyyy0005g30rsrs396vr",
 				"name": "random thoughts",
 				"slug": "random-thoughts",
 				"description": ""
 			},
 			{
-				"id": "cj2eknv37000c6d0rc409pvse",
+				"id": "cj2erxyzb000cg30rs5udbt79",
 				"name": "uncompleted",
 				"slug": "uncompleted",
 				"description": ""
 			},
 			{
-				"id": "cj2eknv37000c6d0rc409pvse",
+				"id": "cj2erxyzb000cg30rs5udbt79",
 				"name": "uncompleted",
 				"slug": "uncompleted",
 				"description": ""
 			},
 			{
-				"id": "cj2eknv2s00056d0rmvb8oj82",
+				"id": "cj2erxyyy0005g30rsrs396vr",
 				"name": "random thoughts",
 				"slug": "random-thoughts",
 				"description": ""
 			},
 			{
-				"id": "cj2eknv3l000w6d0rb7ie77ts",
+				"id": "cj2erxyzo000vg30r56xbn8ps",
 				"name": "wiki",
 				"slug": "wiki",
 				"description": ""
@@ -596,44 +596,44 @@
 		],
 		"posts_categories": [
 			{
-				"category_id": "cj2eknv37000c6d0rc409pvse",
-				"post_id": "cj2eknv3g000n6d0ri89xci5f"
+				"category_id": "cj2erxyzb000cg30rs5udbt79",
+				"post_id": "cj2erxyzi000lg30ri1ba6adj"
 			},
 			{
-				"category_id": "cj2eknv37000c6d0rc409pvse",
-				"post_id": "cj2eknv3j000r6d0rcnxbgq6c"
+				"category_id": "cj2erxyzb000cg30rs5udbt79",
+				"post_id": "cj2erxyzk000pg30rnd16jrfb"
 			},
 			{
-				"category_id": "cj2eknv37000c6d0rc409pvse",
-				"post_id": "cj2eknv39000e6d0r5tnpllon"
+				"category_id": "cj2erxyzb000cg30rs5udbt79",
+				"post_id": "cj2erxyyu0003g30r3el8wktn"
 			},
 			{
-				"category_id": "cj2eknv37000c6d0rc409pvse",
-				"post_id": "cj2eknv3e000k6d0rl72v2pgm"
+				"category_id": "cj2erxyzb000cg30rs5udbt79",
+				"post_id": "cj2erxyzd000gg30r43nbnlw4"
 			},
 			{
-				"category_id": "cj2eknv37000c6d0rc409pvse",
-				"post_id": "cj2eknv2p00036d0rvkcwnf4h"
+				"category_id": "cj2erxyzb000cg30rs5udbt79",
+				"post_id": "cj2erxyz60009g30rpn590zrb"
 			},
 			{
-				"category_id": "cj2eknv2s00056d0rmvb8oj82",
-				"post_id": "cj2eknv2u00066d0re11t4yjw"
+				"category_id": "cj2erxyyy0005g30rsrs396vr",
+				"post_id": "cj2erxyzb000dg30rx3spghyr"
 			},
 			{
-				"category_id": "cj2eknv37000c6d0rc409pvse",
-				"post_id": "cj2eknv3200096d0rjaeu8i2q"
+				"category_id": "cj2erxyzb000cg30rs5udbt79",
+				"post_id": "cj2erxyza000bg30rhxnl37vk"
 			},
 			{
-				"category_id": "cj2eknv37000c6d0rc409pvse",
-				"post_id": "cj2eknv3k000u6d0r8xq6jtp7"
+				"category_id": "cj2erxyzb000cg30rs5udbt79",
+				"post_id": "cj2erxyzp000xg30res6hpora"
 			},
 			{
-				"category_id": "cj2eknv2s00056d0rmvb8oj82",
-				"post_id": "cj2eknv2i00016d0rzgp1spjz"
+				"category_id": "cj2erxyyy0005g30rsrs396vr",
+				"post_id": "cj2erxyyp0001g30rsmiaip58"
 			},
 			{
-				"category_id": "cj2eknv3l000w6d0rb7ie77ts",
-				"post_id": "cj2eknv3b000i6d0rzp97v3vq"
+				"category_id": "cj2erxyzo000vg30r56xbn8ps",
+				"post_id": "cj2erxyzf000ig30rc632jt1f"
 			}
 		],
 		"users": [
