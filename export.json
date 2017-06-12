@@ -1,6 +1,6 @@
 {
 	"meta": {
-		"exported_on": 1497224897102,
+		"exported_on": 1497275859734,
 		"version": "008"
 	},
 	"data": {
@@ -9,8 +9,8 @@
 				"id": "cj3td1oic0001j40r7a8qm5yh",
 				"title": "MySQL",
 				"slug": "MySQL",
-				"markdown": "## JSON\n```\nSELECT id,json_extract(content,'$.intro') AS \"intro\",json_extract(content,'$.word_count') AS \"word_count\" FROM books where content->'$.word_count'>4000000;\n```\n\n## MAC Packets out of order.\ncopy /usr/local/mysql/suppert-files/my-default.cnf  \nto /etc/my.cnf  \nunder [mysqld]  \nset max_allowed_packet = 666M",
-				"html": "<h2 id=\"JSON\"><a href=\"#JSON\" class=\"headerlink\" title=\"JSON\"></a>JSON</h2><figure class=\"highlight plain\"><table><tr><td class=\"gutter\"><pre><div class=\"line\">1</div></pre></td><td class=\"code\"><pre><div class=\"line\">SELECT id,json_extract(content,&apos;$.intro&apos;) AS &quot;intro&quot;,json_extract(content,&apos;$.word_count&apos;) AS &quot;word_count&quot; FROM books where content-&gt;&apos;$.word_count&apos;&gt;4000000;</div></pre></td></tr></table></figure><h2 id=\"MAC-Packets-out-of-order\"><a href=\"#MAC-Packets-out-of-order\" class=\"headerlink\" title=\"MAC Packets out of order.\"></a>MAC Packets out of order.</h2><p>copy /usr/local/mysql/suppert-files/my-default.cnf<br>to /etc/my.cnf<br>under [mysqld]<br>set max_allowed_packet = 666M</p>",
+				"markdown": "## JSON\n```\nSELECT id,json_extract(content,'$.intro') AS \"intro\",json_extract(content,'$.word_count') AS \"word_count\" FROM books where content->'$.word_count'>4000000;\n```\n\n## MAC Packets out of order.\ncopy /usr/local/mysql/suppert-files/my-default.cnf  \nto /etc/my.cnf  \nunder [mysqld]  \nset max_allowed_packet = 666M\n\n## 5.7 only_full_group_by\n刚开始是有点奇怪的，以为 sql server 和 oracle 好像都不能 group by 多个字段，没想到 mysql 5.7 以前的版本都默认可以使用  \n搜索 only_full_group_by 即可找到解决方案",
+				"html": "<h2 id=\"JSON\"><a href=\"#JSON\" class=\"headerlink\" title=\"JSON\"></a>JSON</h2><figure class=\"highlight plain\"><table><tr><td class=\"gutter\"><pre><div class=\"line\">1</div></pre></td><td class=\"code\"><pre><div class=\"line\">SELECT id,json_extract(content,&apos;$.intro&apos;) AS &quot;intro&quot;,json_extract(content,&apos;$.word_count&apos;) AS &quot;word_count&quot; FROM books where content-&gt;&apos;$.word_count&apos;&gt;4000000;</div></pre></td></tr></table></figure><h2 id=\"MAC-Packets-out-of-order\"><a href=\"#MAC-Packets-out-of-order\" class=\"headerlink\" title=\"MAC Packets out of order.\"></a>MAC Packets out of order.</h2><p>copy /usr/local/mysql/suppert-files/my-default.cnf<br>to /etc/my.cnf<br>under [mysqld]<br>set max_allowed_packet = 666M</p><h2 id=\"5-7-only-full-group-by\"><a href=\"#5-7-only-full-group-by\" class=\"headerlink\" title=\"5.7 only_full_group_by\"></a>5.7 only_full_group_by</h2><p>刚开始是有点奇怪的，以为 sql server 和 oracle 好像都不能 group by 多个字段，没想到 mysql 5.7 以前的版本都默认可以使用<br>搜索 only_full_group_by 即可找到解决方案</p>",
 				"image": null,
 				"featured": 0,
 				"page": 0,
@@ -21,7 +21,7 @@
 				"author_id": 2,
 				"created_at": 1497224690000,
 				"created_by": 2,
-				"updated_at": 1497224875000,
+				"updated_at": 1497275845382,
 				"updated_by": 2,
 				"published_at": 1497224690000,
 				"published_by": 2
