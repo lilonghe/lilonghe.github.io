@@ -4,32 +4,72 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,minimum-scale=1,maximum-scale=1">
 	<title>About LILONGHE</title>
+	<link rel="icon" href="https://note.lilonghe.net/static/upload/20180524/favicon.png">
 	<style>
+		p { 
+			margin-top: 0; 
+			margin-bottom: 5px; }
+		p:first-child { opacity: 0; }
+		p:first-child:active { opacity: 1; }
+		body { padding: 20px; 
+			background-color: rgba(255,209,136,.1); 
+			text-shadow: 0px 0px 3px #CCC;
+		}
+
 		div {
-		    font-weight: 300;
 		    font-size: 18px;
 		}
-		@media screen and (min-width: 500px) {
-			div {
-				margin: auto;
-				position: absolute; 
-				left: 0;
-			    right: 0;
-			    top: 0;
-			    bottom: 0;
-			    width: 400px;
-			    height: 500px;
-			}
+		#wave {
+			position: fixed;
+			bottom: 0;
+			left: 0;
+			width: 100%;
+			height: 300px;
+		}
+		#leaveMsg {
+			padding: 20px;
+			border: 1px solid #CCC;
+			margin-top: 10px;
 		}
 	</style>
 </head>
 <body>
 	<div>
-		<p>WHO<br/>A Program Developer</p>
-		<p>INTEREST<br>Web Dev、Psychology And Pretty Thing</p>
-		<p>CONCAT<br><a href="mailto:lilonghe@outlook.com" target="_blank" rel="external">lilonghe#outlook.com</a></p>
-		<p>NOTE<br><a href="http://note.lilonghe.net/archives/" target="_blank" rel="external">http://note.lilonghe.net</a></p>
-		<p>Github<br><a href="https://www.github.com/lilonghe" target="_blank" rel="external">https://www.github.com/lilonghe</a></p>
+		<p>诞于丙子年 从业于乙未年</p>
+		<p>程序开发者</p>
+		<p>使用 Go 和 Node.js 提供后台服务，jQuery 或者 React 制作页面</p>
+		<p>常用技能 Nginx, SQL, Redis / Mobx, Dva, Vue, Ant Design</p>
+		<p>正在学习 WebAssembly, 小程序, 测试</p>
+		<p>生活中会拍 VLOG, 看一些认知、心理方面的书</p>
+		<br/>
+		<p>WeChat: <a href="#">lilonghe_</a></p>
+		<p>E-Mail: <a href="mailto:lilonghe@outlook.com" target="_blank" rel="external">lilonghe@outlook.com</a></p>
+		<p>Notes: <a href="https://note.lilonghe.net/" target="_blank" rel="external">https://note.lilonghe.net</a></p>
+		<small>Version 2019-03-09 23:56</small>
 	</div>
+	<div id="wave"></div>
 </body>
 </html>
+
+<script>
+	window.onload = function() {
+		var versionTime = 1552146992902;
+		var now = new Date().getTime();
+		if (now - versionTime > 31536000000) {
+			var ele = document.createElement('div');
+			ele.id = "leaveMsg"
+			ele.innerHTML = '已经超过一年没有更新了，可能已经悄悄消失掉了呢~ <br/>祝有缘的你万事如意，身体健康哟~';
+			document.body.append(ele);
+		}
+	}
+</script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-69142286-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-69142286-1');
+</script>
+<script src="./wave.js"></script>
