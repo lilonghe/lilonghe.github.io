@@ -4,33 +4,27 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,minimum-scale=1,maximum-scale=1">
+	 <meta name="apple-mobile-web-app-capable" content="yes"/>
+	<meta name="apple-mobile-web-app-status-bar-style" content="black"/>
 	<title>About LILONGHE</title>
-	<link rel="icon" href="https://note.lilonghe.net/static/upload/20180524/favicon.png">
 	<style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html, body {
+            width: 100%;
+            height: 100%;
+        }
 		p { 
 			margin-top: 0; 
 			margin-bottom: 5px; }
-		body { padding: 20px; 
-			background-color: rgba(255,209,136,.1); 
-			text-shadow: 0px 0px 3px #CCC;
+		body {
+            background: linear-gradient(25deg, #F13F79, #FFC778); 
+            font-weight: 300;
+            letter-spacing: 0.5px;
 		}
-		a { text-decoration: none; }
+		a { text-decoration: none; color: inherit; }
 		div {
 		    font-size: 18px;
 		}
-		#wave {
-			position: fixed;
-			bottom: 0;
-			left: 0;
-			width: 100%;
-			height: 300px;
-		}
-		#leaveMsg {
-			padding: 20px;
-			border: 1px solid #CCC;
-			margin-top: 10px;
-		}
-
 		#beian {
 			position: absolute;
 			bottom: 2px;
@@ -38,20 +32,42 @@
 			left: 50%;
 			transform: translateX(-50%);
 			font-size: 12px;
-			/* display: flex; */
 			
 		}
 		#beian a {
-			color: #ffffffff;
 			margin-right: 10px;
 		}
 		#beian a:last-child {
 			margin: 0;
 		}
+        #message {
+            position: fixed;
+            left: 0;
+            top: 0;
+            padding: 5%;
+            backdrop-filter: blur(5px);
+            width: 100%;
+            height: 100%;
+            text-align: left;
+        }
+
+		@media screen and (max-width:768px) {
+			#beian a {
+				opacity: 0;
+				display: block;
+    				white-space: nowrap;
+			}
+		}
+
+        @media (prefers-color-scheme: light) {
+            body {
+                filter: invert(1);
+            }
+        }
 	</style>
 </head>
 <body>
-	<div>
+	<div id="message">
 		<p>Programmer</p>
 		<p>Like photography</p>
 		<p>Hope for world peace</p>
@@ -59,7 +75,6 @@
 		<br/>
 		<p>E-Mail: <a href="mailto:lilonghe@outlook.com" target="_blank" rel="external">lilonghe@outlook.com</a></p>
 	</div>
-	<div id="wave"></div>
     <div id="beian">
         <a href="http://www.beian.miit.gov.cn" target="_blank">皖ICP备16001167号-1</a>
         <a href="http://www.beian.gov.cn" target="_blank">皖公网安备34132202000116号</a>
@@ -67,18 +82,6 @@
 </body>
 </html>
 
-<script>
-	window.onload = function() {
-		var versionTime = 1567583400000;
-		var now = new Date().getTime();
-		if (now - versionTime > 31536000000) {
-			var ele = document.createElement('div');
-			ele.id = "leaveMsg"
-			ele.innerHTML = '已经超过一年没有更新了，可能已经悄悄消失掉了呢~ <br/>祝有缘的你万事如意，身体健康哟~';
-			document.body.append(ele);
-		}
-	}
-</script>
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-69142286-1"></script>
 <script>
@@ -88,4 +91,3 @@
 
   gtag('config', 'UA-69142286-1');
 </script>
-<script src="./wave.js"></script>
