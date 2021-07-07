@@ -1,0 +1,3 @@
+[submodule "explore/photography"]
+	path = explore/photography
+	url = https://github.com/lilonghe/photography.git
