@@ -20,9 +20,9 @@ ul, ol {
 }
 
 body {
-    background: linear-gradient(-45deg, #F13F79, #FFC778);
-    background-size: 400% 400%;
-    animation: gradientBackground 40s ease infinite;
+    /* background: linear-gradient(-45deg, #F13F79, #FFC778); */
+    /* background-size: 400% 400%; */
+    /* animation: gradientBackground 40s ease infinite; */
     font-weight: 300;
     letter-spacing: 0.5px;
 }
@@ -98,10 +98,5 @@ div {
         opacity: 0;
         display: block;
         white-space: nowrap;
-    }
-}
-
-@media (prefers-color-scheme: light) {
-    body {
     }
 }
