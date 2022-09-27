@@ -4,15 +4,15 @@
     box-sizing: border-box;
 }
 
-@font-face {
+/* @font-face {
     font-family: "LXGWWenKaiLite-Light";
     src: url("LXGWWenKaiLite-Light.ttf") format("truetype");
-}
+} */
 
 html,
 body {
     width: 100%;
-    min-height: 100%;
+    min-height: 100vh;
     font-family: "LXGWWenKaiLite-Light";
     line-height: 1.6;
     background: linear-gradient(45deg, #bfd2de, transparent);
@@ -28,9 +28,6 @@ ul, ol {
 }
 
 body {
-    /* background: linear-gradient(-45deg, #F13F79, #FFC778); */
-    /* background-size: 400% 400%; */
-    /* animation: gradientBackground 40s ease infinite; */
     font-weight: 300;
     letter-spacing: 0.5px;
 }
