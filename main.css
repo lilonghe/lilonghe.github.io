@@ -4,98 +4,52 @@
     box-sizing: border-box;
 }
 
-/* @font-face {
-    font-family: "LXGWWenKaiLite-Light";
-    src: url("LXGWWenKaiLite-Light.ttf") format("truetype");
-} */
-
 html,
 body {
     width: 100%;
     min-height: 100vh;
-    font-family: "LXGWWenKaiLite-Light";
+    font-weight: 300;
     line-height: 1.6;
     background: linear-gradient(45deg, #bfd2de, transparent);
+    overflow: hidden;
 }
 
-p {
-    margin-top: 0;
-    margin-bottom: 5px;
+#content {
+    width: 300px;
+    height: max-content;
+    margin: auto;
+    margin-top: 50%;
+    transform: translateY(-50%);
 }
 
-ul, ol {
-    margin-left: 30px;
+.title {
+    font-size: 26px;
 }
 
-body {
-    font-weight: 300;
-    letter-spacing: 0.5px;
+.platforms {
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px solid #bfd2de;
+    display: flex;
+    gap: 10px;
 }
 
-a {
-    color: inherit;
-}
-a:hover {
-    color: initial;
-}
-
-div {
-    font-size: 20px;
+.platforms a img{
+    width: 26px;
+    height: 26px;
 }
 
 #beian {
+    position: fixed;
+    bottom: 5px;
+    left: 50%;
+    transform: translateX(-50%);
     font-size: 12px;
-    margin-top: 20px;
-    text-align: center;
-    opacity: .5;
 }
 
 #beian a {
-    margin-right: 10px;
-}
-
-#beian a:last-child {
-    margin: 0;
-}
-
-#message {
-    padding: 2% 5%;
-    backdrop-filter: blur(5px);
-    width: 100%;
-    min-height: 100%;
-    text-align: left;
-    padding-bottom: 20px;
-}
-
-#message h2 {
-    margin-top: 20px;
-}
-
-#message details {
-    margin-bottom: 5px;
-}
-
-#message details summary {
-    cursor: pointer;
-    user-select: none;
-}
-
-.skills-list > div {
-    margin-bottom: 5px;
-}
-
-@keyframes gradientBackground {
-    0% {
-        background-position: 0% 50%;
-    }
-
-    50% {
-        background-position: 100% 50%;
-    }
-
-    100% {
-        background-position: 0% 50%;
-    }
+    color: #AAA;
+    text-decoration: none;
 }
 
 @media screen and (max-width:768px) {
@@ -103,5 +57,30 @@ div {
         opacity: 0;
         display: block;
         white-space: nowrap;
+    }
+}
+
+
+.circle {
+    width: 30vw;
+    height: 30vw;
+    border-radius: 50%;
+    box-shadow: 0 0 5px 4px #bfd2decc;
+    animation: circle 0 ease-in-out 3s;
+    animation-iteration-count: infinite;
+}
+
+@keyframes circle {
+    from {
+        box-shadow: 0 0 5px 4px #bfd2decc;
+        transform: scale(1);
+    }
+    50% {
+        box-shadow: 0 0 1px 1px #bfd2de85;
+        transform: scale(1.2);
+    }
+    to {
+        box-shadow: 0 0 5px 4px #bfd2decc;
+        transform: scale(1);
     }
 }
