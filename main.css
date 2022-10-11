@@ -18,7 +18,7 @@ body {
     width: 300px;
     height: max-content;
     margin: auto;
-    margin-top: 50%;
+    margin-top: 40%;
     transform: translateY(-50%);
 }
 
@@ -53,34 +53,13 @@ body {
 }
 
 @media screen and (max-width:768px) {
+    #content {
+        margin-top: 50%;
+    }
+
     #beian a {
         opacity: 0;
         display: block;
         white-space: nowrap;
-    }
-}
-
-
-.circle {
-    width: 30vw;
-    height: 30vw;
-    border-radius: 50%;
-    box-shadow: 0 0 5px 4px #bfd2decc;
-    animation: circle 0 ease-in-out 3s;
-    animation-iteration-count: infinite;
-}
-
-@keyframes circle {
-    from {
-        box-shadow: 0 0 5px 4px #bfd2decc;
-        transform: scale(1);
-    }
-    50% {
-        box-shadow: 0 0 1px 1px #bfd2de85;
-        transform: scale(1.2);
-    }
-    to {
-        box-shadow: 0 0 5px 4px #bfd2decc;
-        transform: scale(1);
     }
 }
