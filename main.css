@@ -18,7 +18,7 @@ body {
     width: 300px;
     height: max-content;
     margin: auto;
-    margin-top: 40%;
+    margin-top: 40vh;
     transform: translateY(-50%);
 }
 
