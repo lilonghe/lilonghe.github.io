@@ -41,6 +41,7 @@ body {
     border-top: 1px solid #bfd2de;
     display: flex;
     gap: 10px;
+    flex-wrap: wrap;
 }
 
 .platforms a img{
