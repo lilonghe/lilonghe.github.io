@@ -35,6 +35,8 @@ body {
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
+    animation: title-bg 3s infinite;
+    background-size: 400% 400%;
 }
 
 .platforms {
@@ -117,5 +119,17 @@ body {
 
     #prod-group {
         font-size: 12px;
+    }
+}
+
+@keyframes title-bg {
+    0% {
+        background-position: 0 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0 50%;
     }
 }
