@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@200&display=swap');
+
 * {
     margin: 0;
     padding: 0;
@@ -64,7 +66,10 @@ body {
 
 @media screen and (max-width:768px) {
     #content {
-        margin-top: 50%;
+        margin-top: 10vw;
+        transform: none;
+        filter: none;
+        font-family: Raleway;
     }
 
     #beian a {
@@ -72,10 +77,39 @@ body {
         display: block;
         white-space: nowrap;
     }
-}
 
-.bird {
-    position: fixed;
-    top: 0;
-    right: 0;
+    .title {
+        font-size: 50px;
+    }
+
+    .work-title {
+        font-size: 40px;
+        background-image: linear-gradient(to right, #eca5c894, #af9bdd87);
+    }
+
+    #about-group {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+    }
+
+    .platforms a {
+        text-decoration: none;
+        color: #333;
+    }
+
+    .platforms {
+        display: flex;
+        flex-direction: column;
+        border-color: rgba(0,0,0,0.03);
+        margin-top: 6vh;
+    }
+
+    #show-group {
+        font-size: 30px;
+    }
+
+    #prod-group {
+        font-size: 12px;
+    }
 }
