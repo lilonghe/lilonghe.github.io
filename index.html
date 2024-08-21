@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="zh-CN">
 
@@ -9,27 +10,123 @@
 	<meta name="theme-color" content="#b9e1ba" />
 	<meta name="keyword" content="lilonghe,blog" />
 	<meta name="description" content="lilonghe's Personal Website" />
-	<link rel="icon" href="https://note.lilonghe.net/static/upload/20210615/upload_dbf2542fbea827561609b0ecae01005c.png">
+	<link rel="icon" href="https://cdn.lilonghe.net/static/upload/20210615/upload_dbf2542fbea827561609b0ecae01005c.png">
 	<title>LILONGHE</title>
-	<link rel="stylesheet" href="./main.css" />
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html,
+        body {
+            width: 100%;
+            min-height: 100vh;
+            font-weight: 300;
+            line-height: 1.6;
+            overflow: hidden;
+            font-family: cursive;
+        }
+
+        .title {
+            font-size: 26px;
+        }
+        
+        .platforms {
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: .5px solid #3a3a3aa9;
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        
+        .platforms a {
+            color: inherit;
+        }
+        
+        #beian {
+            position: fixed;
+            bottom: 5px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 12px;
+        }
+        
+        #beian a {
+            color: #AAA;
+            text-decoration: none;
+        }
+
+    
+        
+        #content {
+            width: 400px;
+            height: max-content;
+            margin: auto;
+            margin-top: 30vh;
+
+            letter-spacing: 1px;
+            color: #000;
+            padding: 20px;
+
+            animation: beat 0.95s infinite;
+        }
+
+        .email {
+            color: inherit;
+        }
+
+        .intro {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 10px;
+            letter-spacing: normal;
+        }
+
+
+        @media screen and (max-width:768px) {
+            body {
+                text-shadow: 0 0 .1px currentColor;
+            }
+
+            #beian {
+                opacity: 0;
+                display: block;
+                white-space: nowrap;
+            }
+        }
+
+        @keyframes beat {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.005);
+            }
+        }
+    </style>
 </head>
 
 <body>
+    <div class="bg"></div>
 	<div id="content">
         <div class="title">LONGHE.LI</div>
-        <small class="work-title">Programmer</small>
-        <div class="platforms" id="about-group">
-            <a href="https://note.lilonghe.net/page/about.html" target="_blank">About</a>
+        <div>Working in HangZhou now</div>
+        
+        <div class="intro">
+            <small>I previously worked in ShangHai, and i love ShangHai, as for where to go in the future, anything is possible</small>
+            <small>I can write web program by fullstack(like Go, Node.js, React, Vue etc.), mainly at frontend</small>
+            <small>If you're interested in me, feel free to contact me via <a href="mailto:lilonghe@outlook.com" class="email">email</a>.</small>
         </div>
 		<div class="platforms" id="show-group">
 			<a href="https://note.lilonghe.net" target="_blank">Blog</a>
             <a href="https://github.com/lilonghe" target="_blank">GitHub</a>
+            <a href="mailto:lilonghe@outlook.com" class="email">lilonghe@outlook.com</a>
 		</div>
-		<div class="platforms" id="prod-group">
-            <a href="https://www.lilonghe.net/photography" target="_blank">Photography</a>
-            <a href="https://www.lilonghe.net/photos-map" target="_blank">Photos Map</a>
-            <a href="https://developer-nav.lilonghe.net/" target="_blank">Developer Nav</a>
-		</div>
+        
     </div>
     <div id="beian">
 		<a href="https://beian.miit.gov.cn" target="_blank">皖ICP备16001167号-1</a>
@@ -45,5 +142,4 @@
   gtag('js', new Date());
 
   gtag('config', 'G-B1VPSF3E9N');
-  document.documentElement.requestFullscreen()
 </script>
