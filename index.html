@@ -1,23 +1,24 @@
-
 <!DOCTYPE html>
 <html>
+
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,minimum-scale=1,maximum-scale=1,viewport-fit=cover">
-	<meta name="apple-mobile-web-app-capable" content="yes" />
-	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
-	<meta name="theme-color" content="#b9e1ba" />
-	<meta name="keyword" content="lilonghe,blog" />
-	<meta name="description" content="lilonghe's Personal Website" />
-	<link rel="icon" href="https://cdn.lilonghe.net/static/upload/20210615/upload_dbf2542fbea827561609b0ecae01005c.png">
-	<title>LILONGHE</title>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width,user-scalable=no,initial-scale=1,minimum-scale=1,maximum-scale=1,viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="theme-color" content="#b9e1ba" />
+    <meta name="keyword" content="lilonghe,blog" />
+    <meta name="description" content="lilonghe's Personal Website" />
+    <link rel="icon" href="https://cdn.lilonghe.net/static/upload/20210615/upload_dbf2542fbea827561609b0ecae01005c.png">
+    <title>LILONGHE</title>
     <style type="text/css">
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        
+
         html,
         body {
             width: 100%;
@@ -31,7 +32,7 @@
         .title {
             font-size: 26px;
         }
-        
+
         .platforms {
             margin-top: 10px;
             padding-top: 10px;
@@ -40,11 +41,11 @@
             gap: 10px;
             flex-wrap: wrap;
         }
-        
+
         .platforms a {
             color: inherit;
         }
-        
+
         #beian {
             position: fixed;
             bottom: 5px;
@@ -52,14 +53,14 @@
             transform: translateX(-50%);
             font-size: 12px;
         }
-        
+
         #beian a {
             color: #AAA;
             text-decoration: none;
         }
 
-    
-        
+
+
         #content {
             width: 400px;
             height: max-content;
@@ -86,13 +87,33 @@
         }
 
 
+        .lang-zh {
+            display: none;
+        }
+
+        .lang-switcher {
+            position: absolute;
+            top: 50px;
+            right: 100px;
+            display: flex;
+            align-items: center;
+            color: #939292;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .lang-switcher .active {
+            color: #000;
+        }
+
+
         @media screen and (max-width:768px) {
             body {
                 text-shadow: 0 0 .1px currentColor;
             }
 
             #content {
-                width:  calc(100vw - 20px);
+                width: calc(100vw - 20px);
             }
 
             #beian {
@@ -100,57 +121,68 @@
                 display: block;
                 white-space: nowrap;
             }
+
+            .lang-switcher {
+                right: 50px;
+            }
         }
 
         @keyframes beat {
-            0%, 100% {
+
+            0%,
+            100% {
                 transform: scale(1);
             }
+
             50% {
                 transform: scale(1.005);
             }
-        }
-
-        .lang-zh {
-            display: none;
         }
     </style>
 </head>
 
 <body>
-	<div id="content" lang="en" class="lang-en">
+    <div id="content" lang="en" class="lang-en">
         <div class="title">LONGHE.LI</div>
         <div>Working in HangZhou now</div>
-        
+
         <div class="intro">
-            <small>I previously worked in ShangHai, and i love ShangHai, as for where to go in the future, anything is possible</small>
+            <small>I previously worked in ShangHai, and i love ShangHai, as for where to go in the future, anything is
+                possible</small>
             <small>I can write web program by fullstack(like Go, Node.js, React, Vue etc.), mainly at frontend</small>
-            <small>If you're interested in me, feel free to contact me via <a href="mailto:lilonghe@outlook.com" class="email">email</a>.</small>
+            <small>If you're interested in me, feel free to contact me via <a href="mailto:lilonghe@outlook.com"
+                    class="email">email</a>.</small>
         </div>
-		<div class="platforms" id="show-group">
-			<a href="https://note.lilonghe.net" target="_blank">Blog</a>
+        <div class="platforms" id="show-group">
+            <a href="https://note.lilonghe.net" target="_blank">Blog</a>
             <a href="https://github.com/lilonghe" target="_blank">GitHub</a>
             <a href="mailto:lilonghe@outlook.com" class="email">lilonghe@outlook.com</a>
-		</div>
+        </div>
     </div>
     <div id="content" lang="zh" class="lang-zh">
         <div class="title">李龙贺</div>
         <div>目前在杭州工作</div>
-        
+
         <div class="intro">
             <small>之前在上海呆了几年, 未来去哪里都有可能</small>
             <small>我可以独自搞定 Web 网站开发(比如 Go, Node.js, React, Vue 等等), 方向稍微偏前端多一点</small>
             <small>如果你对我有兴趣, 欢迎联系我的 <a href="mailto:lilonghe@outlook.com" class="email">邮箱</a></small>
         </div>
-		<div class="platforms" id="show-group">
-			<a href="https://note.lilonghe.net" target="_blank">Blog</a>
+        <div class="platforms" id="show-group">
+            <a href="https://note.lilonghe.net" target="_blank">Blog</a>
             <a href="https://github.com/lilonghe" target="_blank">GitHub</a>
-		</div>
+        </div>
     </div>
     <div id="beian">
-		<a href="https://beian.miit.gov.cn" target="_blank">皖ICP备16001167号-1</a>
-		<a href="https://www.beian.gov.cn" target="_blank">皖公网安备34132202000116号</a>
-	</div>
+        <a href="https://beian.miit.gov.cn" target="_blank">皖ICP备16001167号-1</a>
+        <a href="https://www.beian.gov.cn" target="_blank">皖公网安备34132202000116号</a>
+    </div>
+
+    <div class="lang-switcher">
+        <span data-target="zh" class="zh-switcher active">中</span>
+        /
+        <span data-target="en" class="en-switcher">E</span>
+    </div>
 </body>
 <script>
     const lang = navigator.language.toLowerCase();
@@ -158,13 +190,31 @@
         document.querySelector('.lang-zh').style.display = 'block';
         document.querySelector('.lang-en').style.display = 'none';
     }
+
+    document.querySelector('.lang-switcher').addEventListener('click', function (e) {
+        document.querySelectorAll('div[lang]').entries().forEach(function ([index, item]) {
+            if (item.style.display === 'none') {
+                item.style.display = 'block';
+            } else {
+                item.style.display = 'none';
+            }
+        });
+        document.querySelectorAll('.lang-switcher span').forEach(function (item) {
+            if (item.className.includes('active')) {
+                item.className = item.className.replace(' active', '');
+            } else {
+                item.className += ' active';
+            }
+        });
+    });
 </script>
+
 </html>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-B1VPSF3E9N"></script>
 <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
 
-  gtag('config', 'G-B1VPSF3E9N');
+    gtag('config', 'G-B1VPSF3E9N');
 </script>
