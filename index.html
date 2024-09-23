@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en-US">
 
 <head>
     <meta charset="UTF-8">
@@ -86,11 +86,6 @@
             letter-spacing: normal;
         }
 
-
-        .lang-zh {
-            display: none;
-        }
-
         .lang-switcher {
             position: absolute;
             top: 50px;
@@ -106,6 +101,13 @@
             color: #000;
         }
 
+        html[lang="zh-CN"] .lang-en {
+            display: none;
+        }
+        
+        html[lang="en-US"] .lang-zh {
+            display: none;
+        }
 
         @media screen and (max-width:768px) {
             body {
@@ -126,18 +128,6 @@
                 right: 50px;
             }
         }
-
-        @keyframes beat {
-
-            0%,
-            100% {
-                transform: scale(1);
-            }
-
-            50% {
-                transform: scale(1.005);
-            }
-        }
     </style>
 </head>
 
@@ -149,7 +139,7 @@
         <div class="intro">
             <small>I previously worked in ShangHai, and i love ShangHai, as for where to go in the future, anything is
                 possible</small>
-            <small>I can write web program by fullstack(like Go, Node.js, React, Vue etc.), mainly at frontend</small>
+            <small>I can write program by fullstack(like Go, Node.js, React, Vue etc.)</small>
             <small>If you're interested in me, feel free to contact me via <a href="mailto:lilonghe@outlook.com"
                     class="email">email</a>.</small>
         </div>
@@ -165,7 +155,7 @@
 
         <div class="intro">
             <small>之前在上海呆了几年, 未来去哪里都有可能</small>
-            <small>我可以独自搞定 Web 网站开发(比如 Go, Node.js, React, Vue 等等), 方向稍微偏前端多一点</small>
+            <small>可以独自搞定 Web 网站/小程序开发(比如 Go, Node.js, React, Vue 等等)</small>
             <small>如果你对我有兴趣, 欢迎联系我的 <a href="mailto:lilonghe@outlook.com" class="email">邮箱</a></small>
         </div>
         <div class="platforms" id="show-group">
@@ -173,7 +163,7 @@
             <a href="https://github.com/lilonghe" target="_blank">GitHub</a>
         </div>
     </div>
-    <div id="beian">
+    <div id="beian" class="lang-zh">
         <a href="https://beian.miit.gov.cn" target="_blank">皖ICP备16001167号-1</a>
         <a href="https://www.beian.gov.cn" target="_blank">皖公网安备34132202000116号</a>
     </div>
@@ -185,27 +175,20 @@
     </div>
 </body>
 <script>
+    const zh = 'zh-CN', en = 'en-US';
     const lang = navigator.language.toLowerCase();
     if (lang && lang.includes('zh')) {
-        document.querySelector('.lang-zh').style.display = 'block';
-        document.querySelector('.lang-en').style.display = 'none';
+        document.querySelector('html').setAttribute('lang', zh);
+    } else {
+        document.querySelector('html').setAttribute('lang', en);
     }
 
     document.querySelector('.lang-switcher').addEventListener('click', function (e) {
-        document.querySelectorAll('div[lang]').entries().forEach(function ([index, item]) {
-            if (item.style.display === 'none') {
-                item.style.display = 'block';
-            } else {
-                item.style.display = 'none';
-            }
-        });
-        document.querySelectorAll('.lang-switcher span').forEach(function (item) {
-            if (item.className.includes('active')) {
-                item.className = item.className.replace(' active', '');
-            } else {
-                item.className += ' active';
-            }
-        });
+        if (document.querySelector('html').getAttribute('lang') === zh) {
+            document.querySelector('html').setAttribute('lang', en);
+        } else {
+            document.querySelector('html').setAttribute('lang', zh);
+        }
     });
 </script>
 
