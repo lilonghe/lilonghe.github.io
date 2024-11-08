@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en-US">
 
@@ -19,6 +20,22 @@
             box-sizing: border-box;
         }
 
+        :root {
+            --background-color: #fff;
+            --color: #333;
+
+            --tip-color: #939292;
+        }
+
+        /* 黑暗模式 */
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --background-color: #111;
+                --color: #fff;
+                --tip-color: #fff;
+            }
+        }
+
         html,
         body {
             width: 100%;
@@ -27,6 +44,12 @@
             line-height: 1.6;
             overflow: hidden;
             font-family: 'Kaiti SC', serif;
+            color: var(--color);
+            
+            background-color: var(--background-color);
+            background-image: linear-gradient(to right, #9d9c9b2b 1px, transparent 1px), linear-gradient(to bottom, #9d9c9b2b 1px, transparent 1px);
+            background-size: 50px 50px;
+
         }
 
         .title {
@@ -61,17 +84,20 @@
 
 
 
-        #content {
+        .content {
             width: 400px;
             height: max-content;
             margin: auto;
             margin-top: 30vh;
-
             letter-spacing: 1px;
-            color: #000;
             padding: 20px;
 
-            /*animation: beat 0.95s infinite;*/
+            background-color: rgba(var(--background-color), 0.6);
+            border-radius: 12px;
+
+            backdrop-filter: blur(5px);
+            box-shadow: 0 0 20px 3px #cccccc7a;
+            backdrop-filter: blur(5px);
         }
 
         .email {
@@ -92,13 +118,13 @@
             right: 100px;
             display: flex;
             align-items: center;
-            color: #939292;
+            color: var(--tip-color);
             cursor: pointer;
             user-select: none;
         }
 
-        .lang-switcher .active {
-            color: #000;
+        .lang-switcher span {
+            opacity: 0.5;
         }
 
         html[lang="zh-CN"] .lang-en {
@@ -107,6 +133,14 @@
         
         html[lang="en-US"] .lang-zh {
             display: none;
+        }
+
+        html[lang="zh-CN"] .lang-switcher span[data-target="zh-CN"] {
+            opacity: 1;
+        }
+        
+        html[lang="en-US"] .lang-switcher span[data-target="en-US"] {
+            opacity: 1;
         }
 
         @media screen and (max-width:768px) {
@@ -132,31 +166,29 @@
 </head>
 
 <body>
-    <div id="content" lang="en" class="lang-en">
+    <div lang="en" class="content lang-en">
         <div class="title">LONGHE.LI</div>
         <div>Working in HangZhou now</div>
 
         <div class="intro">
-            <small>I previously worked in ShangHai, and i love ShangHai, as for where to go in the future, anything is
-                possible</small>
-            <small>I can write program by fullstack(like Go, Node.js, React, Vue etc.)</small>
-            <small>If you're interested in me, feel free to contact me via <a href="mailto:lilonghe@outlook.com"
-                    class="email">email</a>.</small>
+            <small>Ready to fly anywhere, if there is a job for me there.</small>
+            <small>Can write program by fullstack(like Go, Node.js, React, Vue etc.)</small>
+            <small>If you're interested in me, please contact me via <a href="mailto:lilonghe@outlook.com"
+                    class="email">lilonghe@outlook.com</a>.</small>
         </div>
         <div class="platforms" id="show-group">
             <a href="https://note.lilonghe.net" target="_blank">Blog</a>
             <a href="https://github.com/lilonghe" target="_blank">GitHub</a>
-            <a href="mailto:lilonghe@outlook.com" class="email">lilonghe@outlook.com</a>
         </div>
     </div>
-    <div id="content" lang="zh" class="lang-zh">
-        <div class="title">李龙贺</div>
+    <div lang="zh" class="content lang-zh">
+        <div class="title">@李龙贺</div>
         <div>目前在杭州工作</div>
 
         <div class="intro">
-            <small>之前在上海呆了几年, 未来去哪里都有可能</small>
-            <small>可以独自搞定 Web 网站/小程序开发(比如 Go, Node.js, React, Vue 等等)</small>
-            <small>如果你对我有兴趣, 欢迎联系我的 <a href="mailto:lilonghe@outlook.com" class="email">邮箱</a></small>
+            <small>成熟稳定打工人，拎包即走，全国可飞 (˘•ω•˘)ง</small>
+            <small>能够搞定网站/小程序开发(如 React, Vue, Go, Node.js 等等)</small>
+            <small>如果你对我有兴趣, 点击 <a href="mailto:lilonghe@outlook.com" class="email">邮箱</a> 联系我</small> 
         </div>
         <div class="platforms" id="show-group">
             <a href="https://note.lilonghe.net" target="_blank">Blog</a>
@@ -169,9 +201,9 @@
     </div>
 
     <div class="lang-switcher">
-        <span data-target="zh" class="zh-switcher active">中</span>
+        <span data-target="zh-CN">中</span>
         /
-        <span data-target="en" class="en-switcher">E</span>
+        <span data-target="en-US">E</span>
     </div>
 </body>
 <script>
