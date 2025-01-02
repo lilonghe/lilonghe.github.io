@@ -11,7 +11,7 @@
     <meta name="theme-color" content="#b9e1ba" />
     <meta name="keyword" content="lilonghe,blog" />
     <meta name="description" content="lilonghe's Personal Website" />
-    <link rel="icon" href="https://cdn.lilonghe.net/static/upload/20210615/upload_dbf2542fbea827561609b0ecae01005c.png">
+    <link rel="icon" href="https://cdn.lilonghe.net/static/upload/favicon-white.svg">
     <title>LILONGHE</title>
     <style type="text/css">
         * {
@@ -143,6 +143,52 @@
             opacity: 1;
         }
 
+        .creation {
+            all: inherit;
+            position: absolute;
+            margin-top: 280px;
+            top: 0;
+            left: 0;
+            height: auto;
+            padding: 10px 20px;
+            background-color: rgba(var(--background-color), 0.6);
+        }
+
+        .creation-list {
+            height: auto;
+            list-style: none;
+            display: flex;
+            gap: 10px;
+
+            li {
+                height: 36px; 
+            }
+
+            img {
+                width: 36px;
+                height: 36px; 
+                border-radius: 50%;
+            }
+        }
+
+        #creation-preview {
+            display: none;
+            justify-content: center;
+            align-items: center;
+            padding: 30px;
+            gap: 20px;
+
+            p {
+                width: 1em;
+                font-weight: bold;
+            }
+
+            img {
+                width: 130px;
+                border-radius: 45%;
+            }
+        }
+
         @media screen and (max-width:768px) {
             body {
                 text-shadow: 0 0 .1px currentColor;
@@ -179,6 +225,18 @@
         <div class="platforms" id="show-group">
             <a href="https://note.lilonghe.net" target="_blank">Blog</a>
             <a href="https://github.com/lilonghe" target="_blank">GitHub</a>
+            <a href="#" onclick="openProfile('profile-en')">Profile</a>
+        </div>
+        
+        <div class="creation">
+            <ul class="creation-list">
+                <li><img alt="青云记账本" title="青云记账本" src="./images/青云记账本.png" /></li>
+                <li><img alt="子擎" title="子擎" src="./images/子擎.png" /></li>
+            </ul>
+            <div id="creation-preview">
+                <img />
+                <p></p>
+            </div>
         </div>
     </div>
     <div lang="zh" class="content lang-zh">
@@ -193,8 +251,23 @@
         <div class="platforms" id="show-group">
             <a href="https://note.lilonghe.net" target="_blank">Blog</a>
             <a href="https://github.com/lilonghe" target="_blank">GitHub</a>
+            <a href="#" onclick="openProfile('profile')">Profile</a>
+        </div>
+
+        <div class="creation">
+            <ul class="creation-list">
+                <li><img alt="青云记账本" title="青云记账本" src="./images/青云记账本.png" /></li>
+                <li><img alt="子擎" title="子擎" src="./images/子擎.png" /></li>
+                <li><img alt="米物百科" title="米物百科" src="./images/米物百科.png" /></li>
+            </ul>
+            <div id="creation-preview">
+                <img />
+                <p></p>
+            </div>
         </div>
     </div>
+
+    
     <div id="beian" class="lang-zh">
         <a href="https://beian.miit.gov.cn" target="_blank">皖ICP备16001167号-1</a>
         <a href="https://www.beian.gov.cn" target="_blank">皖公网安备34132202000116号</a>
@@ -222,6 +295,22 @@
             document.querySelector('html').setAttribute('lang', zh);
         }
     });
+
+
+    function onInteractionCreation(e) {
+        if (e.target.nodeName === 'IMG') {
+            const title = e.target.getAttribute('title')
+            document.querySelector('#creation-preview p').innerHTML = title;
+            document.querySelector('#creation-preview img').setAttribute('src', './images/' + title + '-QRCODE.jpg');
+            document.querySelector('#creation-preview').style.display = 'flex'
+        }
+    }
+
+    document.querySelector('.creation-list').addEventListener('mouseover', onInteractionCreation);
+
+    function openProfile(path) {
+        window.open(path)
+    }
 </script>
 
 </html>
