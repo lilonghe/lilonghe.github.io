@@ -39,10 +39,10 @@
         html,
         body {
             width: 100%;
-            min-height: 100vh;
+            min-height: max(100vh, 700px);
             font-weight: 300;
             line-height: 1.6;
-            overflow: hidden;
+            overflow: auto;
             font-family: 'Kaiti SC', serif;
             color: var(--color);
             
@@ -88,7 +88,7 @@
             width: 400px;
             height: max-content;
             margin: auto;
-            margin-top: 30vh;
+            margin-top: 26vh;
             letter-spacing: 1px;
             padding: 20px;
 
@@ -114,8 +114,9 @@
 
         .lang-switcher {
             position: absolute;
-            top: 50px;
-            right: 100px;
+            top: 0;
+            right: 10px;
+            padding: 10px;
             display: flex;
             align-items: center;
             color: var(--tip-color);
@@ -146,12 +147,16 @@
         .creation {
             all: inherit;
             position: absolute;
-            margin-top: 280px;
-            top: 0;
+            margin-top: 0;
+            bottom: -270px;
             left: 0;
             height: auto;
             padding: 10px 20px;
             background-color: rgba(var(--background-color), 0.6);
+        }
+
+        .creation:has(#creation-preview p:empty) {
+            bottom: -80px;
         }
 
         .creation-list {
@@ -185,6 +190,7 @@
 
             img {
                 width: 130px;
+                height: 130px;
                 border-radius: 45%;
             }
         }
@@ -192,6 +198,10 @@
         @media screen and (max-width:768px) {
             body {
                 text-shadow: 0 0 .1px currentColor;
+
+                small {
+                    font-size: 16px;
+                }
             }
 
             #content {
@@ -205,29 +215,53 @@
             }
 
             .lang-switcher {
-                right: 50px;
+                font-size: 22px;
             }
         }
     </style>
 </head>
 
 <body>
-    <div lang="en" class="content lang-en">
-        <div class="title">LONGHE.LI</div>
-        <div>Working in HangZhou now</div>
+    <div class="content">
+        <div lang="en" class="lang-en">
+            <div class="title">LONGHE.LI</div>
+            <div>Working in HangZhou now</div>
 
-        <div class="intro">
-            <small>Ready to fly anywhere, if there is a job for me there.</small>
-            <small>Can write program by fullstack(like Go, Node.js, React, Vue etc.)</small>
-            <small>If you're interested in me, please contact me via <a href="mailto:lilonghe@outlook.com"
-                    class="email">lilonghe@outlook.com</a>.</small>
+            <div class="intro">
+                <small>Ready to fly anywhere, if there is a job for me there.</small>
+                <small>Can write program by fullstack(like Go, Node.js, React, Vue etc.)</small>
+                <small>If you're interested in me, please contact me via <a href="mailto:lilonghe@outlook.com"
+                        class="email">lilonghe@outlook.com</a>.</small>
+            </div>
+            <div class="platforms" id="show-group">
+                <a href="https://note.lilonghe.net" target="_blank">Blog</a>
+                <a href="https://github.com/lilonghe" target="_blank">GitHub</a>
+                <a href="#" onclick="openProfile('profile-en')">Profile</a>
+            </div>
         </div>
-        <div class="platforms" id="show-group">
-            <a href="https://note.lilonghe.net" target="_blank">Blog</a>
-            <a href="https://github.com/lilonghe" target="_blank">GitHub</a>
-            <a href="#" onclick="openProfile('profile-en')">Profile</a>
+
+        <div lang="zh" class="lang-zh">
+            <div class="title">@李龙贺</div>
+            <div>目前在杭州工作</div>
+
+            <div class="intro">
+                <small>成熟稳定打工人，拎包即走，全国可飞 (˘•ω•˘)ง</small>
+                <small>能够搞定网站/小程序开发(如 React, Vue, Go, Node.js 等等)</small>
+                <small>如果你对我有兴趣, 点击 <a href="mailto:lilonghe@outlook.com" class="email">邮箱</a> 联系我</small> 
+            </div>
+            <div class="platforms" id="show-group">
+                <a href="https://note.lilonghe.net" target="_blank">Blog</a>
+                <a href="https://github.com/lilonghe" target="_blank">GitHub</a>
+                <a href="#" onclick="openProfile('profile')">Profile</a>
+            </div>
         </div>
-        
+
+        <div class="lang-switcher">
+            <span data-target="zh-CN">中</span>
+            /
+            <span data-target="en-US">E</span>
+        </div>
+
         <div class="creation">
             <ul class="creation-list">
                 <li><img alt="青云记账本" title="青云记账本" src="./images/青云记账本.png" /></li>
@@ -239,60 +273,28 @@
             </div>
         </div>
     </div>
-    <div lang="zh" class="content lang-zh">
-        <div class="title">@李龙贺</div>
-        <div>目前在杭州工作</div>
-
-        <div class="intro">
-            <small>成熟稳定打工人，拎包即走，全国可飞 (˘•ω•˘)ง</small>
-            <small>能够搞定网站/小程序开发(如 React, Vue, Go, Node.js 等等)</small>
-            <small>如果你对我有兴趣, 点击 <a href="mailto:lilonghe@outlook.com" class="email">邮箱</a> 联系我</small> 
-        </div>
-        <div class="platforms" id="show-group">
-            <a href="https://note.lilonghe.net" target="_blank">Blog</a>
-            <a href="https://github.com/lilonghe" target="_blank">GitHub</a>
-            <a href="#" onclick="openProfile('profile')">Profile</a>
-        </div>
-
-        <div class="creation">
-            <ul class="creation-list">
-                <li><img alt="青云记账本" title="青云记账本" src="./images/青云记账本.png" /></li>
-                <li><img alt="子擎" title="子擎" src="./images/子擎.png" /></li>
-                <li><img alt="米物百科" title="米物百科" src="./images/米物百科.png" /></li>
-            </ul>
-            <div id="creation-preview">
-                <img />
-                <p></p>
-            </div>
-        </div>
-    </div>
-
     
     <div id="beian" class="lang-zh">
         <a href="https://beian.miit.gov.cn" target="_blank">皖ICP备16001167号-1</a>
         <a href="https://www.beian.gov.cn" target="_blank">皖公网安备34132202000116号</a>
     </div>
-
-    <div class="lang-switcher">
-        <span data-target="zh-CN">中</span>
-        /
-        <span data-target="en-US">E</span>
-    </div>
 </body>
 <script>
     const zh = 'zh-CN', en = 'en-US';
     const lang = navigator.language.toLowerCase();
+    const html = document.documentElement;
+
     if (lang && lang.includes('zh')) {
-        document.querySelector('html').setAttribute('lang', zh);
+        html.setAttribute('lang', zh);
     } else {
-        document.querySelector('html').setAttribute('lang', en);
+        html.setAttribute('lang', en);
     }
 
     document.querySelector('.lang-switcher').addEventListener('click', function (e) {
-        if (document.querySelector('html').getAttribute('lang') === zh) {
-            document.querySelector('html').setAttribute('lang', en);
+        if (html.getAttribute('lang') === zh) {
+            html.setAttribute('lang', en);
         } else {
-            document.querySelector('html').setAttribute('lang', zh);
+            html.setAttribute('lang', zh);
         }
     });
 
