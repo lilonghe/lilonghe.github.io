@@ -191,7 +191,13 @@
             img {
                 width: 130px;
                 height: 130px;
-                border-radius: 45%;
+                border-radius: 6px;
+            }
+
+            a {
+                position: absolute;
+                bottom: 10px;
+                left: 150px;
             }
         }
 
@@ -266,10 +272,12 @@
             <ul class="creation-list">
                 <li><img alt="青云记账本" title="青云记账本" src="./images/青云记账本.png" /></li>
                 <li><img alt="子擎" title="子擎" src="./images/子擎.png" /></li>
+                <li><img alt="x-ai" title="X" src="./images/x-ai.png" style="border-radius: 50%;" data-link="https://o4yuftgbsv.feishu.cn/docx/WRiddHzDYon0GUx3PG3cuNnjnmc" /></li>
             </ul>
             <div id="creation-preview">
                 <img />
                 <p></p>
+                <a target="_blank"></a>
             </div>
         </div>
     </div>
@@ -301,10 +309,18 @@
 
     function onInteractionCreation(e) {
         if (e.target.nodeName === 'IMG') {
+            const alt = e.target.getAttribute('alt')
             const title = e.target.getAttribute('title')
+            const link = e.target.getAttribute('data-link')
             document.querySelector('#creation-preview p').innerHTML = title;
-            document.querySelector('#creation-preview img').setAttribute('src', './images/' + title + '-QRCODE.jpg');
+            document.querySelector('#creation-preview img').setAttribute('src', './images/' + alt + '-QRCODE.jpg');
             document.querySelector('#creation-preview').style.display = 'flex'
+            if (link) {
+                document.querySelector('#creation-preview a').innerHTML = '点击访问'
+                document.querySelector('#creation-preview a').setAttribute('href', link)
+            } else {
+                document.querySelector('#creation-preview a').innerHTML = ''
+            }
         }
     }
 
