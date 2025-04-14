@@ -13,7 +13,7 @@
     <meta name="keyword" content="lilonghe,blog" />
     <meta name="description" content="lilonghe's Personal Website" />
     <link rel="icon" href="https://cdn.lilonghe.net/static/upload/favicon-white.svg">
-    <title>LILONGHE</title>
+    <title>Simple Profile - LILONGHE</title>
     <style type="text/css">
         * {
             margin: 0;
@@ -89,7 +89,7 @@
             width: 400px;
             height: max-content;
             margin: auto;
-            margin-top: 26vh;
+            margin-top: 23vh;
             letter-spacing: 1px;
             padding: 20px;
 
@@ -250,17 +250,22 @@
         .record h2 {
             margin-bottom: 5px;
         }
+        .record summary {
+            font-size: 12px;
+            margin-bottom: 10px;
+        }
         .record > ul {
             list-style: none;
+            margin-left: 10px;
         }
         .record label {
             font-size: 16px;
             font-weight: bold;
         }
-        .record > li {
-            margin-bottom: 10px;
+        .record > ul > li {
+            margin-bottom: 8px;
         }
-        .record ul {
+        .record ul ul {
             margin-left: 20px;
             font-size: 14px;
         }
@@ -268,58 +273,39 @@
 </head>
 
 <body>
-    <div class="content">
-        <div lang="en" class="lang-en">
-            <div class="title">LONGHE.LI</div>
-            <div>Working in HangZhou now</div>
-
-            <div class="intro">
-                <small>Ready to fly anywhere, if there is a job for me there.</small>
-                <small>Can write program by fullstack(like Go, Node.js, React, Vue etc.)</small>
-                <small>If you're interested in me, please contact me via <a href="mailto:lilonghe@outlook.com"
-                        class="email">lilonghe@outlook.com</a>.</small>
-            </div>
-            <div class="platforms" id="show-group">
-                <a href="https://note.lilonghe.net" target="_blank">Blog</a>
-                <a href="https://github.com/lilonghe" target="_blank">GitHub</a>
-                <a href="simple-profile.html">Profile</a>
-            </div>
-        </div>
-
-        <div lang="zh" class="lang-zh">
-            <div class="title">@李龙贺</div>
-            <div>目前在杭州工作</div>
-
-            <div class="intro">
-                <small>成熟稳定打工人，拎包即走，全国可飞 (˘•ω•˘)ง</small>
-                <small>能够搞定网站/小程序开发(如 React, Vue, Go, Node.js 等等)</small>
-                <small>如果你对我有兴趣, 点击 <a href="mailto:lilonghe@outlook.com" class="email">邮箱</a> 联系我</small> 
-            </div>
-            <div class="platforms" id="show-group">
-                <a href="https://note.lilonghe.net" target="_blank">Blog</a>
-                <a href="https://github.com/lilonghe" target="_blank">GitHub</a>
-                <a href="simple-profile.html">Profile</a>
-            </div>
-        </div>
-
-        <div class="lang-switcher">
-            <span data-target="zh-CN">中</span>
-            /
-            <span data-target="en-US">E</span>
-        </div>
-
-        <div class="creation">
-            <ul class="creation-list">
-                <li><img alt="青云记账本" title="青云记账本" src="./images/青云记账本.png" /></li>
-                <li><img alt="子擎" title="子擎" src="./images/子擎.png" /></li>
-                <!-- <li><img alt="x-ai" title="X" src="./images/x-ai.png" style="border-radius: 50%;" data-link="https://o4yuftgbsv.feishu.cn/docx/WRiddHzDYon0GUx3PG3cuNnjnmc" /></li> -->
-            </ul>
-            <div id="creation-preview">
-                <img />
-                <p></p>
-                <a target="_blank"></a>
-            </div>
-        </div>
+    <div class="content record">
+        <a href="index.html">&lt;Back</a>
+        <h2>New Tech Upgrade Path</h2>
+        <summary>
+          All tech I used, and used all the time.
+        </summary>
+        <ul>
+            <li><label>某安全公司</label>
+                <ul>
+                    <li>Next.js, Monaco Editor, VSCode Extension, LLM</li>
+                    <li>组件库，Monorepo，CI/CD，K8S，Jenkins</li>
+                </ul>
+            </li>
+            <li><label>某数据要素公司</label>
+                <ul>
+                    <li>ECharts, X6, Vite, TailwindCSS, TypeScript</li>
+                    <li>老项目重构，项目国际化，项目架构搭建</li>
+                    <li>单独带项目，负责小团队</li>
+                </ul>
+            </li>
+            <li><label>某某快递</label>
+                <ul>
+                    <li>React, Webpack, Antd, React Native, Electron</li>
+                    <li>Go, Gin, Nginx, Redis, PostgreSQL, Docker</li>
+                    <li>敏捷开发，Jira，OKR</li>
+                </ul>
+            </li>
+            <li><label>某在线教育</label>
+                <ul>
+                    <li>jQuery, Bootstrap, Require.js, Gulp, Vue, Responsive Site</li>
+                </ul>
+            </li>
+        </ul>
     </div>
     
     <div id="beian" class="lang-zh">
@@ -327,51 +313,6 @@
         <a href="https://www.beian.gov.cn" target="_blank">皖公网安备34132202000116号</a>
     </div>
 </body>
-<script>
-    const zh = 'zh-CN', en = 'en-US';
-    const lang = navigator.language.toLowerCase();
-    const html = document.documentElement;
-
-    if (lang && lang.includes('zh')) {
-        html.setAttribute('lang', zh);
-    } else {
-        html.setAttribute('lang', en);
-    }
-
-    document.querySelector('.lang-switcher').addEventListener('click', function (e) {
-        if (html.getAttribute('lang') === zh) {
-            html.setAttribute('lang', en);
-        } else {
-            html.setAttribute('lang', zh);
-        }
-    });
-
-
-    function onInteractionCreation(e) {
-        if (e.target.nodeName === 'IMG') {
-            const alt = e.target.getAttribute('alt')
-            const title = e.target.getAttribute('title')
-            const link = e.target.getAttribute('data-link')
-            document.querySelector('#creation-preview p').innerHTML = title;
-            document.querySelector('#creation-preview img').setAttribute('src', './images/' + alt + '-QRCODE.jpg');
-            document.querySelector('#creation-preview').style.display = 'flex'
-            if (link) {
-                document.querySelector('#creation-preview a').innerHTML = '点击访问'
-                document.querySelector('#creation-preview a').setAttribute('href', link)
-            } else {
-                document.querySelector('#creation-preview a').innerHTML = ''
-            }
-        }
-    }
-
-    document.querySelector('.creation-list').addEventListener('mouseover', onInteractionCreation);
-    document.querySelector('.creation-list').addEventListener('click', onInteractionCreation);
-    document.querySelector('.creation-list li img').click()
-
-    function openProfile(path) {
-        window.open(path)
-    }
-</script>
 
 </html>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-B1VPSF3E9N"></script>
