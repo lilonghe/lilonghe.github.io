@@ -46,7 +46,7 @@
             overflow: auto;
             font-family: 'Kaiti SC', serif;
             color: var(--color);
-            
+
             background-color: var(--background-color);
             background-image: linear-gradient(to right, #9d9c9b2b 1px, transparent 1px), linear-gradient(to bottom, #9d9c9b2b 1px, transparent 1px);
             background-size: 50px 50px;
@@ -132,7 +132,7 @@
         html[lang="zh-CN"] .lang-en {
             display: none;
         }
-        
+
         html[lang="en-US"] .lang-zh {
             display: none;
         }
@@ -140,7 +140,7 @@
         html[lang="zh-CN"] .lang-switcher span[data-target="zh-CN"] {
             opacity: 1;
         }
-        
+
         html[lang="en-US"] .lang-switcher span[data-target="en-US"] {
             opacity: 1;
         }
@@ -169,7 +169,7 @@
         }
 
         .creation-list li {
-            height: 36px; 
+            height: 36px;
         }
 
         .creation-list img {
@@ -247,6 +247,12 @@
             }
         }
 
+        .record {
+            max-height: max(50vh, 400px);
+            overflow: auto;
+            position: relative;
+        }
+
         .record h2 {
             margin-bottom: 5px;
         }
@@ -262,58 +268,80 @@
             font-size: 16px;
             font-weight: bold;
         }
+        .record label small {
+            color: #939292;
+        }
         .record > ul > li {
-            margin-bottom: 8px;
+            margin-bottom: 16px;
         }
         .record ul ul {
             margin-left: 20px;
             font-size: 14px;
+        }
+
+        .record .extension {
+            border-top: 1px solid rgba(0,0,0,.1);
+            margin-top: 8px;
+            padding-top: 8px;
+
+            font-size: .8em;
+            opacity: .9;
         }
     </style>
 </head>
 
 <body>
     <div class="content record">
-        <a href="index.html">&lt;Back</a>
-        <h2>New Tech Upgrade Path</h2>
+        <div class="header">
+            <a href="index.html">&lt;Back</a>
+            <h2>New Tech Upgrade Route.</h2>
+        </div>
         <summary>
-          All tech I used, and used all the time.
+            “Good Good Study, Day Day Up.”
         </summary>
         <ul>
-            <li><label><small>2025-now</small> 某大模型公司</label>
+            <li><label><small>2025-Now</small> 某大模型公司</label>
                 <ul>
-                    <li>RAG</li>
-                    <li>Claude Code</li>
+                    <li>Cluade Code</li>
+                </ul>
+                <ul class="extension">
+                    <li>Helm Chart, LangGraph</li>
                 </ul>
             </li>
             <li><label><small>2023-2025</small> 某安全公司</label>
                 <ul>
-                    <li>Next.js, VSCode Extension, LLM</li>
-                    <li>组件库，Monorepo，CI/CD，K8S，Jenkins</li>
+                    <li>Next.js, VSCode Extension</li>
+                    <li>组件库，Monorepo，CI/CD，Jenkins</li>
+                </ul>
+                <ul class="extension">
+                    <li>OpenAI, Python, RAG, K8s, ChromaDB, Ollama</li>
                 </ul>
             </li>
             <li><label><small>2011-2022</small> 某数据安全公司</label>
                 <ul>
-                    <li>ECharts, X6, Vite, TailwindCSS, TypeScript</li>
+                    <li>ECharts, X6, Vite, TailwindCSS, TypeScript, Vue(3)</li>
                     <li>老项目重构，项目国际化，项目架构搭建</li>
-                    <li>单独带项目，负责小团队，GitLab 工作流</li>
+                    <li>独立带项目，带小团队，Git 工作流</li>
                 </ul>
             </li>
             <li><label><small>2017-2020</small> 某快递公司</label>
                 <ul>
-                    <li>React, Webpack, Antd, React Native, Electron</li>
-                    <li>Go, Gin, Nginx, Redis, PostgreSQL, Docker</li>
+                    <li>Webpack, Antd, React Native, Electron</li>
+                    <li>Go, Gin, Nginx, Redis, PostgreSQL, Docker, Elasticsearch</li>
                     <li>敏捷开发，Jira，OKR</li>
                 </ul>
             </li>
             <li><label><small>2016-2017</small> 某在线教育团队</label>
                 <ul>
-                    <li>jQuery, Bootstrap, Require.js, Gulp, Vue, Responsive Site</li>
+                    <li>jQuery, Bootstrap, Require.js, Gulp, Vue(2), Responsive Site</li>
+                </ul>
+                <ul class="extension">
+                    <li>React</li>
                 </ul>
             </li>
         </ul>
     </div>
-    
+
     <div id="beian" class="lang-zh">
         <a href="https://beian.miit.gov.cn" target="_blank">皖ICP备16001167号-1</a>
         <a href="https://www.beian.gov.cn" target="_blank">皖公网安备34132202000116号</a>
