@@ -17,15 +17,6 @@
   /* Background pattern */
   --pattern-color: #9d9c9b2b;
   --pattern-size: 50px;
-
-  /* Animation colors */
-  --cr-main-1: #2ac9de;
-  --cr-main-2: #f087f4;
-  --cr-1: color-mix(in srgb, var(--cr-main-1), var(--cr-main-2) 20%);
-  --cr-2: color-mix(in srgb, var(--cr-main-1), var(--cr-main-2) 35%);
-  --cr-3: color-mix(in srgb, var(--cr-main-1), var(--cr-main-2) 50%);
-  --cr-4: color-mix(in srgb, var(--cr-main-1), var(--cr-main-2) 65%);
-  --cr-5: color-mix(in srgb, var(--cr-main-1), var(--cr-main-2) 80%);
 }
 
 /* Dark mode */
@@ -46,14 +37,17 @@ body {
   font: 300 16px/1.6 "Kaiti SC", serif;
   color: var(--text-color);
   background:
-    var(--bg-color)
-    linear-gradient(to right, var(--pattern-color) 1px, transparent 1px),
-    linear-gradient(to bottom, var(--pattern-color) 1px, transparent 1px);
-  background-size: var(--pattern-size) var(--pattern-size);
+    radial-gradient(circle at 20% 50%, rgba(130, 130, 140, 0.2) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(140, 130, 140, 0.2) 0%, transparent 50%),
+    radial-gradient(circle at 40% 80%, rgba(130, 140, 145, 0.2) 0%, transparent 50%),
+    conic-gradient(from 180deg at 50% 50%, rgba(255, 255, 255, 0) 0deg, rgba(248, 248, 250, 0.1) 90deg, rgba(255, 255, 255, 0) 180deg, rgba(250, 248, 250, 0.1) 270deg, rgba(255, 255, 255, 0) 360deg),
+    linear-gradient(135deg, #f8f9fa 0%, #f2f3f5 25%, #f4f3f6 50%, #f1f2f5 75%, #f8f9fa 100%);
+  background-size: 100% 100%, 100% 100%, 100% 100%, 800px 800px, 100% 100%;
+  background-position: 0 0, 0 0, 0 0, 0 0, 0 0;
 }
 
 body {
-    padding-top: 26vh;
+  padding-top: 26vh;
 }
 
 /* Typography */
@@ -180,14 +174,18 @@ summary {
   font-size: 20px;
 }
 
-.record > ul {
+.record>ul {
   list-style: none;
   margin-left: 10px;
 }
 
-.record > ul > li {
+.record>ul>li {
   margin-bottom: 16px;
   padding-bottom: 8px;
+}
+
+.record>ul>li:last-child {
+  margin-bottom: 0;
 }
 
 .record label {
@@ -292,14 +290,25 @@ summary {
   left: 150px;
 }
 
-/* Background animation blobs */
+/* Card animation blobs */
 .blobs {
   position: fixed;
-  inset: 0;
   z-index: -1;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   pointer-events: none;
   filter: blur(140px);
-  opacity: 0.2;
+  opacity: .2;
+
+  --cr-main-1: #2ac9de;
+  --cr-main-2: #f087f4;
+  --cr-1: color-mix(in srgb, var(--cr-main-1), var(--cr-main-2) 20%);
+  --cr-2: color-mix(in srgb, var(--cr-main-1), var(--cr-main-2) 35%);
+  --cr-3: color-mix(in srgb, var(--cr-main-1), var(--cr-main-2) 50%);
+  --cr-4: color-mix(in srgb, var(--cr-main-1), var(--cr-main-2) 65%);
+  --cr-5: color-mix(in srgb, var(--cr-main-1), var(--cr-main-2) 80%);
 }
 
 .blob {
@@ -307,16 +316,38 @@ summary {
   aspect-ratio: 1;
   border-radius: 50%;
   position: absolute;
+  top: 0;
+  left: 0;
   transform-origin: center;
 }
 
-.blob:nth-of-type(1) { background: var(--cr-main-1); }
-.blob:nth-of-type(2) { background: var(--cr-main-2); }
-.blob:nth-of-type(3) { background: var(--cr-1); }
-.blob:nth-of-type(4) { background: whitesmoke; }
-.blob:nth-of-type(5) { background: var(--cr-3); }
-.blob:nth-of-type(6) { background: var(--cr-4); }
-.blob:nth-of-type(7) { background: var(--cr-2); }
+.blob:nth-of-type(1) {
+  background: var(--cr-main-1);
+}
+
+.blob:nth-of-type(2) {
+  background: var(--cr-main-2);
+}
+
+.blob:nth-of-type(3) {
+  background: var(--cr-1);
+}
+
+.blob:nth-of-type(4) {
+  background: whitesmoke;
+}
+
+.blob:nth-of-type(5) {
+  background: var(--cr-3);
+}
+
+.blob:nth-of-type(6) {
+  background: var(--cr-4);
+}
+
+.blob:nth-of-type(7) {
+  background: var(--cr-2);
+}
 
 /* Scrollbar styling for webkit browsers */
 .record::-webkit-scrollbar {
@@ -339,6 +370,7 @@ summary {
 
 /* Responsive design */
 @media screen and (max-width: 768px) {
+
   html,
   body {
     min-height: auto;
@@ -371,10 +403,10 @@ summary {
   }
 
   .content.record {
-      max-height: 100%;
-      position: fixed;
-      top: 0;
-      transform: translateY(0);
+    max-height: 100%;
+    position: fixed;
+    top: 0;
+    transform: translateY(0);
   }
 
   .creation {
@@ -398,8 +430,49 @@ summary {
 
 /* Dark mode adjustments */
 @media (prefers-color-scheme: dark) {
+
+  html,
+  body {
+    background:
+      radial-gradient(circle at 20% 50%, rgba(130, 130, 140, 0.04) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, rgba(140, 130, 140, 0.04) 0%, transparent 50%),
+      radial-gradient(circle at 40% 80%, rgba(130, 140, 145, 0.04) 0%, transparent 50%),
+      conic-gradient(from 180deg at 50% 50%, rgba(17, 17, 17, 0) 0deg, rgba(25, 25, 30, 0.2) 90deg, rgba(17, 17, 17, 0) 180deg, rgba(30, 25, 30, 0.2) 270deg, rgba(17, 17, 17, 0) 360deg),
+      linear-gradient(135deg, #0f0f0f 0%, #1a1a1e 25%, #1e1a1e 50%, #1a1a1e 75%, #0f0f0f 100%);
+    background-size: 100% 100%, 100% 100%, 100% 100%, 800px 800px, 100% 100%;
+    background-position: 0 0, 0 0, 0 0, 0 0, 0 0;
+  }
+
+  .floating-element {
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.05) 70%, transparent 100%);
+  }
+
+  .blob:nth-of-type(1) {
+    background: rgba(80, 80, 90, 0.6);
+  }
+
+  .blob:nth-of-type(2) {
+    background: rgba(90, 80, 90, 0.6);
+  }
+
+  .blob:nth-of-type(3) {
+    background: rgba(80, 90, 95, 0.6);
+  }
+
   .blob:nth-of-type(4) {
-    background: #333;
+    background: rgba(85, 85, 85, 0.6);
+  }
+
+  .blob:nth-of-type(5) {
+    background: rgba(75, 85, 90, 0.6);
+  }
+
+  .blob:nth-of-type(6) {
+    background: rgba(90, 75, 85, 0.6);
+  }
+
+  .blob:nth-of-type(7) {
+    background: rgba(80, 80, 80, 0.6);
   }
 
   .wrapper {
@@ -416,5 +489,77 @@ summary {
 
   .record .extension {
     border-top-color: rgba(255, 255, 255, 0.1);
+  }
+}
+
+/* solar-term */
+@font-face {
+  font-family: 'solar-term';
+  src: url('solar-term/solar-term.woff');
+}
+.solar-term {
+  position: fixed;
+  top: 50%;
+  left: 20px;
+  transform: translateY(-50%);
+  width: 60px;
+  height: 100vh;
+  overflow: hidden;
+  opacity: 0.15;
+  pointer-events: none;
+
+  font-family: 'solar-term';
+}
+
+.solar-term-content {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  animation: scroll-up 260s linear infinite;
+
+  font-size: 14px;
+  letter-spacing: 6px;
+  user-select: none;
+}
+
+.solar-term-content span {
+  writing-mode: vertical-lr;
+}
+
+@keyframes scroll-up {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-100%);
+  }
+}
+
+@keyframes scroll-left {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .solar-term {
+    top: inherit;
+    bottom: 10px;
+    left: 0;
+    width: 100vw;
+    height: 20px;
+  }
+
+  .solar-term-content {
+    flex-direction: row;
+    animation-name: scroll-left;
+    white-space: nowrap;
+  }
+
+  .solar-term-content span {
+    writing-mode: inherit;
   }
 }

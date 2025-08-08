@@ -1,23 +1,25 @@
-const zh = "zh-CN",
-    en = "en-US";
-const lang = navigator.language.toLowerCase();
-const html = document.documentElement;
+function regissterLangSwitch() {
+  const zh = "zh-CN",
+      en = "en-US";
+  const lang = navigator.language.toLowerCase();
+  const html = document.documentElement;
 
-if (lang && lang.includes("zh")) {
-  html.setAttribute("lang", zh);
-} else {
-  html.setAttribute("lang", en);
+  if (lang && lang.includes("zh")) {
+    html.setAttribute("lang", zh);
+  } else {
+    html.setAttribute("lang", en);
+  }
+
+  document
+    .querySelector(".lang-switcher")
+    ?.addEventListener("click", function (e) {
+      if (html.getAttribute("lang") === zh) {
+        html.setAttribute("lang", en);
+      } else {
+        html.setAttribute("lang", zh);
+      }
+    });
 }
-
-document
-  .querySelector(".lang-switcher")
-  .addEventListener("click", function (e) {
-    if (html.getAttribute("lang") === zh) {
-      html.setAttribute("lang", en);
-    } else {
-      html.setAttribute("lang", zh);
-    }
-  });
 
 function openProfile(path) {
   window.open(path);
@@ -89,17 +91,38 @@ function initAnimation() {
 
   initBlobs();
 }
-initAnimation();
 
 window.addEventListener('load', () => {
-  const div = document.createElement('div')
-  div.id = 'beian'
-  div.className = 'lang-zh'
-  div.innerHTML = `<a href="https://beian.miit.gov.cn" target="_blank"
-    >皖ICP备16001167号-1</a
-  >
-  <a href="https://www.beian.gov.cn" target="_blank"
-    >皖公网安备34132202000116号</a
-  >`
-  document.body.append(div)
+  initAnimation();
+
+  regissterLangSwitch();
+
+  {
+    const div = document.createElement('div')
+    div.className = 'solar-term'
+    const solar = ["小寒","大寒","立春","雨水","惊蛰","春分","清明","谷雨","立夏","小满","芒种","夏至","小暑","大暑","立秋","处暑","白露","秋分","寒露","霜降","立冬","小雪","大雪","冬至"];
+    
+    const contentDiv = document.createElement('div')
+    contentDiv.className = 'solar-term-content'
+    
+    const eleList = solar.map(item => `<span>${item}</span>`).join('');
+    contentDiv.innerHTML = eleList + eleList;
+    
+    div.appendChild(contentDiv)
+    document.body.append(div)
+  }
+
+  {
+    const div = document.createElement('div')
+    div.id = 'beian'
+    div.className = 'lang-zh'
+    div.innerHTML = `<a href="https://beian.miit.gov.cn" target="_blank"
+      >皖ICP备16001167号-1</a
+    >
+    <a href="https://www.beian.gov.cn" target="_blank"
+      >皖公网安备34132202000116号</a
+    >`
+    document.body.append(div)
+  }
+  
 })
