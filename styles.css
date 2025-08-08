@@ -1,0 +1,420 @@
+/* CSS Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* CSS Variables */
+:root {
+  --bg-color: #fff;
+  --text-color: #333;
+  --tip-color: #939292;
+  --border-color: #3a3a3aa9;
+  --beian-color: #aaa;
+  --shadow-color: #cccccc7a;
+
+  /* Background pattern */
+  --pattern-color: #9d9c9b2b;
+  --pattern-size: 50px;
+
+  /* Animation colors */
+  --cr-main-1: #2ac9de;
+  --cr-main-2: #f087f4;
+  --cr-1: color-mix(in srgb, var(--cr-main-1), var(--cr-main-2) 20%);
+  --cr-2: color-mix(in srgb, var(--cr-main-1), var(--cr-main-2) 35%);
+  --cr-3: color-mix(in srgb, var(--cr-main-1), var(--cr-main-2) 50%);
+  --cr-4: color-mix(in srgb, var(--cr-main-1), var(--cr-main-2) 65%);
+  --cr-5: color-mix(in srgb, var(--cr-main-1), var(--cr-main-2) 80%);
+}
+
+/* Dark mode */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg-color: #111;
+    --text-color: #fff;
+    --tip-color: #fff;
+    --beian-color: #666;
+  }
+}
+
+/* Base styles */
+html,
+body {
+  width: 100%;
+  min-height: max(100vh, 700px);
+  font: 300 16px/1.6 "Kaiti SC", serif;
+  color: var(--text-color);
+  background:
+    var(--bg-color)
+    linear-gradient(to right, var(--pattern-color) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--pattern-color) 1px, transparent 1px);
+  background-size: var(--pattern-size) var(--pattern-size);
+}
+
+body {
+    padding-top: 26vh;
+}
+
+/* Typography */
+.title {
+  font-size: 26px;
+}
+
+.email {
+  color: inherit;
+}
+
+/* Layout components */
+.wrapper {
+  width: min(500px, calc(100vw - 30px));
+  margin: 0 auto;
+  letter-spacing: 1px;
+  background: rgba(255, 255, 255, 0.6);
+  border-radius: 12px;
+  backdrop-filter: blur(5px);
+  box-shadow: 0 0 20px 3px var(--shadow-color);
+  position: relative;
+  overflow: hidden;
+}
+
+.content {
+  padding: 20px;
+}
+
+/* Profile page specific content styling */
+.content.record {
+  position: relative;
+}
+
+.intro {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 10px;
+  letter-spacing: normal;
+}
+
+.intro .contact-info {
+  margin-top: 10px;
+}
+
+.platforms {
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 0.5px solid var(--border-color);
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.platforms a {
+  color: inherit;
+}
+
+.platforms a:hover {
+  opacity: 0.7;
+}
+
+/* Language switcher */
+.lang-switcher {
+  position: absolute;
+  top: 0;
+  right: 10px;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  color: var(--tip-color);
+  cursor: pointer;
+  user-select: none;
+}
+
+.lang-switcher span {
+  opacity: 0.5;
+  transition: opacity 0.2s ease;
+}
+
+html[lang="zh-CN"] .lang-en,
+html[lang="en-US"] .lang-zh {
+  display: none;
+}
+
+html[lang="zh-CN"] .lang-switcher span[data-target="zh-CN"],
+html[lang="en-US"] .lang-switcher span[data-target="en-US"] {
+  opacity: 1;
+}
+
+/* Header section */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.header a {
+  color: var(--text-color);
+  font-size: 14px;
+}
+
+.header a:hover {
+  opacity: 0.7;
+}
+
+/* Profile content styling */
+summary {
+  font-style: italic;
+  opacity: 0.9;
+  margin-bottom: 10px;
+  font-size: 12px;
+}
+
+/* Record section */
+.record {
+  max-height: max(50vh, 400px);
+  overflow-y: auto;
+  position: relative;
+}
+
+.record h2 {
+  font-size: 20px;
+}
+
+.record > ul {
+  list-style: none;
+  margin-left: 10px;
+}
+
+.record > ul > li {
+  margin-bottom: 16px;
+  padding-bottom: 8px;
+}
+
+.record label {
+  font-size: 16px;
+  font-weight: bold;
+  display: block;
+  margin-bottom: 5px;
+}
+
+.record label small {
+  color: var(--tip-color);
+  font-size: 12px;
+  font-weight: normal;
+}
+
+.record ul ul {
+  margin-left: 20px;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.record ul ul li {
+  margin-bottom: 3px;
+}
+
+.record .extension {
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  margin-top: 8px;
+  padding-top: 8px;
+  font-size: 0.8em;
+  opacity: 0.9;
+}
+
+/* Footer */
+#beian {
+  position: fixed;
+  bottom: 5px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 12px;
+  z-index: 10;
+}
+
+#beian a {
+  color: var(--beian-color);
+  text-decoration: none;
+  margin: 0 5px;
+}
+
+/* Creation section */
+.creation {
+  position: absolute;
+  bottom: -270px;
+  left: 0;
+  width: 100%;
+  padding: 10px 20px;
+  background: rgba(255, 255, 255, 0.6);
+}
+
+.creation:has(#creation-preview p:empty) {
+  bottom: -80px;
+}
+
+.creation-list {
+  list-style: none;
+  display: flex;
+  gap: 10px;
+}
+
+.creation-list li {
+  height: 36px;
+}
+
+.creation-list img {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+}
+
+#creation-preview {
+  display: none;
+  justify-content: center;
+  align-items: center;
+  padding: 30px;
+  gap: 20px;
+}
+
+#creation-preview p {
+  width: 1em;
+  font-weight: bold;
+}
+
+#creation-preview img {
+  width: 130px;
+  height: 130px;
+  border-radius: 6px;
+}
+
+#creation-preview a {
+  position: absolute;
+  bottom: 10px;
+  left: 150px;
+}
+
+/* Background animation blobs */
+.blobs {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  filter: blur(140px);
+  opacity: 0.2;
+}
+
+.blob {
+  width: max(240px, 28vw);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  position: absolute;
+  transform-origin: center;
+}
+
+.blob:nth-of-type(1) { background: var(--cr-main-1); }
+.blob:nth-of-type(2) { background: var(--cr-main-2); }
+.blob:nth-of-type(3) { background: var(--cr-1); }
+.blob:nth-of-type(4) { background: whitesmoke; }
+.blob:nth-of-type(5) { background: var(--cr-3); }
+.blob:nth-of-type(6) { background: var(--cr-4); }
+.blob:nth-of-type(7) { background: var(--cr-2); }
+
+/* Scrollbar styling for webkit browsers */
+.record::-webkit-scrollbar {
+  width: 6px;
+}
+
+.record::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.record::-webkit-scrollbar-thumb {
+  background: var(--tip-color);
+  border-radius: 3px;
+  opacity: 0.5;
+}
+
+.record::-webkit-scrollbar-thumb:hover {
+  opacity: 0.8;
+}
+
+/* Responsive design */
+@media screen and (max-width: 768px) {
+  html,
+  body {
+    min-height: auto;
+  }
+
+  body {
+    text-shadow: 0 0 0.1px currentColor;
+    overflow: hidden;
+    padding: 0;
+    height: 100vh;
+  }
+
+  body small {
+    font-size: 16px;
+  }
+
+  .wrapper {
+    position: relative;
+    box-shadow: none;
+    height: 100%;
+    width: 100%;
+    padding: 0;
+  }
+
+  .content {
+    position: fixed;
+    top: 30%;
+    transform: translateY(-50%);
+    overflow: scroll;
+  }
+
+  .content.record {
+      max-height: 100%;
+      position: fixed;
+      top: 0;
+      transform: translateY(0);
+  }
+
+  .creation {
+    position: static;
+    background: transparent;
+    box-shadow: none;
+    margin-top: 20px;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  #beian {
+    opacity: 0;
+    white-space: nowrap;
+  }
+
+  .lang-switcher {
+    font-size: 22px;
+  }
+}
+
+/* Dark mode adjustments */
+@media (prefers-color-scheme: dark) {
+  .blob:nth-of-type(4) {
+    background: #333;
+  }
+
+  .wrapper {
+    background: rgba(17, 17, 17, 0.6);
+  }
+
+  .content.record {
+    background: rgba(17, 17, 17, 0.6);
+  }
+
+  .creation {
+    background: rgba(17, 17, 17, 0.6);
+  }
+
+  .record .extension {
+    border-top-color: rgba(255, 255, 255, 0.1);
+  }
+}

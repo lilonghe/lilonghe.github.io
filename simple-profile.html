@@ -13,338 +13,73 @@
     <meta name="keyword" content="lilonghe,blog" />
     <meta name="description" content="lilonghe's Personal Website" />
     <link rel="icon" href="https://cdn.lilonghe.net/static/upload/favicon-white.svg">
+    <link rel="stylesheet" href="styles.css" />
     <title>Simple Profile - LILONGHE</title>
-    <style type="text/css">
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            --background-color: #fff;
-            --color: #333;
-
-            --tip-color: #939292;
-        }
-
-        /* 黑暗模式 */
-        @media (prefers-color-scheme: dark) {
-            :root {
-                --background-color: #111;
-                --color: #fff;
-                --tip-color: #fff;
-            }
-        }
-
-        html,
-        body {
-            width: 100%;
-            min-height: max(100vh, 700px);
-            font-weight: 300;
-            line-height: 1.6;
-            overflow: auto;
-            font-family: 'Kaiti SC', serif;
-            color: var(--color);
-
-            background-color: var(--background-color);
-            background-image: linear-gradient(to right, #9d9c9b2b 1px, transparent 1px), linear-gradient(to bottom, #9d9c9b2b 1px, transparent 1px);
-            background-size: 50px 50px;
-
-        }
-
-        .title {
-            font-size: 26px;
-        }
-
-        .platforms {
-            margin-top: 10px;
-            padding-top: 10px;
-            border-top: .5px solid #3a3a3aa9;
-            display: flex;
-            gap: 10px;
-            flex-wrap: wrap;
-        }
-
-        .platforms a {
-            color: inherit;
-        }
-
-        #beian {
-            position: fixed;
-            bottom: 5px;
-            left: 50%;
-            transform: translateX(-50%);
-            font-size: 12px;
-        }
-
-        #beian a {
-            color: #AAA;
-            text-decoration: none;
-        }
-
-
-
-        .content {
-            width: 400px;
-            height: max-content;
-            margin: auto;
-            margin-top: 23vh;
-            letter-spacing: 1px;
-            padding: 20px;
-
-            background-color: rgba(var(--background-color), 0.6);
-            border-radius: 12px;
-
-            backdrop-filter: blur(5px);
-            box-shadow: 0 0 20px 3px #cccccc7a;
-            backdrop-filter: blur(5px);
-        }
-
-        .email {
-            color: inherit;
-        }
-
-        .intro {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            margin-top: 10px;
-            letter-spacing: normal;
-        }
-
-        .lang-switcher {
-            position: absolute;
-            top: 0;
-            right: 10px;
-            padding: 10px;
-            display: flex;
-            align-items: center;
-            color: var(--tip-color);
-            cursor: pointer;
-            user-select: none;
-        }
-
-        .lang-switcher span {
-            opacity: 0.5;
-        }
-
-        html[lang="zh-CN"] .lang-en {
-            display: none;
-        }
-
-        html[lang="en-US"] .lang-zh {
-            display: none;
-        }
-
-        html[lang="zh-CN"] .lang-switcher span[data-target="zh-CN"] {
-            opacity: 1;
-        }
-
-        html[lang="en-US"] .lang-switcher span[data-target="en-US"] {
-            opacity: 1;
-        }
-
-        .creation {
-            all: inherit;
-            position: absolute;
-            margin-top: 0;
-            bottom: -270px;
-            left: 0;
-            height: auto;
-            padding: 10px 20px;
-            background-color: rgba(var(--background-color), 0.6);
-            transform: scale(1);
-        }
-
-        .creation:has(#creation-preview p:empty) {
-            bottom: -80px;
-        }
-
-        .creation-list {
-            height: auto;
-            list-style: none;
-            display: flex;
-            gap: 10px;
-        }
-
-        .creation-list li {
-            height: 36px;
-        }
-
-        .creation-list img {
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-        }
-
-        #creation-preview {
-            display: none;
-            justify-content: center;
-            align-items: center;
-            padding: 30px;
-            gap: 20px;
-        }
-
-        #creation-preview p {
-            width: 1em;
-            font-weight: bold;
-        }
-
-        #creation-preview img {
-            width: 130px;
-            height: 130px;
-            border-radius: 6px;
-        }
-
-        #creation-preview a {
-            position: absolute;
-            bottom: 10px;
-            left: 150px;
-        }
-
-        @media screen and (max-width:768px) {
-            html, body {
-                min-height: auto;
-            }
-            body {
-                text-shadow: 0 0 .1px currentColor;
-                overflow: hidden;
-
-                small {
-                    font-size: 16px;
-                }
-            }
-
-            .content {
-                width: calc(100vw - 30px);
-                position: fixed;
-                top: 50%;
-                left: 15px;
-                transform: translateY(-50%);
-                margin-top: 0;
-            }
-
-            .creation {
-                position: static;
-                background: transparent;
-                width: 100%;
-                box-sizing: border-box;
-                box-shadow: none;
-                margin-top: 20px;
-                padding-left: 0;
-                padding-right: 0;
-            }
-
-            #beian {
-                opacity: 0;
-                display: block;
-                white-space: nowrap;
-            }
-
-            .lang-switcher {
-                font-size: 22px;
-            }
-        }
-
-        .record {
-            max-height: max(50vh, 400px);
-            overflow: auto;
-            position: relative;
-        }
-
-        .record h2 {
-            margin-bottom: 5px;
-        }
-        .record summary {
-            font-size: 12px;
-            margin-bottom: 10px;
-        }
-        .record > ul {
-            list-style: none;
-            margin-left: 10px;
-        }
-        .record label {
-            font-size: 16px;
-            font-weight: bold;
-        }
-        .record label small {
-            color: #939292;
-        }
-        .record > ul > li {
-            margin-bottom: 16px;
-        }
-        .record ul ul {
-            margin-left: 20px;
-            font-size: 14px;
-        }
-
-        .record .extension {
-            border-top: 1px solid rgba(0,0,0,.1);
-            margin-top: 8px;
-            padding-top: 8px;
-
-            font-size: .8em;
-            opacity: .9;
-        }
-    </style>
 </head>
 
 <body>
-    <div class="content record">
-        <div class="header">
-            <a href="index.html">&lt;Back</a>
-            <h2>New Tech Upgrade Route.</h2>
+    <div class="wrapper">
+        <div class="content-bg">
+          <div class="blobs">
+            <div class="blob"></div>
+            <div class="blob"></div>
+            <div class="blob"></div>
+            <div class="blob"></div>
+            <div class="blob"></div>
+            <div class="blob"></div>
+            <div class="blob"></div>
+          </div>
         </div>
-        <summary>
-            “Good Good Study, Day Day Up.”
-        </summary>
-        <ul>
-            <li><label><small>2025-Now</small> 某大模型公司</label>
-                <ul>
-                    <li>Cluade Code</li>
-                </ul>
-                <ul class="extension">
-                    <li>Helm Chart, LangGraph</li>
-                </ul>
-            </li>
-            <li><label><small>2023-2025</small> 某安全公司</label>
-                <ul>
-                    <li>Next.js, VSCode Extension</li>
-                    <li>组件库，Monorepo，CI/CD，Jenkins</li>
-                </ul>
-                <ul class="extension">
-                    <li>OpenAI, Python, RAG, K8s, ChromaDB, Ollama</li>
-                </ul>
-            </li>
-            <li><label><small>2011-2022</small> 某数据安全公司</label>
-                <ul>
-                    <li>ECharts, X6, Vite, TailwindCSS, TypeScript, Vue(3)</li>
-                    <li>老项目重构，项目国际化，项目架构搭建</li>
-                    <li>独立带项目，带小团队，Git 工作流</li>
-                </ul>
-            </li>
-            <li><label><small>2017-2020</small> 某快递公司</label>
-                <ul>
-                    <li>Webpack, Antd, React Native, Electron</li>
-                    <li>Go, Gin, Nginx, Redis, PostgreSQL, Docker, Elasticsearch</li>
-                    <li>敏捷开发，Jira，OKR</li>
-                </ul>
-            </li>
-            <li><label><small>2016-2017</small> 某在线教育团队</label>
-                <ul>
-                    <li>jQuery, Bootstrap, Require.js, Gulp, Vue(2), Responsive Site</li>
-                </ul>
-                <ul class="extension">
-                    <li>React</li>
-                </ul>
-            </li>
-        </ul>
-    </div>
-
-    <div id="beian" class="lang-zh">
-        <a href="https://beian.miit.gov.cn" target="_blank">皖ICP备16001167号-1</a>
-        <a href="https://www.beian.gov.cn" target="_blank">皖公网安备34132202000116号</a>
+        <div class="content record">
+            <div class="header">
+                <a href="index.html">&lt;Back</a>
+                <h2>New Tech Upgrade Route.</h2>
+            </div>
+            <summary>
+                “Good Good Study, Day Day Up.”
+            </summary>
+            <ul>
+                <li><label><small>2025-Now</small> 某大模型公司</label>
+                    <ul>
+                        <li>Cluade Code</li>
+                    </ul>
+                    <ul class="extension">
+                        <li>Helm Chart, LangGraph</li>
+                    </ul>
+                </li>
+                <li><label><small>2023-2025</small> 某安全公司</label>
+                    <ul>
+                        <li>Next.js, VSCode Extension</li>
+                        <li>组件库，Monorepo，CI/CD，Jenkins</li>
+                    </ul>
+                    <ul class="extension">
+                        <li>OpenAI, Python, RAG, K8s, ChromaDB, Ollama</li>
+                    </ul>
+                </li>
+                <li><label><small>2011-2022</small> 某数据安全公司</label>
+                    <ul>
+                        <li>ECharts, X6, Vite, TailwindCSS, TypeScript, Vue(3)</li>
+                        <li>老项目重构，项目国际化，项目架构搭建</li>
+                        <li>独立带项目，带小团队，Git 工作流</li>
+                    </ul>
+                </li>
+                <li><label><small>2017-2020</small> 某快递公司</label>
+                    <ul>
+                        <li>Webpack, Antd, React Native, Electron</li>
+                        <li>Go, Gin, Nginx, Redis, PostgreSQL, Docker, Elasticsearch</li>
+                        <li>敏捷开发，Jira，OKR</li>
+                    </ul>
+                </li>
+                <li><label><small>2016-2017</small> 某在线教育团队</label>
+                    <ul>
+                        <li>jQuery, Bootstrap, Require.js, Gulp, Vue(2), Responsive Site</li>
+                    </ul>
+                    <ul class="extension">
+                        <li>React</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
     </div>
 </body>
 
