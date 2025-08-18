@@ -1,7 +1,7 @@
-function regissterLangSwitch() {
+function registerLangSwitch() {
   const zh = "zh-CN",
       en = "en-US";
-  const lang = navigator.language.toLowerCase();
+  const lang = localStorage.getItem('lang') || navigator.language.toLowerCase();
   const html = document.documentElement;
 
   if (lang && lang.includes("zh")) {
@@ -18,6 +18,7 @@ function regissterLangSwitch() {
       } else {
         html.setAttribute("lang", zh);
       }
+      localStorage.setItem('lang', html.getAttribute("lang"))
     });
 }
 
@@ -95,19 +96,19 @@ function initAnimation() {
 window.addEventListener('load', () => {
   initAnimation();
 
-  regissterLangSwitch();
+  registerLangSwitch();
 
   {
     const div = document.createElement('div')
     div.className = 'solar-term'
     const solar = ["小寒","大寒","立春","雨水","惊蛰","春分","清明","谷雨","立夏","小满","芒种","夏至","小暑","大暑","立秋","处暑","白露","秋分","寒露","霜降","立冬","小雪","大雪","冬至"];
-    
+
     const contentDiv = document.createElement('div')
     contentDiv.className = 'solar-term-content'
-    
+
     const eleList = solar.map(item => `<span>${item}</span>`).join('');
     contentDiv.innerHTML = eleList + eleList;
-    
+
     div.appendChild(contentDiv)
     document.body.append(div)
   }
@@ -124,5 +125,4 @@ window.addEventListener('load', () => {
     >`
     document.body.append(div)
   }
-  
 })
