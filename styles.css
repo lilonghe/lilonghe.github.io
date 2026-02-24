@@ -446,7 +446,7 @@ summary {
   body {
     text-shadow: 0 0 0.1px currentColor;
     overflow: auto;
-    padding: 14px 0 90px;
+    padding: 14px 0 10px;
     height: auto;
   }
 
@@ -461,6 +461,9 @@ summary {
     max-height: none;
     width: calc(100vw - 14px);
     padding: 0;
+
+    box-shadow: none;
+    background-color: transparent;
   }
 
   .content {
@@ -468,7 +471,7 @@ summary {
     top: auto;
     transform: none;
     overflow: visible;
-    padding: 18px 14px 20px;
+    /* padding: 18px 14px 20px; */
   }
 
   .tab-layout {
