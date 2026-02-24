@@ -20,14 +20,14 @@
 }
 
 /* Dark mode */
-@media (prefers-color-scheme: dark) {
+/* @media (prefers-color-scheme: dark) {
   :root {
     --bg-color: #111;
     --text-color: #fff;
     --tip-color: #fff;
     --beian-color: #666;
   }
-}
+} */
 
 /* Base styles */
 html,
@@ -35,16 +35,17 @@ body {
   width: 100%;
   min-height: max(100vh, 500px);
   height: 100%;
-  font: 300 16px/1.6 "Kaiti SC", serif;
+  font: 300 16px/1.6 "Space Grotesk", "Space Grotesk Fallback", "Kaiti SC", serif;
   color: var(--text-color);
-  background:
+  /* background:
     radial-gradient(circle at 20% 50%, rgba(130, 130, 140, 0.2) 0%, transparent 50%),
     radial-gradient(circle at 80% 20%, rgba(140, 130, 140, 0.2) 0%, transparent 50%),
     radial-gradient(circle at 40% 80%, rgba(130, 140, 145, 0.2) 0%, transparent 50%),
     conic-gradient(from 180deg at 50% 50%, rgba(255, 255, 255, 0) 0deg, rgba(248, 248, 250, 0.1) 90deg, rgba(255, 255, 255, 0) 180deg, rgba(250, 248, 250, 0.1) 270deg, rgba(255, 255, 255, 0) 360deg),
     linear-gradient(135deg, #f8f9fa 0%, #f2f3f5 25%, #f4f3f6 50%, #f1f2f5 75%, #f8f9fa 100%);
   background-size: 100% 100%, 100% 100%, 100% 100%, 800px 800px, 100% 100%;
-  background-position: 0 0, 0 0, 0 0, 0 0, 0 0;
+  background-position: 0 0, 0 0, 0 0, 0 0, 0 0; */
+  background: radial-gradient(1200px circle at 15% 10%, #ffe5c7 0%, transparent 45%), radial-gradient(900px circle at 85% 15%, #d6f1e1 0%, transparent 50%), radial-gradient(800px circle at 20% 85%, #f5d7ff 0%, transparent 55%), #f6f1ea;
 }
 
 body {
@@ -432,7 +433,7 @@ summary {
 }
 
 /* Dark mode adjustments */
-@media (prefers-color-scheme: dark) {
+/* @media (prefers-color-scheme: dark) {
 
   html,
   body {
@@ -479,7 +480,7 @@ summary {
   }
 
   .wrapper {
-    background: rgba(17, 17, 17, 0.6);
+    background: rgba(255, 255, 255, 0.8);
   }
 
   .content.record {
@@ -493,7 +494,7 @@ summary {
   .record .extension {
     border-top-color: rgba(255, 255, 255, 0.1);
   }
-}
+} */
 
 /* solar-term */
 @font-face {
