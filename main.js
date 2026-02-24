@@ -1,32 +1,8 @@
-function registerLangSwitch() {
-  const zh = "zh-CN",
-      en = "en-US";
-  const lang = localStorage.getItem('lang') || navigator.language.toLowerCase();
-  const html = document.documentElement;
-
-  if (lang && lang.includes("zh")) {
-    html.setAttribute("lang", zh);
-  } else {
-    html.setAttribute("lang", en);
+function initAnimation() {
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    return;
   }
 
-  document
-    .querySelector(".lang-switcher")
-    ?.addEventListener("click", function (e) {
-      if (html.getAttribute("lang") === zh) {
-        html.setAttribute("lang", en);
-      } else {
-        html.setAttribute("lang", zh);
-      }
-      localStorage.setItem('lang', html.getAttribute("lang"))
-    });
-}
-
-function openProfile(path) {
-  window.open(path);
-}
-
-function initAnimation() {
   const MIN_SPEED = 0.5;
   const MAX_SPEED = 2;
 
@@ -81,6 +57,11 @@ function initAnimation() {
 
   function initBlobs() {
     const blobEls = document.querySelectorAll(".blob");
+
+    if (blobEls.length === 0) {
+      return;
+    }
+
     const blobs = Array.from(blobEls).map((blobEl) => new Blob(blobEl));
 
     function update() {
@@ -93,12 +74,47 @@ function initAnimation() {
   initBlobs();
 }
 
+function initTabs() {
+  const tabButtons = document.querySelectorAll('[data-tab-target]');
+  const tabPanels = document.querySelectorAll('[data-tab-panel]');
+
+  if (tabButtons.length === 0 || tabPanels.length === 0) {
+    return;
+  }
+
+  function activateTab(tabName) {
+    tabButtons.forEach((button) => {
+      button.classList.toggle('is-active', button.dataset.tabTarget === tabName);
+    });
+
+    tabPanels.forEach((panel) => {
+      panel.classList.toggle('is-active', panel.dataset.tabPanel === tabName);
+    });
+
+    history.replaceState(null, '', `#${tabName}`);
+    document.querySelector('.tab-layout').scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  tabButtons.forEach((button) => {
+    button.addEventListener('click', () => {
+      activateTab(button.dataset.tabTarget);
+    });
+  });
+
+  const hash = window.location.hash.replace('#', '');
+
+  if (hash === 'experience') {
+    activateTab('experience');
+  } else {
+    activateTab('profile');
+  }
+}
+
 window.addEventListener('load', () => {
   initAnimation();
+  initTabs();
 
-  registerLangSwitch();
-
-  {
+  if (!document.querySelector('.solar-term')) {
     const div = document.createElement('div')
     div.className = 'solar-term'
     const solar = ["小寒","大寒","立春","雨水","惊蛰","春分","清明","谷雨","立夏","小满","芒种","夏至","小暑","大暑","立秋","处暑","白露","秋分","寒露","霜降","立冬","小雪","大雪","冬至"];
@@ -113,10 +129,9 @@ window.addEventListener('load', () => {
     document.body.append(div)
   }
 
-  {
+  if (!document.querySelector('#beian')) {
     const div = document.createElement('div')
     div.id = 'beian'
-    div.className = 'lang-zh'
     div.innerHTML = `<a href="https://beian.miit.gov.cn" target="_blank"
       >皖ICP备16001167号-1</a
     >

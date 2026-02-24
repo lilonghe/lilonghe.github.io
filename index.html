@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en-US">
+<html lang="zh-CN">
   <head>
     <meta charset="UTF-8" />
     <meta
@@ -13,9 +13,8 @@
     <meta name="description" content="lilonghe's Personal Website" />
     <link rel="icon" href="/favicon.svg" />
     <link rel="stylesheet" href="styles.css" />
-    <title>LILONGHE</title>
+    <title>Lee</title>
   </head>
-
   <body>
     <div class="wrapper">
       <div class="content-bg">
@@ -29,75 +28,162 @@
           <div class="blob"></div>
         </div>
       </div>
+
       <div class="content">
-        <div lang="en" class="lang-en">
-          <div class="title">LONGHE.LI</div>
-          <div>Working in HangZhou now</div>
-
-          <div class="intro">
-            <small
-              >Ready to fly anywhere, if there is a job for me there.</small
+        <div class="tab-layout">
+          <nav class="left-tabs" aria-label="个人导航">
+            <button type="button" class="tab-btn is-active" data-tab-target="profile">
+              资料
+            </button>
+            <button type="button" class="tab-btn" data-tab-target="experience">
+              履历
+            </button>
+            <a
+              class="tab-link"
+              href="https://note.lilonghe.net"
+              target="_blank"
+              rel="noreferrer"
             >
-            <small
-              >Can write program by fullstack(like Go, Node.js, React, Vue
-              etc.)</small
+              Blog <span>↗</span>
+            </a>
+            <a
+              class="tab-link"
+              href="https://github.com/lilonghe"
+              target="_blank"
+              rel="noreferrer"
             >
-            <small
-              >If you're interested in me, please contact me via
-              <a href="mailto:lilonghe@outlook.com" class="email"
-                >lilonghe@outlook.com</a
-              >.</small
-            >
-          </div>
-          <div class="platforms" id="show-group">
-            <a href="simple-profile.html">Profile</a>
-            <a href="https://note.lilonghe.net" target="_blank">Blog</a>
-            <a href="https://github.com/lilonghe" target="_blank">GitHub</a>
-          </div>
-        </div>
+              GitHub <span>↗</span>
+            </a>
+            <a 
+              class="tab-link"
+              href="mailto:lilonghe@outlook.com"
+              title="lilonghe@outlook.com">
+              Email <span>↗</span>
+            </a>
+          </nav>
 
-        <div lang="zh" class="lang-zh">
-          <div class="title">@Lee</div>
-          <div>目前在杭州工作</div>
+          <div class="tab-panels">
+            <section class="tab-panel is-active" id="tab-profile" data-tab-panel="profile">
+              <div class="title">Lee</div>
+              <div>目前在杭州</div>
 
-          <div class="intro">
-            <small>成熟打工人，拎包即走，全国可飞 (˘•ω•˘)ง</small>
-            <small>能够搞定各种 Web 开发工作</small>
-            <small>常用技术栈 React、Vue、Next.js、 Go、Node.js</small>
-            <small>熟练使用 Vibe Coding</small>
-            <small class="contact-info"
-              >如果你对我有兴趣, 点击
-              <a href="mailto:lilonghe@outlook.com" class="email">邮箱</a>
-              联系我</small
-            >
-          </div>
-          <div class="platforms" id="show-group">
-            <a href="simple-profile.html">Profile</a>
-            <a href="https://note.lilonghe.net" target="_blank">Blog</a>
-            <a href="https://github.com/lilonghe" target="_blank">GitHub</a>
-          </div>
-        </div>
+              <div class="intro">
+                <small>成熟打工人，长三角可飞 (˘•ω•˘)ง</small>
+                <small>能够搞定各种开发（Web, AI Agent）工作</small>
+                <small class="contact-info"
+                  >如果你对我有兴趣，点击
+                  <a href="mailto:lilonghe@outlook.com" title="lilonghe@outlook.com" class="email">邮箱</a>
+                  联系我</small
+                >
+              </div>
 
-        <div class="lang-switcher">
-          <span data-target="zh-CN">中</span>
-          /
-          <span data-target="en-US">E</span>
+              <section class="profile-section" id="profile">
+                <div class="section-card skills">
+                  <h3>目前技术栈</h3>
+                  <small class="soft-skill">
+                    <ul>
+                      <li>具有同理心, 高度责任心, 多角色思考能力，优秀的沟通理解能力</li>
+                      <li>积极拥抱新技术，大量使用 Vibe Coding (Claude Code, Codex)</li>
+                      <li><b>*具有丰富的技术栈演进经历，充分的技术敏感度和持续学习能力</b></li>
+                      <li><b>*解决复杂问题的架构能力、利用 AI 扩展的能力</b></li>
+                    </ul>
+                  </small>
+
+                  <ul>
+                    <li>
+                      <label>前端 (主要)</label>
+                      <ul>
+                        <li>React, Next.js, Vue, TypeScript</li>
+                        <li>Zustand, React-Query</li>
+                        <li>TailwindCSS, Shadcn, Antd, ECharts, Antv/X6, D3</li>
+                        <li>Webpack, Vite, Monorepo</li>
+                      </ul>
+                    </li>
+                    <li>
+                      <label><small>后端</small></label>
+                      <ul>
+                        <li>Go, Gin, XORM</li>
+                        <li>GRPC, RESTFul API</li>
+                        <li>MySQL, PostgreSQL, Redis</li>
+                        <li>Linux, Docker, Docker Compose, K8S, Helm Chart</li>
+                      </ul>
+                    </li>
+                  </ul>
+                </div>
+              </section>
+            </section>
+
+            <section class="tab-panel" id="tab-experience" data-tab-panel="experience">
+              <section class="profile-section" id="experience">
+                <h2>履历</h2>
+                <p class="profile-quote">技术使用 / 升级路线</p>
+
+                <ul class="timeline">
+                  <li>
+                    <label><small>2025-Now</small> 某大模型公司</label>
+                    <ul>
+                      <li>AI Agent, AG-UI, Vibe Coding(Cluade Code, CodeX)</li>
+                    </ul>
+                    <ul class="extension">
+                      <li>Helm Chart, LangGraph</li>
+                    </ul>
+                  </li>
+                  <li>
+                    <label><small>2023-2025</small> 某安全公司</label>
+                    <ul>
+                      <li>Next.js，React-Query</li>
+                      <li>组件库，Monorepo，Jenkins CI/CD，VSCode Extension</li>
+                    </ul>
+                    <ul class="extension">
+                      <li>ChatGPT, Cursor</li>
+                      <li>OpenAI, Python, RAG, K8s, ChromaDB, Ollama, SSE</li>
+                    </ul>
+                  </li>
+                  <li>
+                    <label><small>2021-2022</small> 某 AI 数据公司</label>
+                    <ul>
+                      <li>
+                        Rematch, Zustand, ECharts, X6, Vite, TailwindCSS, TypeScript,
+                        Vue(3)
+                      </li>
+                      <li>老项目重构，项目国际化，项目架构搭建</li>
+                      <li>独立带项目，带小团队，GitLab Workflow 协作</li>
+                    </ul>
+                  </li>
+                  <li>
+                    <label><small>2017-2020</small> 某快递公司</label>
+                    <ul>
+                      <li>
+                        React, Webpack, Antd, React Native, Redux, Dva, Roadhog,
+                        Electron, ESLint, Prettier
+                      </li>
+                      <li>Go, Gin, Nginx, Redis, PostgreSQL, Docker, Elasticsearch</li>
+                      <li>敏捷开发，Jira，KPI, OKR</li>
+                    </ul>
+                  </li>
+                  <li>
+                    <label><small>2016-2017</small> 某在线教育团队</label>
+                    <ul>
+                      <li>jQuery, Bootstrap, Require.js, Gulp, Vue(2), Responsive Site</li>
+                    </ul>
+                  </li>
+                </ul>
+              </section>
+            </section>
+          </div>
         </div>
       </div>
     </div>
-  </body>
-  <script src="main.js"></script>
-</html>
-<script
-  async
-  src="https://www.googletagmanager.com/gtag/js?id=G-B1VPSF3E9N"
-></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag() {
-    dataLayer.push(arguments);
-  }
-  gtag("js", new Date());
 
-  gtag("config", "G-B1VPSF3E9N");
-</script>
+    <script src="main.js"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-B1VPSF3E9N"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-B1VPSF3E9N");
+    </script>
+  </body>
+</html>
