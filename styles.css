@@ -48,7 +48,7 @@ b {
 /* ========== 3) Main Layout (Tabs) ========== */
 .wrapper {
   width: min(700px, calc(100vw - 30px));
-  height: 80vh;
+  height: min(80vh, 600px);
   max-height: min(860px, calc(100vh - 150px));
   margin: 0 auto;
   letter-spacing: 1px;
@@ -365,7 +365,7 @@ b {
   .wrapper {
     height: auto;
     max-height: none;
-    width: calc(100vw - 14px);
+    width: 100%;
     box-shadow: none;
     background-color: transparent;
   }
@@ -374,6 +374,8 @@ b {
     grid-template-columns: 1fr;
     gap: 14px;
     scroll-behavior: smooth;
+    padding-left: 15px;
+    padding-right: 15px;
   }
 
   .left-tabs {
@@ -393,6 +395,7 @@ b {
 
   .tab-panels {
     padding-right: 0;
+    padding-left: 0;
     min-height: 0;
   }
 
