@@ -424,3 +424,11 @@ b {
     writing-mode: inherit;
   }
 }
+
+.normal-link {
+  color: initial;
+}
+
+.old-tech {
+    text-decoration: line-through;
+}
