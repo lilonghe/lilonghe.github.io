@@ -82,9 +82,16 @@ function initTabs() {
     return;
   }
 
+  /**
+   * 切换 Tab，并同步选中态、无障碍属性与地址栏 hash。
+   * @param {string} tabName
+   */
   function activateTab(tabName) {
     tabButtons.forEach((button) => {
-      button.classList.toggle('is-active', button.dataset.tabTarget === tabName);
+      const isActive = button.dataset.tabTarget === tabName;
+      button.classList.toggle('is-active', isActive);
+      button.setAttribute('aria-selected', String(isActive));
+      button.tabIndex = isActive ? 0 : -1;
     });
 
     tabPanels.forEach((panel) => {
@@ -92,12 +99,30 @@ function initTabs() {
     });
 
     history.replaceState(null, '', `#${tabName}`);
-    document.querySelector('.tab-layout').scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    document.querySelector('.main').scrollTo({ top: 0, behavior: 'smooth' });
   }
 
-  tabButtons.forEach((button) => {
+  tabButtons.forEach((button, index) => {
     button.addEventListener('click', () => {
       activateTab(button.dataset.tabTarget);
+    });
+
+    button.addEventListener('keydown', (event) => {
+      const arrowKeys = ['ArrowDown', 'ArrowRight', 'ArrowUp', 'ArrowLeft'];
+
+      if (!arrowKeys.includes(event.key)) {
+        return;
+      }
+
+      event.preventDefault();
+      const step =
+        event.key === 'ArrowDown' || event.key === 'ArrowRight' ? 1 : -1;
+      const nextButton =
+        tabButtons[(index + step + tabButtons.length) % tabButtons.length];
+
+      nextButton.focus();
+      activateTab(nextButton.dataset.tabTarget);
     });
   });
 
@@ -108,6 +133,14 @@ function initTabs() {
   } else {
     activateTab('profile');
   }
+
+  window.addEventListener('hashchange', () => {
+    const nextTab = window.location.hash.replace('#', '');
+
+    if (nextTab === 'profile' || nextTab === 'experience') {
+      activateTab(nextTab);
+    }
+  });
 }
 
 window.addEventListener('load', () => {

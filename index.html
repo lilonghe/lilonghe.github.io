@@ -4,177 +4,291 @@
     <meta charset="UTF-8" />
     <meta
       name="viewport"
-      content="width=device-width,user-scalable=no,initial-scale=1,minimum-scale=1,maximum-scale=1,viewport-fit=cover"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
     />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black" />
-    <meta name="theme-color" content="#fff" />
-    <meta name="keyword" content="lilonghe,blog" />
-    <meta name="description" content="lilonghe's Personal Website" />
+    <meta name="theme-color" content="#f6f1ea" />
+    <meta name="description" content="Lee 的个人主页，软件工程师，专注 AI Agent 与 Vibe Coding。" />
+    <meta property="og:title" content="Lee · 软件工程师" />
+    <meta property="og:description" content="软件工程师，近 10 年从页面到服务端的完整落地经验。" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://www.lilonghe.net" />
     <link rel="icon" href="/favicon.svg" />
-    <link rel="stylesheet" href="styles.css?t=20260224" />
-    <title>Lee</title>
+    <link rel="stylesheet" href="styles.css?t=20261109" />
+    <title>Lee · 软件工程师</title>
   </head>
   <body>
-    <div class="wrapper">
-      <div class="content-bg">
-        <div class="blobs">
-          <div class="blob"></div>
-          <div class="blob"></div>
-          <div class="blob"></div>
-          <div class="blob"></div>
-          <div class="blob"></div>
-          <div class="blob"></div>
-          <div class="blob"></div>
-        </div>
-      </div>
-
-      <div class="content">
-        <div class="tab-layout">
-          <nav class="left-tabs" aria-label="个人导航">
-            <button type="button" class="tab-btn is-active" data-tab-target="profile">
-              资料
-            </button>
-            <button type="button" class="tab-btn" data-tab-target="experience">
-              履历
-            </button>
-            <a
-              class="tab-link"
-              href="https://note.lilonghe.net"
-              target="_blank"
-              rel="noreferrer"
-            >
-              Blog <span>↗</span>
-            </a>
-            <a
-              class="tab-link"
-              href="https://github.com/lilonghe"
-              target="_blank"
-              rel="noreferrer"
-            >
-              GitHub <span>↗</span>
-            </a>
-            <a
-              class="tab-link"
-              href="mailto:lilonghe@outlook.com"
-              title="lilonghe@outlook.com">
-              Email <span>↗</span>
-            </a>
-          </nav>
-
-          <div class="tab-panels">
-            <section class="tab-panel is-active" id="tab-profile" data-tab-panel="profile">
-              <div class="title">Lee</div>
-
-              <div class="intro">
-                <small>目前在杭州，寻求新机会中</small>
-                <small>成熟打工人，长三角可飞 (˘•ω•˘)ง</small>
-                <small>如果你对我有兴趣，点击
-                  <a href="mailto:lilonghe@outlook.com" title="lilonghe@outlook.com" class="email">邮箱</a>
-                  联系我</small
-                >
-              </div>
-
-              <section class="profile-section" id="profile">
-                <div class="section-card skills">
-
-                  <small class="soft-skill">
-                    <ul>
-                      <li>具有同理心, 高度责任心, 多角色思考能力，优秀的沟通理解能力</li>
-                      <li>积极拥抱新技术，全面拥抱 Vibe Coding (Claude Code, Codex)</li>
-                      <li><b>*具有丰富的技术栈演进经历，充分的技术敏感度和持续学习能力</b></li>
-                      <li><b>*解决复杂问题的架构能力、利用 AI 横向扩展的能力</b></li>
-                    </ul>
-                  </small>
-
-                  <h3>技术栈: Vibe Coding</h3>
-                  <ul class="old-tech">
-                    <li>
-                      <label><a href="https://show.service.lilonghe.net/u/lilonghe#domain-frontend" target="_blank" class="normal-link">前端</a></label>
-                      <ul>
-                        <li>React, Next.js, Vue, TypeScript</li>
-                        <li>Zustand, React-Query</li>
-                        <li>TailwindCSS, Shadcn, Antd, ECharts, Antv/X6, D3</li>
-                        <li>Webpack, Vite, Monorepo</li>
-                      </ul>
-                    </li>
-                    <li>
-                      <label><small><a href="https://show.service.lilonghe.net/u/lilonghe#domain-backend" target="_blank" class="normal-link">后端</a></small></label>
-                      <ul>
-                        <li>Go, Gin, XORM</li>
-                        <li>GRPC, RESTFul API</li>
-                        <li>MySQL, PostgreSQL, Redis</li>
-                        <li>Linux, Docker, Docker Compose, K8S, Helm Chart</li>
-                      </ul>
-                    </li>
-                  </ul>
-                </div>
-              </section>
-            </section>
-
-            <section class="tab-panel" id="tab-experience" data-tab-panel="experience">
-              <section class="profile-section" id="experience">
-                <h2>履历</h2>
-                <p class="profile-quote">技术使用 / 升级路线</p>
-
-                <ul class="timeline">
-                  <li>
-                    <label><small>2025-Now</small> 某大模型公司</label>
-                    <ul>
-                      <li>AI Agent, AG-UI, Vibe Coding(Cluade Code, CodeX)</li>
-                    </ul>
-                    <ul class="extension">
-                      <li>Helm Chart, LangGraph</li>
-                    </ul>
-                  </li>
-                  <li>
-                    <label><small>2023-2025</small> 某安全公司</label>
-                    <ul>
-                      <li>Next.js，React-Query</li>
-                      <li>组件库，Monorepo，Jenkins CI/CD，VSCode Extension</li>
-                    </ul>
-                    <ul class="extension">
-                      <li>ChatGPT, Cursor</li>
-                      <li>OpenAI, Python, RAG, K8s, ChromaDB, Ollama, SSE</li>
-                    </ul>
-                  </li>
-                  <li>
-                    <label><small>2021-2022</small> 某 AI 数据公司</label>
-                    <ul>
-                      <li>
-                        Rematch, Zustand, ECharts, X6, Vite, TailwindCSS, TypeScript,
-                        Vue(3)
-                      </li>
-                      <li>老项目重构，项目国际化，项目架构搭建</li>
-                      <li>独立带项目，带小团队，GitLab Workflow 协作</li>
-                    </ul>
-                  </li>
-                  <li>
-                    <label><small>2017-2020</small> 某快递公司</label>
-                    <ul>
-                      <li>
-                        React, Webpack, Antd, React Native, Redux, Dva, Roadhog,
-                        Electron, ESLint, Prettier
-                      </li>
-                      <li>Go, Gin, Nginx, Redis, PostgreSQL, Docker, Elasticsearch</li>
-                      <li>敏捷开发，Jira，KPI, OKR</li>
-                    </ul>
-                  </li>
-                  <li>
-                    <label><small>2016-2017</small> 某在线教育团队</label>
-                    <ul>
-                      <li>jQuery, Bootstrap, Require.js, Gulp, Vue(2), Responsive Site</li>
-                    </ul>
-                  </li>
-                </ul>
-              </section>
-            </section>
-          </div>
-        </div>
-      </div>
+    <div class="blobs" aria-hidden="true">
+      <div class="blob"></div>
+      <div class="blob"></div>
+      <div class="blob"></div>
+      <div class="blob"></div>
+      <div class="blob"></div>
+      <div class="blob"></div>
+      <div class="blob"></div>
     </div>
 
-    <script src="main.js?t=20260224"></script>
+    <div class="shell">
+      <aside class="sidebar">
+        <div class="identity">
+          <p class="eyebrow">Personal Profile</p>
+          <h1>Lee</h1>
+          <p class="identity-role">软件工程师 · 杭州 / 上海</p>
+        </div>
+
+        <nav class="nav" aria-label="页面导航">
+          <div class="nav-tabs" role="tablist" aria-label="内容切换">
+            <button
+              type="button"
+              class="tab-btn is-active"
+              id="tab-profile"
+              role="tab"
+              aria-selected="true"
+              aria-controls="panel-profile"
+              data-tab-target="profile"
+            >
+              资料
+            </button>
+            <button
+              type="button"
+              class="tab-btn"
+              id="tab-experience"
+              role="tab"
+              aria-selected="false"
+              aria-controls="panel-experience"
+              tabindex="-1"
+              data-tab-target="experience"
+            >
+              履历
+            </button>
+          </div>
+
+          <div class="nav-links">
+            <a href="https://note.lilonghe.net" target="_blank" rel="noreferrer">
+              Blog <span aria-hidden="true">↗</span>
+            </a>
+            <a href="https://github.com/lilonghe" target="_blank" rel="noreferrer">
+              GitHub <span aria-hidden="true">↗</span>
+            </a>
+            <a href="mailto:lilonghe@outlook.com" title="lilonghe@outlook.com">
+              Email <span aria-hidden="true">↗</span>
+            </a>
+          </div>
+        </nav>
+
+        <p class="sidebar-meta">
+          <span class="status-dot" aria-hidden="true"></span>
+          杭州 / 上海 · 中国
+        </p>
+      </aside>
+
+      <main class="main">
+        <section
+          class="panel is-active"
+          id="panel-profile"
+          role="tabpanel"
+          aria-labelledby="tab-profile"
+          data-tab-panel="profile"
+        >
+          <header class="panel-head">
+            <p class="eyebrow">Hello</p>
+            <h2>你好，我是 Lee 👋</h2>
+            <p class="intro-lead">
+              软件工程师，近 10 年从页面到服务端的完整落地经验。现居杭州 / 上海。
+            </p>
+            <div class="meta">
+              <span class="pill pill-status">
+                <span class="status-dot" aria-hidden="true"></span>
+                寻求新机会中
+              </span>
+              <span class="pill">长三角可飞 (˘•ω•˘)ง</span>
+            </div>
+            <p class="intro-note">
+              如果你对我有兴趣，欢迎<a href="mailto:lilonghe@outlook.com">邮件联系</a>。
+            </p>
+          </header>
+
+          <section class="block">
+            <h3 class="block-title">关于我</h3>
+            <ul class="highlights">
+              <li>具有同理心、高度责任心和多角色思考能力，沟通理解能力强</li>
+              <li>积极拥抱新技术，全面拥抱 Vibe Coding（Claude Code、Codex）</li>
+              <li>有丰富的技术栈演进经历，保持技术敏感度和持续学习能力</li>
+              <li>具备复杂问题的架构能力，以及利用 AI 横向扩展的能力</li>
+            </ul>
+          </section>
+
+          <section class="block">
+            <h3 class="block-title">技术栈</h3>
+            <div class="stack">
+              <div class="stack-row">
+                <span class="stack-label">现在</span>
+                <div class="chips">
+                  <span class="chip chip-accent">Vibe Coding</span>
+                  <span class="chip chip-accent">Developer Sense</span>
+                </div>
+              </div>
+              <div class="stack-row">
+                <a
+                  class="stack-label stack-link"
+                  href="https://show.service.lilonghe.net/u/lilonghe#domain-frontend"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  前端 <span aria-hidden="true">↗</span>
+                </a>
+                <div class="chips">
+                  <span class="chip">React</span>
+                  <span class="chip">Next.js</span>
+                  <span class="chip">Vue</span>
+                  <span class="chip">TypeScript</span>
+                  <span class="chip">Zustand</span>
+                  <span class="chip">React-Query</span>
+                  <span class="chip">TailwindCSS</span>
+                  <span class="chip">Shadcn</span>
+                  <span class="chip">Antd</span>
+                  <span class="chip">ECharts</span>
+                  <span class="chip">Antv/X6</span>
+                  <span class="chip">D3</span>
+                  <span class="chip">Webpack</span>
+                  <span class="chip">Vite</span>
+                  <span class="chip">Monorepo</span>
+                </div>
+              </div>
+              <div class="stack-row">
+                <a
+                  class="stack-label stack-link"
+                  href="https://show.service.lilonghe.net/u/lilonghe#domain-backend"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  后端 <span aria-hidden="true">↗</span>
+                </a>
+                <div class="chips">
+                  <span class="chip">Go</span>
+                  <span class="chip">Gin</span>
+                  <span class="chip">XORM</span>
+                  <span class="chip">gRPC</span>
+                  <span class="chip">RESTful API</span>
+                  <span class="chip">MySQL</span>
+                  <span class="chip">PostgreSQL</span>
+                  <span class="chip">Redis</span>
+                </div>
+              </div>
+              <div class="stack-row">
+                <span class="stack-label">工程化</span>
+                <div class="chips">
+                  <span class="chip">Linux</span>
+                  <span class="chip">Docker</span>
+                  <span class="chip">Docker Compose</span>
+                  <span class="chip">K8s</span>
+                  <span class="chip">Helm Chart</span>
+                </div>
+              </div>
+            </div>
+          </section>
+        </section>
+
+        <section
+          class="panel"
+          id="panel-experience"
+          role="tabpanel"
+          aria-labelledby="tab-experience"
+          data-tab-panel="experience"
+        >
+          <header class="panel-head">
+            <p class="eyebrow">Experience</p>
+            <h2>履历</h2>
+            <p class="panel-note">技术使用 / 升级路线</p>
+          </header>
+
+          <ol class="timeline">
+            <li class="timeline-item">
+              <div class="timeline-top">
+                <span class="timeline-years">2025 — Now</span>
+                <h3 class="timeline-company">某大模型公司</h3>
+              </div>
+              <ul class="timeline-list">
+                <li>Agent Harness, ACP, Vibe Coding (Claude Code, Codex)</li>
+              </ul>
+              <div class="timeline-extra">
+                <span class="extra-label">延伸</span>
+                <span class="chip">Helm Chart</span>
+                <span class="chip">LangGraph</span>
+              </div>
+            </li>
+
+            <li class="timeline-item">
+              <div class="timeline-top">
+                <span class="timeline-years">2023 — 2025</span>
+                <h3 class="timeline-company">某安全公司</h3>
+              </div>
+              <ul class="timeline-list">
+                <li>Next.js, React-Query</li>
+                <li>组件库, Monorepo, Jenkins CI/CD, VSCode Extension</li>
+              </ul>
+              <div class="timeline-extra">
+                <span class="extra-label">延伸</span>
+                <span class="chip">ChatGPT</span>
+                <span class="chip">Cursor</span>
+                <span class="chip">OpenAI</span>
+                <span class="chip">Python</span>
+                <span class="chip">RAG</span>
+                <span class="chip">K8s</span>
+                <span class="chip">ChromaDB</span>
+                <span class="chip">Ollama</span>
+                <span class="chip">SSE</span>
+              </div>
+            </li>
+
+            <li class="timeline-item">
+              <div class="timeline-top">
+                <span class="timeline-years">2021 — 2022</span>
+                <h3 class="timeline-company">某 AI 数据公司</h3>
+              </div>
+              <ul class="timeline-list">
+                <li>
+                  Rematch, Zustand, ECharts, X6, Vite, TailwindCSS, TypeScript,
+                  Vue(3)
+                </li>
+                <li>老项目重构，项目国际化，项目架构搭建</li>
+                <li>独立带项目，带小团队，GitLab Workflow 协作</li>
+              </ul>
+            </li>
+
+            <li class="timeline-item">
+              <div class="timeline-top">
+                <span class="timeline-years">2017 — 2020</span>
+                <h3 class="timeline-company">某快递公司</h3>
+              </div>
+              <ul class="timeline-list">
+                <li>
+                  React, Webpack, Antd, React Native, Redux, Dva, Roadhog,
+                  Electron, ESLint, Prettier
+                </li>
+                <li>Go, Gin, Nginx, Redis, PostgreSQL, Docker, Elasticsearch</li>
+                <li>敏捷开发，Jira，KPI, OKR</li>
+              </ul>
+            </li>
+
+            <li class="timeline-item">
+              <div class="timeline-top">
+                <span class="timeline-years">2016 — 2017</span>
+                <h3 class="timeline-company">某在线教育团队</h3>
+              </div>
+              <ul class="timeline-list">
+                <li>
+                  jQuery, Bootstrap, Require.js, Gulp, Vue(2), Responsive Site
+                </li>
+              </ul>
+            </li>
+          </ol>
+        </section>
+      </main>
+    </div>
+
+    <script src="main.js?t=20261109"></script>
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-B1VPSF3E9N"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
